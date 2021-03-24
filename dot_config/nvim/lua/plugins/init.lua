@@ -1,0 +1,5 @@
+require('plugins.airline')
+require('plugins.telescope')
+require('plugins.coc-nvim')
+require('plugins.colors')
+require('plugins.markdown-preview')

@@ -1,0 +1,17 @@
+[user]
+	signingkey 		= D7AF2C389A5AA828
+	email	     		= {{ .email }}
+	name	     		= {{ .name }}
+[gpg]
+	program    		= gpg2
+[init]
+	defaultBranch = main
+[pull]
+	rebase        = true
+[alias]
+	lg            = log --stat --pretty --graph --date=relative
+	lgs						= log --pretty="format:%h %G? %aN  %s"
+	c 						= commit
+	cm 						= commit -m
+	a 						= add
+	s 						= status

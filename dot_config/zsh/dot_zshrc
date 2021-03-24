@@ -1,0 +1,76 @@
+# history
+setopt EXTENDED_HISTORY
+setopt HIST_EXPIRE_DUPS_FIRST # expire duplicates first
+setopt HIST_IGNORE_DUPS       # do not store duplications
+setopt HIST_FIND_NO_DUPS      # ignore duplicates when searching
+setopt HIST_REDUCE_BLANKS     # removes blank lines from history
+setopt histignorespace        # if a command is prepended with SPC, don't log in HISTFILE
+
+# typing dir name will also cd
+setopt autocd
+
+# basic auto/tab complete
+autoload -Uz compinit
+# case insensitive path-completion
+zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*'
+zstyle ':completion:*' menu select
+zstyle ':completion:*' list-suffixes
+zstyle ':completion:*' expand prefix suffix
+zmodload zsh/complist
+compinit
+# vi mode
+bindkey -v
+export KEYTIMEOUT=1
+bindkey -v '^?' backward-delete-char
+# enable substring search
+zle -N history-substring-search-up
+zle -N history-substring-search-down
+## vi bindings
+bindkey -M vicmd 'k' history-substring-search-up
+bindkey -M vicmd 'j' history-substring-search-down
+## arrow keys
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+
+# exa not ls
+alias ls="exa"
+alias lsd="exa -ls size"
+alias tree="exa -T --git-ignore"
+
+# pins
+alias pins="paru -Slq | fzf -m --preview 'cat <(paru -Si {1}) <(paru -Fl {1} | awk \"{print \$2}\")' | xargs -ro paru -S"
+
+# vim
+alias vi='nvim'
+alias vim='nvim'
+
+# Find and Grep
+alias find='fd'
+alias grep='rg'
+
+# ZSH Plugins
+source ~/.local/share/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.local/share/zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
+source ~/.local/share/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+# Chezmoi Completion
+eval "$(chezmoi completion zsh)"
+
+# Starship (Prompt)
+eval "$(starship init zsh)"
+
+# TMUX
+if [[ -n ${TMUX} && -n ${commands[tmux]} ]];then
+        case $(tmux showenv TERM 2>/dev/null) in
+                *256color) ;&
+                TERM=fbterm)
+                        TERM=screen-256color ;;
+                *)
+                        TERM=screen
+        esac
+fi
+
+if command -v tmux >/dev/null 2>&1; then
+    # if not inside a tmux session, and if no session is started, start a new session
+    [ -z "${TMUX}" ] && (tmux attach || tmux) >/dev/null 2>&1
+fi

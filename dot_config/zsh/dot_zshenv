@@ -1,0 +1,36 @@
+export HISTSIZE=1000000
+export SAVEHIST=1000000
+
+# follow XDG Base Directory specification
+
+## zsh
+export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
+export HISTFILE="$XDG_DATA_HOME"/zsh/history
+
+## gpg
+export GNUPGHOME="$XDG_DATA_HOME/gnupg"
+
+## rust
+export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
+
+## cargo
+export CARGO_HOME="$XDG_DATA_HOME/cargo"
+
+## go
+export GOPATH="$XDG_DATA_HOME/go"
+
+# Editor
+export VISUAL=nvim
+export EDITOR=nvim
+export SUDO_EDITOR=nvim
+export GIT_EDITOR=nvim
+
+# History
+export HISTORY_IGNORE="(ls|exit|[bf]g|jobs)"
+
+# Language
+export LANG=en_GB.UTF-8
+export LANGUAGE=en_GB:en
+export LC_TIME=$LANG
+
+
