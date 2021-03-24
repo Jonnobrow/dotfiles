@@ -1,10 +1,9 @@
-Host personal-github
+Host github
 	Hostname github.com
+	PreferredAuthentications publickey
 	IdentityFile ~/.ssh/id_ed25519_github
 
-Host personal-gitlab
+Host gitlab
 	Hostname gitlab.com
+	PreferredAuthentications publickey
 	IdentityFile ~/.ssh/id_ed25519_gitlab
-
-Host personal-*
-	User jonnobrow
