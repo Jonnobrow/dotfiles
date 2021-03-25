@@ -10,6 +10,16 @@ This time round I am:
 - Using Chezmoi again (Ansible was bloat, fun, but bloat)
 - Not doing anything with fancy colours (no pywal :/)
 - Respecting the XDG directory spec
+- Automating more stuff with Make (see inspiration: [benmezger/dotfiles](https://github.com/benmezger/dotfiles))
+
+## installing
+
+```shell
+DOTFILES_DIR=~/.local/share/chezmoi
+git clone https://github.com/Jonnobrow/dotfiles.git $DOTFILES_DIR
+cd $DOTFILES_DIR
+make all
+```
 
 ## details
 
@@ -29,7 +39,9 @@ Some highlights from my setup:
 - Git stuff from [vim-fugitive](https://github.com/tpope/vim-fugitive)
 - A filetree from [nerdtree](https://github.com/preservim/nerdtree)
 - All config in Lua (requires Neovim 0.5)
-- Completions and LSP Support by [CoC](https://github.com/neoclide/coc.nvim)
+	- See [a Guide](https://github.com/nanotee/nvim-lua-guide) and
+		[my inspiration](https://github.com/mthnglac/dotfiles)
+- Native LSP support from Neovim
 
 ### my browser
 *Coming Soon*

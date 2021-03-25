@@ -1,1 +1,12 @@
 README.md
+Makefile
+Pacfile
+Aurfile
+scripts/
+
+{{- if not .secrets }}
+.ssh/id_ed25519_github
+.ssh/id_ed25519_github.pub
+.ssh/id_ed25519_gitlab
+.ssh/id_ed25519_gitlab.pub
+{{- end }}

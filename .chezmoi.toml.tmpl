@@ -1,8 +1,27 @@
-{{- $email := promptString "email" -}}
-{{- $name  := promptString "name"  -}}
-[data]
-    email = {{ $email | quote }}
-		name  = {{ $name  | quote }}
+{{- $secrets := true -}}
 
+{{- $name := "Jonathan Bartlett" -}}
+{{- $email := "jonathan@jonnobrow.co.uk" -}}
+{{- $hostname := "jbpc" -}}
+{{- $gpg_keyid := "0xD7AF2C389A5AA828" -}}
+
+{{- if (env "ASK") }}
+{{- $secrets := promptBool "secrets" -}}
+
+{{- $name := promptString "full name" -}}
+{{- $email := promptString "personal email" -}}
+{{- $hostname := promptString "computer hostname" -}}
+{{- $gpg_keyid := promptString "PGP key id" -}}
+{{- end -}}
+
+[data]
+    secrets         = {{ $secrets }}
+    email           = {{ $email | quote }}
+    name            = {{ $name | quote }}
+    gpg_keyid       = {{ $gpg_keyid | quote }}
+    hostname        = {{ $hostname | quote }}
+
+{{- if $secrets }}
 [keepassxc]
     database = "/home/{{ .chezmoi.username }}/cloud/keepass/keepass.kdbx"
+{{- end -}}
