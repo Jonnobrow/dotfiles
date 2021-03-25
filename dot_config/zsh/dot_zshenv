@@ -35,4 +35,5 @@ export LANG=en_GB.UTF-8
 export LANGUAGE=en_GB:en
 export LC_TIME=$LANG
 
-
+# SSH
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"

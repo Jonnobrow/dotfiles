@@ -1,5 +1,13 @@
 -- Python
-require'lspconfig'.pyls.setup{}
+require'lspconfig'.pyright.setup{
+  settings = {
+    python = {
+      linting = {
+        flake8Enabled = true
+      }
+    }
+  }
+}
 
 -- Docker
 require'lspconfig'.dockerls.setup{}

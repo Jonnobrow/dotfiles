@@ -10,7 +10,7 @@ sudo -v
 
 # Python Language Server
 ansi --yellow "Installing Python Language Server"
-pip install 'python-language-server[all]'
+sudo npm install -g pyright
 
 # Docker Language Server
 ansi --yellow "Installing Docker Language Server"
