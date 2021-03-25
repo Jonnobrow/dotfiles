@@ -31,6 +31,14 @@ install-aur:
 		@echo 'Installing aur dependencies.'
 		bash ./scripts/install-aur.sh
 
+install-language-servers:
+		@echo 'Installing LSP Language Servers.'
+		bash ./scripts/install-language-servers.sh
+
+install-rust:
+		@echo 'Installing Rust.'
+		curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
 configure-sys:
 		@echo 'Configuring system defaults.'
 		bash ./scripts/configure-sys.sh
@@ -44,6 +52,8 @@ ensure-deps:
 		$(MAKE) install-chezmoi
 		$(MAKE) install-deps
 		$(MAKE) install-aur
+		$(MAKE) install-rust
+		$(MAKE) install-language-servers
 
 run:
 		$(MAKE) ensure-deps

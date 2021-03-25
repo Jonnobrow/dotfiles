@@ -22,34 +22,35 @@ end
 plug(tostring(os.getenv("XDG_CONFIG_HOME")) .. '/nvim/plugged', {
 
         -- Treesitter
-        'nvim-treesitter/nvim-treesitter';
+        {'nvim-treesitter/nvim-treesitter'; run = ":TsUpdate"};
+
+        -- Lua
+        'nvim-lua/plenary.nvim';
+        'nvim-lua/popup.nvim';
+
+        -- Completion
+        'nvim-lua/completion-nvim';
+        'steelsojka/completion-buffers';
+        'SirVer/ultisnips';
+        'honza/vim-snippets';
+
+        -- Language Support
+        'neovim/nvim-lspconfig';
+        'RishabhRD/popfix';
+        'RishabhRD/nvim-lsputils';
+        'sheerun/vim-polyglot';
 
         -- Telescope
         'nvim-telescope/telescope.nvim';
-        'nvim-lua/plenary.nvim';
-        'nvim-lua/popup.nvim';
         'nvim-telescope/telescope-fzy-native.nvim';
         'nvim-telescope/telescope-symbols.nvim';
 
         -- Git
-        'APZelos/blamer.nvim';
-        'rhysd/git-messenger.vim';
         'tpope/vim-fugitive';
-        'gisphm/vim-gitignore';
-        'airblade/vim-gitgutter';
-
-        -- CoC
-        {'neoclide/coc.nvim'; branch = 'release'};
-
-        -- Snippets
-        'mthnglac/vim-snippets';
 
         -- Filetree
         'preservim/nerdtree';
         'Xuyuanp/nerdtree-git-plugin';
-
-        -- Language Support
-        'sheerun/vim-polyglot';
 
         -- Icons
         'ryanoasis/vim-devicons';
@@ -62,8 +63,7 @@ plug(tostring(os.getenv("XDG_CONFIG_HOME")) .. '/nvim/plugged', {
             run = 'cd app && yarn install'};
 
         -- Themes
-        'vim-airline/vim-airline';
-        'vim-airline/vim-airline-themes';
+        'hoob3rt/lualine.nvim';
 
         {'pineapplegiant/spaceduck'; branch = 'main'};
 })
