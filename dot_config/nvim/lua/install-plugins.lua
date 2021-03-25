@@ -50,10 +50,8 @@ plug(tostring(os.getenv("XDG_CONFIG_HOME")) .. '/nvim/plugged', {
 
         -- Filetree
         'preservim/nerdtree';
+        'tiagofumo/vim-nerdtree-syntax-highlight';
         'Xuyuanp/nerdtree-git-plugin';
-
-        -- Icons
-        'ryanoasis/vim-devicons';
 
         -- Prettier plugin
         {'prettier/vim-prettier'; run = 'yarn install'};
@@ -66,4 +64,8 @@ plug(tostring(os.getenv("XDG_CONFIG_HOME")) .. '/nvim/plugged', {
         'hoob3rt/lualine.nvim';
 
         {'pineapplegiant/spaceduck'; branch = 'main'};
+
+        -- Icons
+        'ryanoasis/vim-devicons';
+
 })

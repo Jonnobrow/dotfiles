@@ -57,3 +57,10 @@ https://stackoverflow.com/a/41199625
 ```shell
 npm list --global --parseable --depth=0 | sed '1d' | awk '{gsub(/\/.*\//,"",$1); print}' > Npmfile
 ```
+
+#### Package Bundle Files
+
+```shell
+pacman -Qmeq > Aurfile
+pacman -Qneq > Pacfile
+```

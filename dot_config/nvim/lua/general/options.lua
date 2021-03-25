@@ -3,6 +3,7 @@ Option.g({
     syntax = "on",
     encoding = "UTF-8",
     compatible = false,
+    guifont = "Hack 11",
 
     -- Tabs
     tabstop = 4,
