@@ -1,0 +1,12 @@
+bash-language-server
+dockerfile-language-server-nodejs
+node-gyp
+npm
+prettier
+pyright
+semver
+typescript-language-server
+typescript
+vscode-html-languageserver-bin
+vscode-json-languageserver
+yaml-language-server

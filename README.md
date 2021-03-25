@@ -1,5 +1,4 @@
 # my dotfiles
-
 This is probably the 10th iteration of my dotfiles.
 
 I like to start again from a clean base every now and then and learn from
@@ -50,3 +49,11 @@ Some highlights from my setup:
 *Coming Soon*
 
 ### misc
+
+#### Node Package Install
+
+https://stackoverflow.com/a/41199625
+
+```shell
+npm list --global --parseable --depth=0 | sed '1d' | awk '{gsub(/\/.*\//,"",$1); print}' > Npmfile
+```

@@ -35,6 +35,10 @@ install-language-servers:
 		@echo 'Installing LSP Language Servers.'
 		bash ./scripts/install-language-servers.sh
 
+install-npm:
+		@echo 'Install NPM Packages.'
+		bash ./scripts/install-node-packages.sh
+
 install-rust:
 		@echo 'Installing Rust.'
 		curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
@@ -54,6 +58,7 @@ ensure-deps:
 		$(MAKE) install-aur
 		$(MAKE) install-rust
 		$(MAKE) install-language-servers
+		$(MAKE) install-npm
 
 run:
 		$(MAKE) ensure-deps
