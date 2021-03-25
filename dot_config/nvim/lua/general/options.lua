@@ -1,5 +1,6 @@
 -- Globals
 Option.g({
+    completeopt = "menuone,noselect",
     syntax = "on",
     encoding = "UTF-8",
     compatible = false,

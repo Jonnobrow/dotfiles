@@ -29,8 +29,7 @@ plug(tostring(os.getenv("XDG_CONFIG_HOME")) .. '/nvim/plugged', {
         'nvim-lua/popup.nvim';
 
         -- Completion
-        'nvim-lua/completion-nvim';
-        'steelsojka/completion-buffers';
+        'hrsh7th/nvim-compe';
         'SirVer/ultisnips';
         'honza/vim-snippets';
 

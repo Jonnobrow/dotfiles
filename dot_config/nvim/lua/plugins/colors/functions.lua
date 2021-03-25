@@ -8,7 +8,8 @@ fun! ApplyColorTheme()
     endif
 
    colorscheme spaceduck
-   set background=dark
 endfun
+
+call ApplyColorTheme()
 ]], true
 )
