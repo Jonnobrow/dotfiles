@@ -38,6 +38,7 @@ plug(tostring(os.getenv("XDG_CONFIG_HOME")) .. '/nvim/plugged', {
         'RishabhRD/popfix';
         'RishabhRD/nvim-lsputils';
         'sheerun/vim-polyglot';
+        'lervag/vimtex';
 
         -- Telescope
         'nvim-telescope/telescope.nvim';

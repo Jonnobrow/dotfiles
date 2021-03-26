@@ -1,1 +1,7 @@
-$pdf_previewer = 'start zathura'
+$clean_ext = 'fig/*.pdf fig/*.eps';
+$cleanup_includes_generated = 1;
+$pdf_previewer = 'start zathura';
+
+use File::Basename;
+
+$pdflatex = 'pdflatex -shell-escape -interaction=nonstopmode -synctex=1 %O %S';

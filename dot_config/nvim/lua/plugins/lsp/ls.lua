@@ -1,5 +1,6 @@
+local lspconfig = require'lspconfig'
 -- Python
-require'lspconfig'.pyright.setup{
+lspconfig.pyright.setup{
   settings = {
     python = {
       linting = {
@@ -10,21 +11,21 @@ require'lspconfig'.pyright.setup{
 }
 
 -- Docker
-require'lspconfig'.dockerls.setup{}
+lspconfig.dockerls.setup{}
 
 -- Go
-require'lspconfig'.gopls.setup{}
+lspconfig.gopls.setup{}
 
 -- HTML
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-require'lspconfig'.html.setup {
+lspconfig.html.setup {
   capabilities = capabilities,
 }
 
 -- JSON
-require'lspconfig'.jsonls.setup {
+lspconfig.jsonls.setup {
     commands = {
       Format = {
         function()
@@ -35,43 +36,43 @@ require'lspconfig'.jsonls.setup {
 }
 
 -- Rust (TODO: Look into rustanalyzer)
-require'lspconfig'.rls.setup{}
+lspconfig.rls.setup{}
 
 -- Terraform
-require'lspconfig'.terraformls.setup{}
+lspconfig.terraformls.setup{}
 
 -- TeX
-require'lspconfig'.texlab.setup{
-    settings = {
-      bibtex = {
-        formatting = {
-          lineLength = 120
-        }
-      },
-      latex = {
-        build = {
-          args = { "-pdf", "-interaction=nonstopmode", "-synctex=1", "-outdir=./build", "%f" },
-          executable = "latexmk",
-          onSave = true,
-          outputDirectory = "./build"
-        },
-        forwardSearch = {
-          executable = "zathura",
-          args = {"--synctex-forward", "%l:1:%f", "%p"},
-          onSave = true
-        },
-        lint = {
-          onChange = true
-        }
-      }
-    }
-}
+--lspconfig.texlab.setup{
+--    settings = {
+--      bibtex = {
+--        formatting = {
+--          lineLength = 120
+--        }
+--      },
+--      latex = {
+--        build = {
+--          args = { "-pdf", "-bibtex", "-f", "-outdir=build", "%f" },
+--          executable = "latexmk",
+--          onSave = true,
+--          outputDirectory = "build"
+--        },
+--        forwardSearch = {
+--          executable = "zathura",
+--          args = {"--synctex-forward", "%l:1:%f", "%p"},
+--          onSave = true
+--        },
+--        lint = {
+--          onChange = true
+--        }
+--      }
+--    }
+--}
 
 -- Typescript/JavaScript etc.
-require'lspconfig'.tsserver.setup{}
+lspconfig.tsserver.setup{}
 
 -- YAML
-require'lspconfig'.yamlls.setup{}
+lspconfig.yamlls.setup{}
 
 -- EFM
 local vim = vim
@@ -84,7 +85,7 @@ local efmlanguages = {
     css = {prettier},
     markdown = {prettier}
 }
-require'lspconfig'.efm.setup {
+lspconfig.efm.setup {
     root_dir = vim.loop.cwd,
     filetypes = vim.tbl_keys(efmlanguages),
     init_options = {documentFormatting = true, codeAction = true},
