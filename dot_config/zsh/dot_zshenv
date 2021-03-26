@@ -22,7 +22,7 @@ export GOPATH="$XDG_DATA_HOME/go"
 export PATH="$PATH:$GOPATH/bin"
 
 # Editor
-export VISUAL=nvim
+export VISUAL="$HOME/.local/bin/visual"
 export EDITOR=nvim
 export SUDO_EDITOR=nvim
 export GIT_EDITOR=nvim
@@ -37,3 +37,6 @@ export LC_TIME=$LANG
 
 # SSH
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
+
+# NNN
+
