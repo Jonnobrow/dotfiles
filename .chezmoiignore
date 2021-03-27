@@ -2,6 +2,7 @@ README.md
 Makefile
 Pacfile
 Aurfile
+Npmfile
 scripts/
 
 {{- if not .secrets }}
