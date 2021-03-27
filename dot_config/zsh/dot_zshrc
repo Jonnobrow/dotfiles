@@ -54,7 +54,7 @@ source ~/.local/share/zsh/zsh-history-substring-search/zsh-history-substring-sea
 source ~/.local/share/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # Chezmoi Completion
-eval "$(chezmoi completion zsh)"
+#eval "$(chezmoi completion zsh)"
 
 # Starship (Prompt)
 eval "$(starship init zsh)"
