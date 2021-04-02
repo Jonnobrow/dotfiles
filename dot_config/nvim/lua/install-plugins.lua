@@ -54,7 +54,7 @@ plug(tostring(os.getenv("XDG_CONFIG_HOME")) .. '/nvim/plugged', {
         'Xuyuanp/nerdtree-git-plugin';
 
         -- Prettier plugin
-        {'prettier/vim-prettier'; run = 'yarn install'};
+        'sbdchd/neoformat';
 
         -- Markdown Preview
         {'iamcco/markdown-preview.nvim';

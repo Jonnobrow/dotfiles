@@ -39,7 +39,13 @@ lspconfig.jsonls.setup {
 lspconfig.rls.setup{}
 
 -- Terraform
-lspconfig.terraformls.setup{}
+lspconfig.terraformls.setup{
+  settings = {
+    trace = {
+      server = "on"
+    }
+  }
+}
 
 -- TeX
 --lspconfig.texlab.setup{

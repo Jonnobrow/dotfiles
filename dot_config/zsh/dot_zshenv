@@ -41,4 +41,5 @@ export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 # NNN
 export NNN_PLUG="p:preview_tui"
 export NNN_TRASH=1
-export NNN_BMS='d:~/cloud/documents;r:~/repos;D:~/Downloads'
+export NNN_BMS="d:~/cloud/documents;r:~/repos;D:~/Downloads"
+export NNN_OPTS="erx"
