@@ -34,9 +34,11 @@ trying the set up a dev environment in Windows.
 Therefore I am returing to vim, and more specifically [neovim](https://neovim.io).
 
 Some highlights from my setup:
-- [Plug](https://github.com/junegunn/vim-plug) as my plugin manager
+- [Packer](https://github.com/wbthomason/packer.nvim) as package manager
 - Git stuff from [vim-fugitive](https://github.com/tpope/vim-fugitive)
 - A filetree from [nerdtree](https://github.com/preservim/nerdtree)
+- Session Management with [ProSession](https://github.com/dhruvasagar/vim-prosession)
+- [Spaceduck Theme](https://github.com/pineapplegiant/spaceduck)
 - All config in Lua (requires Neovim 0.5)
 	- See [a Guide](https://github.com/nanotee/nvim-lua-guide) and
 		[my inspiration](https://github.com/mthnglac/dotfiles)
