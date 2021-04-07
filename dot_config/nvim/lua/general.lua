@@ -1,5 +1,6 @@
 local utils = require('utils')
 local opt = utils.opt
+local autocmd = utils.autocmd
 local o, wo, bo = vim.o, vim.wo, vim.bo
 
 local buffer = {o, bo}
@@ -35,3 +36,9 @@ opt('relativenumber', true, window)
 opt('signcolumn', 'yes:1', window)
 opt('wrap', false, window)
 opt('colorcolumn', '100', window)
+opt('spelllang', 'en_gb')
+
+autocmd('nvim_dotfiles',
+        [[BufWritePost $HOME/.config/nvim/* !chezmoi add <afile>]], true)
+autocmd('spell_check',
+        [[FileType latex,tex,md,markdown setlocal spell]], true)
