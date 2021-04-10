@@ -28,6 +28,17 @@ end
 local function terraformfmt()
     return {exe = 'terraform', args = {'fmt', '-'}, stdin = true}
 end
+local function bibfmt()
+    return {
+        exe = 'biber',
+        args = {
+            '--tool', '--output_align', '--output_indent=2',
+            '--output_fieldcase=lower', '--output_file=-', '-q',
+            vim.api.nvim_buf_get_name(0)
+        },
+        stdin = true
+    }
+end
 
 require('formatter').setup({
     logging = false,
@@ -39,7 +50,8 @@ require('formatter').setup({
         python = {isort, yapf},
         tex = {latexindent},
         lua = {lua_format},
-        tf = {terraformfmt}
+        tf = {terraformfmt},
+        bib = {bibfmt}
     }
 })
 

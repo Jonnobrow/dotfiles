@@ -1,0 +1,13 @@
+{
+    "Misc": {
+        "prefix": ["misc"],
+        "body": [
+            "@misc{$1,",
+            "\tauthor\t\t={$2},",
+            "\ttitle\t\t={$3},",
+            "\thowpublished\t\t={\\url{$4}},",
+            "\tnote\t\t={[Online; accessed $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE]}",
+            "}"
+        ]
+    }
+}

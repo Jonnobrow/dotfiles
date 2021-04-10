@@ -94,3 +94,5 @@ n ()
             rm -f "$NNN_TMPFILE" > /dev/null
     fi
 }
+alias cpg="$(which advcp) -g"
+alias mvg="$(which advmv) -g"

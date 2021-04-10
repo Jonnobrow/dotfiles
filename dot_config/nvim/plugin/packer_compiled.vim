@@ -62,6 +62,12 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/jb/.local/share/nvim/site/pack/packer/start/lualine.nvim"
   },
+  ["markdown-preview.nvim"] = {
+    commands = { "MarkdownPreview" },
+    loaded = false,
+    needs_bufread = false,
+    path = "/home/jb/.local/share/nvim/site/pack/packer/opt/markdown-preview.nvim"
+  },
   neogit = {
     loaded = false,
     needs_bufread = true,
@@ -182,30 +188,31 @@ _G.packer_plugins = {
   }
 }
 
--- Config for: telescope.nvim
-require('config.telescope')
--- Config for: nvim-lightbulb
-require('config.lightbulb')
+-- Config for: nvim-treesitter
+require('config.treesitter')
 -- Config for: lualine.nvim
 require('config.lualine')
+-- Config for: nvim-lightbulb
+require('config.lightbulb')
 -- Config for: formatter.nvim
 require('config.format')
 -- Config for: nerdtree
 require('config.nerdtree')
--- Config for: nvim-treesitter
-require('config.treesitter')
+-- Config for: telescope.nvim
+require('config.telescope')
 
 -- Command lazy-loads
 vim.cmd [[command! -nargs=* -range -bang -complete=file Prosession lua require("packer.load")({'vim-obsession'}, { cmd = "Prosession", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
+vim.cmd [[command! -nargs=* -range -bang -complete=file MarkdownPreview lua require("packer.load")({'markdown-preview.nvim'}, { cmd = "MarkdownPreview", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
 vim.cmd [[command! -nargs=* -range -bang -complete=file StartupTime lua require("packer.load")({'vim-startuptime'}, { cmd = "StartupTime", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
 
 vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Filetype lazy-loads
-vim.cmd [[au FileType html ++once lua require("packer.load")({'nvim-colorizer.lua'}, { ft = "html" }, _G.packer_plugins)]]
+vim.cmd [[au FileType javascript ++once lua require("packer.load")({'nvim-colorizer.lua'}, { ft = "javascript" }, _G.packer_plugins)]]
 vim.cmd [[au FileType vim ++once lua require("packer.load")({'nvim-colorizer.lua'}, { ft = "vim" }, _G.packer_plugins)]]
 vim.cmd [[au FileType css ++once lua require("packer.load")({'nvim-colorizer.lua'}, { ft = "css" }, _G.packer_plugins)]]
-vim.cmd [[au FileType javascript ++once lua require("packer.load")({'nvim-colorizer.lua'}, { ft = "javascript" }, _G.packer_plugins)]]
+vim.cmd [[au FileType html ++once lua require("packer.load")({'nvim-colorizer.lua'}, { ft = "html" }, _G.packer_plugins)]]
   -- Event lazy-loads
 vim.cmd [[au InsertEnter * ++once lua require("packer.load")({'vim-vsnip', 'nvim-compe'}, { event = "InsertEnter *" }, _G.packer_plugins)]]
 vim.cmd("augroup END")

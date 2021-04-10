@@ -45,7 +45,8 @@ local function init()
     use {
         'hrsh7th/vim-vsnip',
         config = [[require('config.vsnip')]],
-        event = 'InsertEnter *'
+        event = 'InsertEnter *',
+        requires = {'rafamadriz/friendly-snippets'}
     }
 
     -- Project Management/Sessions
@@ -63,6 +64,13 @@ local function init()
     -- LaTeX
     use {
         'lervag/vimtex' -- config = [[require('config.vimtex')]]
+    }
+
+    -- Markdown
+    use {
+        'iamcco/markdown-preview.nvim',
+        run = 'cd app && yarn install',
+        cmd = 'MarkdownPreview'
     }
 
     -- Git

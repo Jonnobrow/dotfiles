@@ -8,11 +8,18 @@ vim.g.loaded_compe_vim_lsc = true
 vim.g.loaded_compe_vim_lsp = true
 
 require('compe').setup {
-  enabled = true,
-  debug = false,
-  min_length = 1,
-  preselect = 'always',
-  source = {path = true, buffer = true, nvim_lsp = true, nvim_lua = true, vsnip = true}
+    enabled = true,
+    debug = false,
+    min_length = 1,
+    preselect = 'always',
+    source = {
+        path = true,
+        buffer = true,
+        nvim_lsp = true,
+        nvim_lua = true,
+        vsnip = true,
+        spell = true
+    }
 }
 
 local opts = {noremap = true, silent = true, expr = true}
