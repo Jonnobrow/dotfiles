@@ -1,0 +1,51 @@
+[general]
+status_path = "~/.local/share/vdirsyncer/status/"
+
+[pair mailboxcontacts]
+a = "mailboxcontacts_local"
+b = "mailboxcontacts_remote"
+collections = [["contacts", "contacts", "32"]]
+conflict_resolution = ["command", "nvim", "-d"]
+
+[storage mailboxcontacts_local]
+type = "filesystem"
+path = "~/.local/share/contacts/mailbox/"
+fileext = ".vcf"
+
+[storage mailboxcontacts_remote]
+type = "carddav"
+url = "https://dav.mailbox.org"
+username = "{{ (keepassxc "Mailbox").UserName }}"
+password = "{{ (keepassxc "Mailbox").Password }}"
+
+[pair uni]
+a = "uni_remote"
+b = "uni_local"
+collections = null
+partial_sync = "ignore"
+
+[storage uni_local]
+type = "filesystem"
+path = "~/.local/share/calendar/uni/"
+fileext = ".ics"
+
+[storage uni_remote]
+type = "http"
+url = "https://timetable.soton.ac.uk/Feed/Index/jRthV6aULm35GWYft5APY3YsIEwXiqbrEvlWhSkpOS7iSPE3PdV-_6j7sQC3xVkRXI_pRdOqSTinpWu4-s_Xbg2"
+
+[pair mailboxcalendars]
+a = "mailboxcalendars_local"
+b = "mailboxcalendars_remote"
+collections = [["tasks", "tasks", "MzM"], ["home", "home", "Y2FsOi8vMC80Mg"], ["birthdays", "birthdays", "Y2FsOi8vMS8w"]]
+conflict_resolution = ["command", "nvim", "-d"]
+
+[storage mailboxcalendars_local]
+type = "filesystem"
+path = "~/.local/share/calendar/mailbox/"
+fileext = ".ics"
+
+[storage mailboxcalendars_remote]
+type = "caldav"
+url = "https://dav.mailbox.org"
+username = "{{ (keepassxc "Mailbox").UserName }}"
+password = "{{ (keepassxc "Mailbox").Password }}"

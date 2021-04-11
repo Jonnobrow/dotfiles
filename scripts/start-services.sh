@@ -15,6 +15,7 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
 		systemctl --user enable --now mbsync.timer
 	fi
     
+    systemctl --user enable --now vdirsyncer.service
     systemctl --user enable --now goimapnotify@mailbox.service
     systemctl --user enable --now goimapnotify@uni.service
 

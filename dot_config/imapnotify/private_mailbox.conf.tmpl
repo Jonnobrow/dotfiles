@@ -7,7 +7,7 @@
     },
     "username": "{{ (keepassxc "Mailbox").UserName }}",
     "password": "{{ (keepassxc "Mailbox").Password }}",
-    "onNewMail": "mbsync -c ~/.config/isync/mbsyncrc mailbox",
-    "onNewMailPost": "",
+    "onNewMail": "mbsync -c /home/{{.chezmoi.username}}/.config/isync/mbsyncrc mailbox",
+    "onNewMailPost": "mu index && notify-send 'New Mail',
     "boxes": [ "INBOX" ]
 }

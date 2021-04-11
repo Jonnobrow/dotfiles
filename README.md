@@ -54,8 +54,9 @@ For calendar and contacts I use [vdirsyncer](https://github.com/pimutils/vdirsyn
 
 My setup is an adaptation of [the guide here](https://wiki.installgentoo.com/wiki/A_modern_mutt_setup).
 
-I also use [goimapnotify]() to listen for changes on remote server rather than polling
-for new mail. This, coupled with running mbsync on login, is fine for my usage.
+I also use [goimapnotify](https://gitlab.com/shackra/goimapnotify) to listen for changes
+on remote server rather than polling for new mail.
+This, coupled with running mbsync on login, is fine for my usage.
 
 ### my browser
 *Coming Soon*

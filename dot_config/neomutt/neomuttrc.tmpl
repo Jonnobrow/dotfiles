@@ -35,7 +35,7 @@ alternative_order text/plain text/enriched text/html
 bind attach <return> view-mailcap
 auto_view text/html
 
-set query_command = "mu cfind --format=mutt-ab '%s'"
+set query_command = "(khard email --parsable '%s' | sed '1!p'; mu cfind --format=mutt-ab '%s')"
 
 # Paths
 set folder = ~/.local/share/mail
