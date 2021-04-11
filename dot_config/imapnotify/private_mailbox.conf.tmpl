@@ -1,0 +1,13 @@
+{
+    "host": "imap.mailbox.org",
+    "port": 993,
+    "tls": true,
+    "tlsOptions": {
+        "rejectUnauthorized": false
+    },
+    "username": "{{ (keepassxc "Mailbox").UserName }}",
+    "password": "{{ (keepassxc "Mailbox").Password }}",
+    "onNewMail": "mbsync -c ~/.config/isync/mbsyncrc mailbox",
+    "onNewMailPost": "",
+    "boxes": [ "INBOX" ]
+}

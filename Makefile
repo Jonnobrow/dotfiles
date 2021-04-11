@@ -51,6 +51,10 @@ install-git-repos:
 		@echo 'Installing git repositories.'
 		bash ./scripts/install-git-repos.sh
 
+start-services:
+		@echo 'Starting Services'
+		bash ./scripts/start-services.sh
+
 ensure-deps:
 		@echo 'Ensuring dependencies.'
 		$(MAKE) install-chezmoi
@@ -64,6 +68,7 @@ run:
 		$(MAKE) ensure-deps
 		$(MAKE) chezmoi-init
 		$(MAKE) chezmoi-apply
+		$(MAKE) start-services
 		@echo "Done"
 
 all:
@@ -73,3 +78,4 @@ all:
 		$(MAKE) chezmoi-init
 		$(MAKE) ensure-dirs
 		$(MAKE) chezmoi-apply
+		$(MAKE) start-services

@@ -6,3 +6,8 @@ DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 . "$DIR/base.sh"
 
 mkdir -pv $HOME/cloud
+
+# Mail, Contacts and Calendar
+mkdir -pv $HOME/.local/share/mail/{mailbox,uni}
+mkdir -pv $HOME/.local/share/contacts
+mkdir -pv $HOME/.local/share/calendar

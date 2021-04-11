@@ -1,0 +1,19 @@
+set from = "{{ (keepassxc "Mailbox").UserName }}"
+set sendmail = "/usr/bin/msmtp -C ~/.config/msmtp/msmtprc -a mailbox"
+
+# Folders
+set spoolfile = "+mailbox/INBOX"
+set postponed = "+mailbox/Drafts"
+set record = "+mailbox/Sent"
+set trash = "+mailbox/Trash"
+
+# Custom Colour
+color status cyan default
+
+# Macros
+## Archive Macro
+macro index o "<shell-escape>mbsync -c ~/.config/isync/mbsyncrc mailbox<enter>" "run mbsync to sync mail for this account"
+macro index,pager A \
+    "<save-message>=mailbox/Archive<enter>" "Mark as Read and Archive Message"
+
+# vim: syntax=neomuttrc

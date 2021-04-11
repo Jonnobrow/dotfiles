@@ -1,0 +1,13 @@
+{
+    "host": "outlook.office365.com",
+    "port": 993,
+    "tls": true,
+    "tlsOptions": {
+        "rejectUnauthorized": false
+    },
+    "username": "{{ (keepassxc "Southampton Email").UserName }}",
+    "password": "{{ (keepassxc "Southampton Email").Password }}",
+    "onNewMail": "mbsync -c ~/.config/isync/mbsyncrc uni",
+    "onNewMailPost": "",
+    "boxes": [ "INBOX" ]
+}

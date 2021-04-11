@@ -1,0 +1,16 @@
+set from = "{{ (keepassxc "Southampton Email").UserName }}"
+set sendmail = "/usr/bin/msmtp -C ~/.config/msmtp/msmtprc -a uni"
+
+# Folders
+set spoolfile = "+uni/INBOX"
+set postponed = "+uni/Drafts"
+set record = "+uni/Sent"
+set trash = "+uni/Trash"
+
+# Custom Colour
+color status red default
+
+# Macros
+macro index o "<shell-escape>mbsync -c ~/.config/isync/mbsyncrc uni<enter>" "run mbsync to sync mail for this account"
+
+# vim: syntax=neomuttrc
