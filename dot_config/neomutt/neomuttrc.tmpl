@@ -30,7 +30,11 @@ unignore from: to: cc: bcc: date: subject:
 unhdr_order *
 hdr_order from: to: cc: bcc: date: subject:
 alternative_order text/plain text/enriched text/html
+
+# HTML Messages
+bind attach <return> view-mailcap
 auto_view text/html
+
 set query_command = "mu cfind --format=mutt-ab '%s'"
 
 # Paths

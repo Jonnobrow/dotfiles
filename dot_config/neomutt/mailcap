@@ -1,3 +1,10 @@
-# HTML
-text/html; w3m -I %{charset} -T text/html; copiousoutput;
-text/plain; nvim %s
+application/ics; mutt-ics; copiousoutput
+application/pdf; firewarden -q -c zathura %s
+application/epub+zip; firewarden -q -c zathura %s
+application/vnd.oasis.opendocument.text; firewarden -q pandoc --from odt --to markdown %s; copiousoutput
+application/vnd.openxmlformats-officedocument.wordprocessingml.document; firewarden -q pandoc --from docx --to markdown %s; copiousoutput
+image/*; firewarden -q -c feh %s
+text/calendar; mutt-ics; copiousoutput
+text/html; firefox --private-window %s; copiousoutput
+text/html; w3m -I %{charset} -T text/html; copiousoutput
+text/plain; nvim %s ; needsterminal

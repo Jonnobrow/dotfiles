@@ -1,5 +1,5 @@
 set from = "{{ (keepassxc "Southampton Email").UserName }}"
-set sendmail = "/usr/bin/msmtp -C ~/.config/msmtp/msmtprc -a uni"
+set sendmail = "/usr/bin/msmtp -C /home/{{ .chezmoi.username }}/.config/msmtp/msmtprc -a uni"
 
 # Folders
 set spoolfile = "+uni/INBOX"
