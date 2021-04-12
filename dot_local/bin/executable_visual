@@ -1,9 +1,2 @@
-#!/usr/bin/env sh
-
-if ! { [ "$TERM" = "tmux-256color" ] && [ -n "$TMUX" ]; } then
-    # Remove option --tab for new window
-    kitty nvim "$*"
-else
-    # tmux session running
-    tmux split-window -h "nvim \"$*\""
-fi
+#!/bin/bash
+kitty nvim "$*"
