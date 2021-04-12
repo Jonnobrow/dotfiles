@@ -94,9 +94,10 @@ n ()
             rm -f "$NNN_TMPFILE" > /dev/null
     fi
 }
-
 # Mail and calendar
 alias mutt="neomutt"
 alias mail="neomutt"
 alias cal="khal calendar"
 alias cali="ikhal"
+alias cpg="$(which advcp) -g"
+alias mvg="$(which advmv) -g"

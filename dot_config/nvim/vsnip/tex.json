@@ -1,0 +1,25 @@
+{
+    "TabularX": {
+        "prefix": [
+            "tabx"
+        ],
+        "body": [
+            "\\begin{table}[H]",
+            "\t\\caption{$1}",
+            "\t\\label{tab:$2}",
+            "\t\\footnotesize",
+            "\t\\begin{tabularx}{\\textwidth}{|$3|}",
+            "\t\t\\hline",
+            "\t\t$4",
+            "\t\t\\hline",
+            "\t\\end{tabularx}",
+            "\\end{table}"
+        ],
+        "description": "TabularX Table in LaTeX Table Environment"
+    },
+    "bold": {
+        "prefix": ["bold"],
+        "body": "\\textbf{${1:$TM_SELECTED_TEXT}}",
+        "description": "Bold text"
+    }
+}
