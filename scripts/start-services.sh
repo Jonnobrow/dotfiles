@@ -11,6 +11,7 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
 
 	mkdir -p "$HOME/.config/systemd/user/"
 
+    # Mail
 	if [ -f "$HOME/.config/systemd/user/mbsync.service" ]; then
 		systemctl --user enable --now mbsync.timer
 	fi
@@ -18,5 +19,9 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
     systemctl --user enable --now vdirsyncer.service
     systemctl --user enable --now goimapnotify@mailbox.service
     systemctl --user enable --now goimapnotify@uni.service
+
+    # Music
+    systemctl --now disable mpd.service
+    systemctl --now --user enable mpd.service
 
 fi
