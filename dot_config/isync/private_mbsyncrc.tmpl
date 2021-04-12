@@ -1,0 +1,139 @@
+###############################
+######## Mailbox.org ##########
+###############################
+
+IMAPAccount mailbox
+Host imap.mailbox.org
+User {{ (keepassxc "Mailbox").UserName }}
+Pass {{ (keepassxc "Mailbox").Password }}
+SSLType STARTTLS
+SSLVersions TLSv1.2
+
+# Remote Storage
+IMAPStore mailbox-remote
+Account mailbox
+
+# Local Storage
+MaildirStore mailbox-local
+Path ~/.local/share/mail/mailbox/
+Inbox ~/.local/share/mail/mailbox/INBOX
+
+Channel mailbox-inbox
+Far :mailbox-remote:"INBOX"
+Near :mailbox-local:INBOX
+Create Both
+Expunge Both
+SyncState *
+
+Channel mailbox-drafts
+Far :mailbox-remote:"Drafts"
+Near :mailbox-local:Drafts
+Create Both
+Expunge Both
+SyncState *
+
+Channel mailbox-sent
+Far :mailbox-remote:"Sent"
+Near :mailbox-local:Sent
+Create Both
+Expunge Both
+SyncState *
+
+Channel mailbox-trash
+Far :mailbox-remote:"Trash"
+Near :mailbox-local:Trash
+Create Both
+Expunge Both
+SyncState *
+
+Channel mailbox-archive
+Far :mailbox-remote:"Archive"
+Near :mailbox-local:Archive
+Create Both
+Expunge Both
+SyncState *
+
+Channel mailbox-spam
+Far :mailbox-remote:"Spam"
+Near :mailbox-local:Spam
+Create Both
+Expunge Both
+SyncState *
+
+Group mailbox
+Channel mailbox-inbox
+Channel mailbox-drafts
+Channel mailbox-sent
+Channel mailbox-trash
+Channel mailbox-archive
+Channel mailbox-spam
+
+
+###############################
+######## soton.ac.uk ##########
+###############################
+IMAPAccount uni
+Host outlook.office365.com
+User {{ (keepassxc "Southampton Email").UserName }}
+Pass {{ (keepassxc "Southampton Email").Password }}
+SSLType STARTTLS
+SSLVersions TLSv1.2
+
+# Remote Storage
+IMAPStore uni-remote
+Account uni
+
+# Local Storage
+MaildirStore uni-local
+Path ~/.local/share/mail/uni/
+Inbox ~/.local/share/mail/uni/INBOX
+
+Channel uni-inbox
+Far :uni-remote:"INBOX"
+Near :uni-local:INBOX
+Create Both
+Expunge Both
+SyncState *
+
+Channel uni-drafts
+Far :uni-remote:"Drafts"
+Near :uni-local:Drafts
+Create Both
+Expunge Both
+SyncState *
+
+Channel uni-sent
+Far :uni-remote:"Sent Items" 
+Near :uni-local:Sent
+Create Both
+Expunge Both
+SyncState *
+
+Channel uni-trash
+Far :uni-remote:"Deleted Items"
+Near :uni-local:Trash
+Create Both
+Expunge Both
+SyncState *
+
+Channel uni-archive
+Far :uni-remote:"Archive"
+Near :uni-local:Archive
+Create Both
+Expunge Both
+SyncState *
+
+Channel uni-spam
+Far :uni-remote:"Junk Email"
+Near :uni-local:Spam
+Create Both
+Expunge Both
+SyncState *
+
+Group uni
+Channel uni-inbox
+Channel uni-drafts
+Channel uni-sent
+Channel uni-trash
+Channel uni-archive
+Channel uni-spam

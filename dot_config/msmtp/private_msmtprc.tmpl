@@ -1,0 +1,21 @@
+account mailbox
+host smtp.mailbox.org
+port 587
+protocol smtp
+auth on
+password {{ (keepassxc "Mailbox" ).Password }}
+from {{ (keepassxc "Mailbox" ).UserName }}
+user {{ (keepassxc "Mailbox" ).UserName }}
+tls on
+tls_starttls on
+
+account uni
+host smtp.office365.com
+port 587
+protocol smtp
+auth on
+password {{ (keepassxc "Southampton Email").Password }}
+from {{ (keepassxc "Southampton Email").UserName }}
+user {{ (keepassxc "Southampton Email").UserName }}
+tls on
+tls_starttls on

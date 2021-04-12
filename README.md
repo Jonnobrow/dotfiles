@@ -29,9 +29,9 @@ I previously used Emacs for ~18 months, firstly [Spacemacs](https://spacemacs.or
 and then [Doom](https://github.com/hlissner/doom-emacs).
 I loved some of the features, like [org-mode](https://orgmode.org/), but I have
 slowly move away from the rest of Emacs and had major issues, even with WSL2, when
-trying the set up a dev environment in Windows. 
+trying the set up a development environment in Windows. 
 
-Therefore I am returing to vim, and more specifically [neovim](https://neovim.io).
+Therefore I am returning to vim, and more specifically [neovim](https://neovim.io).
 
 Some highlights from my setup:
 - [Packer](https://github.com/wbthomason/packer.nvim) as package manager
@@ -43,6 +43,20 @@ Some highlights from my setup:
 	- See [a Guide](https://github.com/nanotee/nvim-lua-guide) and
 		[my inspiration](https://github.com/mthnglac/dotfiles)
 - Native LSP support from Neovim
+
+### mail, contacts and calendar
+
+For the most part I use [neomutt](https://neomutt.org/) in conjunction with
+[msmtp](https://marlam.de/msmtp/) and [isync](https://isync.sourceforge.io/) for mail.
+For calendar and contacts I use [vdirsyncer](https://github.com/pimutils/vdirsyncer),
+[khard](https://github.com/scheibler/khard/) and
+[khal](https://github.com/pimutils/khal).
+
+My setup is an adaptation of [the guide here](https://wiki.installgentoo.com/wiki/A_modern_mutt_setup).
+
+I also use [goimapnotify](https://gitlab.com/shackra/goimapnotify) to listen for changes
+on remote server rather than polling for new mail.
+This, coupled with running mbsync on login, is fine for my usage.
 
 ### my browser
 *Coming Soon*

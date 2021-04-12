@@ -1,0 +1,34 @@
+[calendars]
+
+[[home]]
+path = ~/.local/share/calendar/mailbox/home/
+type = calendar
+color = "light green"
+
+[[tasks]]
+path = ~/.local/share/calendar/mailbox/tasks/
+type = calendar
+color = "light red"
+
+[[birthdays]]
+path = ~/.local/share/calendar/mailbox/birthdays/
+type = birthdays
+color = "light blue"
+
+[[uni_calendar]]
+path = ~/.local/share/calendar/uni/
+type = calendar
+readonly = True
+color = "light magenta"
+
+
+[locale]
+timeformat = %H:%M
+dateformat = %Y-%m-%d
+longdateformat = %Y-%m-%d
+datetimeformat = %Y-%m-%d %H:%M
+longdatetimeformat = %Y-%m-%d %H:%M
+
+[default]
+default_calendar = home
+highlight_event_days = True
