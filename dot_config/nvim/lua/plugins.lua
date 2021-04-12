@@ -61,9 +61,7 @@ local function init()
     use {'mhartington/formatter.nvim', config = [[require('config.format')]]}
 
     -- LaTeX
-    use {
-        'lervag/vimtex' -- config = [[require('config.vimtex')]]
-    }
+    use {'lervag/vimtex', config = [[require('config.vimtex')]]}
 
     -- Git
     use {
