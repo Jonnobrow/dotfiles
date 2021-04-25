@@ -50,6 +50,10 @@ install-npm:
 	@echo 'Install NPM Packages.'
 	bash ./scripts/install-node-packages.sh
 
+install-firefox:
+	@echo 'Installing FlyingFox.'
+	bash ./scripts/install-firefox.sh
+
 install-rust:
 	@echo 'Installing Rust.'
 	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
@@ -74,6 +78,7 @@ ensure-deps:
 	$(MAKE) install-rust
 	$(MAKE) install-language-servers
 	$(MAKE) install-npm
+	$(MAKE) install-firefox
 
 run:
 	$(MAKE) ensure-deps

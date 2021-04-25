@@ -11,3 +11,6 @@ mkdir -pv $HOME/cloud
 mkdir -pv $HOME/.local/share/mail/{mailbox,uni}
 mkdir -pv $HOME/.local/share/contacts
 mkdir -pv $HOME/.local/share/calendar
+
+# Setup Dir Structure for files
+mkdir -pv $HOME/dirs/{dl,doc,m,v,p}
