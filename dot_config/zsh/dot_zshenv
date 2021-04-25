@@ -43,3 +43,15 @@ export NNN_PLUG="p:preview_tui"
 export NNN_TRASH=1
 export NNN_BMS="d:~/cloud/documents;r:~/repos;D:~/Downloads"
 export NNN_OPTS="erx"
+
+if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
+    export _JAVA_AWT_WM_NONREPARENTING=1
+    export KITTY_ENABLE_WAYLAND=1
+    export MOZ_ENABLE_WAYLAND=1
+    export GDK_BACKEND=wayland
+    export QT_QPA_PLATFORM=wayland-egl
+    export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
+    export QT_QPA_PLATFORMTHEME=gtk2
+    export SDL_VIDEODRIVER=wayland
+    export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
+fi

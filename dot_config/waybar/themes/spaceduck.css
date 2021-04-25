@@ -1,0 +1,19 @@
+@define-color base00 #000000;
+@define-color base01 #e33400;
+@define-color base02 #5ccc96;
+@define-color base03 #b3a1e6;
+@define-color base04 #00a3cc;
+@define-color base05 #f2ce00;
+@define-color base06 #7a5ccc;
+@define-color base07 #686f9a;
+@define-color base08 #686f9a;
+@define-color base09 #e33400;
+@define-color base0A #5ccc96;
+@define-color base0B #b3a1e6;
+@define-color base0C #00a3cc;
+@define-color base0D #f2ce00;
+@define-color base0E #7a5ccc;
+@define-color base0F #f0f1ce;
+
+@define-color foreground #ecf0c1;
+@define-color background #0f111b;

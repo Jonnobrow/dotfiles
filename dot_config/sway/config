@@ -1,0 +1,143 @@
+include "$HOME/.config/sway/colours"
+
+set $mod Mod4
+
+set $left h
+set $down j
+set $up k
+set $right l
+
+set $term kitty 
+set $menu "wofi --show run"
+set $browser "firefox"
+set $visual "$HOME/.local/bin/visual"
+set $lock "/usr/bin/swaylock"
+
+output * bg $wallpaper fill
+
+exec swayidle -w \
+     timeout 300 $lock \
+     timeout 600 'swaymsg "output * dpms off"' \
+           resume 'swaymsg "output * dpms on"' \
+     before-sleep $lock
+
+input * {
+    repeat_delay 180
+    repeat_rate 30
+    accel_profile flat
+    pointer_accel 1
+}
+
+input "1:1:AT_Translated_Set_2_keyboard" {
+      xkb_layout gb
+      xkb_options caps:swapescape
+}
+
+
+bindsym $mod+Return exec "kitty"
+bindsym $mod+d exec $menu
+bindsym $mod+w exec $browser
+bindsym $mod+Shift+w exec $visual
+bindsym $mod+Shift+q kill
+
+floating_modifier $mod normal
+
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
+
+bindsym $mod+Shift+$left move left
+bindsym $mod+Shift+$down move down
+bindsym $mod+Shift+$up move up
+bindsym $mod+Shift+$right move right
+
+#bindsym $mod+x exec "$HOME/.local/bin/wofi_csv Power"
+
+bindsym $mod+Shift+c reload
+
+#bindsym Print exec --no-startup-id "$HOME/.local/bin/screenshot"
+#bindsym Shift+Print exec --no-startup-id "$HOME/.local/bin/screencap"
+
+bindsym $mod+Shift+e exec swaynag -t warning -m 'Really exit sway?' -b 'Yes, exit sway' 'swaymsg exit'
+
+bindsym $mod+b splith
+bindsym $mod+v splitv
+
+bindsym $mod+y fullscreen disable; floating enable; resize set 640 480; sticky enable; move window to position 1270 590
+bindsym $mod+Shift+y fullscreen disable; floating disable; sticky disable
+
+bindsym $mod+f fullscreen
+bindsym $mod+Shift+space floating toggle
+        
+bindsym $mod+space focus mode_toggle
+bindsym $mod+a focus parent
+
+mode "resize" {
+    # left will shrink the containers width
+    # right will grow the containers width
+    # up will shrink the containers height
+    # down will grow the containers height
+    bindsym $left resize shrink width 10px
+    bindsym $down resize grow height 10px
+    bindsym $up resize shrink height 10px
+    bindsym $right resize grow width 10px
+
+    # Ditto, with arrow keys
+    bindsym Left resize shrink width 10px
+    bindsym Down resize grow height 10px
+    bindsym Up resize shrink height 10px
+    bindsym Right resize grow width 10px
+
+    # Return to default mode
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+r mode "resize"
+
+bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+minus scratchpad show
+
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+
+# Autostart
+exec --no-startup-id /usr/bin/mako
+#exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent
+
+assign [app_id="keepassxc"] 3
+       
+client.focused              $color0 $background $foreground $color7 $color3
+client.focused_inactive     $color0 $background $foreground $color7 #000000
+client.unfocused            $color0 $background $foreground $color7 #000000
+client.urgent               $color0 $background $foreground $color7 $color5
+
+default_floating_border normal
+default_border pixel
+gaps inner 20
+     
+#set $gnome-schema org.gnome.desktop.interface
+
+#exec_always {
+#    gsettings set $gnome-schema gtk-theme 'FlatColor'
+#    gsettings set $gnome-schema icon-theme 'Paper-Mono-Dark'
+#    gsettings set $gnome-schema cursor-theme 'Adwaita'
+#}
+
+
+bar 1 {
+    swaybar_command waybar
+}
+bar 2 {
+    swaybar_command waybar --config $HOME/.config/waybar/bottom
+}
