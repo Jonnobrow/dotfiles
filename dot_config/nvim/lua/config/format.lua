@@ -44,6 +44,8 @@ require('formatter').setup({
     logging = false,
     filetype = {
         javascript = {prettier},
+        typescriptreact = {prettier},
+        css = {prettier},
         json = {prettier},
         html = {prettier},
         rust = {rustfmt},

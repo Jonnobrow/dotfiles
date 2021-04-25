@@ -6,6 +6,7 @@ map('n', '<leader>gf', [[<cmd>lua require('telescope.builtin').git_files()<cr>]]
 map('n', '<leader>bb', [[<cmd>lua require('telescope.builtin').buffers()<cr>]], opts)
 map('n', '<leader>ff', [[<cmd>lua require('telescope.builtin').find_files()<cr>]], opts)
 map('n', '<leader>lg', [[<cmd>lua require('telescope.builtin').live_grep()<cr>]], opts)
+map('n', '<leader>kb', [[<cmd>lua require('telescope.builtin').keymaps()<cr>]], opts)
 
 local actions = require('telescope.actions')
 require('telescope').setup{

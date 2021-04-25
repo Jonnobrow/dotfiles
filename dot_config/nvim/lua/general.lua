@@ -40,5 +40,7 @@ opt('spelllang', 'en_gb')
 
 autocmd('nvim_dotfiles',
         [[BufWritePost $HOME/.config/nvim/* !chezmoi add <afile>]], true)
-autocmd('spell_check',
-        [[FileType latex,tex,md,markdown setlocal spell]], true)
+autocmd('word_processing',
+        [[FileType latex,tex,md,markdown setlocal spell showbreak=↳ wrap linebreak nolist]],
+        true)
+

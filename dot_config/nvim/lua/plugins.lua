@@ -37,17 +37,26 @@ local function init()
             config = [[require('config.treesitter')]]
         }
     }
-    use {
-        'hrsh7th/nvim-compe',
-        config = [[require('config.compe')]],
-        event = 'InsertEnter *'
+
+    -- Debugging
+    use { 
+        {'mfussenegger/nvim-dap', config = [[require('config.dap')]],
+event = 'BufEnter'},
+        {'mfussenegger/nvim-dap-python'}
     }
+
+    use {'hrsh7th/nvim-compe', 
+        config = [[require('config.compe')]],
+        event = 'InsertEnter *'}
+
     use {
         'hrsh7th/vim-vsnip',
         config = [[require('config.vsnip')]],
         event = 'InsertEnter *',
-        requires = {'rafamadriz/friendly-snippets'}
+        requires = {{'hrsh7th/vim-vsnip-integ'}}
     }
+    use {'rafamadriz/friendly-snippets'}
+    
 
     -- Project Management/Sessions
     use {
@@ -67,8 +76,7 @@ local function init()
     -- Markdown
     use {
         'iamcco/markdown-preview.nvim',
-        run = 'cd app && yarn install',
-        cmd = 'MarkdownPreview'
+        run = 'cd app && yarn install'
     }
 
     -- Git
