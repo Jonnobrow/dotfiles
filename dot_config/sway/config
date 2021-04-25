@@ -29,8 +29,13 @@ input * {
 }
 
 input "1:1:AT_Translated_Set_2_keyboard" {
-      xkb_layout gb
-      xkb_options caps:swapescape
+    xkb_layout gb
+    xkb_options caps:swapescape
+}
+
+input "39:32402:DELL07EA:00_06CB:7E92_Touchpad" {
+    tap enabled
+    natural_scroll enabled
 }
 
 
@@ -51,6 +56,17 @@ bindsym $mod+Shift+$left move left
 bindsym $mod+Shift+$down move down
 bindsym $mod+Shift+$up move up
 bindsym $mod+Shift+$right move right
+
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
+bindsym XF86MonBrightnessUp exec brightnessctl set +5%
+bindsym XF86AudioPlay exec mpc toggle
+bindsym XF86AudioNext exec mpc next
+bindsym XF86AudioPrev exec mpc prev
+bindsym XF86Search exec $menu
 
 #bindsym $mod+x exec "$HOME/.local/bin/wofi_csv Power"
 
