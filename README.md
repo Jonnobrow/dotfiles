@@ -59,10 +59,27 @@ on remote server rather than polling for new mail.
 This, coupled with running mbsync on login, is fine for my usage.
 
 ### my browser
-*Coming Soon*
+
+I use [Firefox](https://mozilla.org/en-GB/firefox/new) with a few extensions. 
+
+- [FlyingFox](https://flyingfox.netlify.app/): Minimal and Configurable Theme
+- HTTPS Everywhere
+- UBlock Origin
+- KeepassXC Browser
+- [Tridactly](https://tridactyl.xyz)
 
 ### my wm
-*Coming Soon*
+
+[Sway](https://swaywm.org) all the way.
+
+I've used several window managers over the past few years but have always returned
+to i3 or Sway. Sway uses Wayland ([See why Wayland is Better](https://en.wikipedia.org/wiki/Wayland_(display_server_protocol)#Differences_between_Wayland_and_X)).
+
+Atop Sway I used the following:
+
+- Waybar as my bar
+- Swaylock as my lockscreen
+- Swayidle for idle locking
 
 ### misc
 
