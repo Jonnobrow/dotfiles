@@ -3,6 +3,8 @@ export SAVEHIST=1000000
 
 # follow XDG Base Directory specification
 
+export TERMINAL=kitty
+
 ## zsh
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 export HISTFILE="$XDG_DATA_HOME"/zsh/history
@@ -39,11 +41,14 @@ export LC_TIME=$LANG
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 
 # NNN
-export NNN_PLUG="p:preview_tui"
+export NNN_PLUG="p:preview-tui"
 export NNN_TRASH=1
-export NNN_BMS="d:~/cloud/documents;r:~/repos;D:~/Downloads"
+export NNN_BMS="d:~/dirs/doc;p:~/dirs/doc/proj;D:~/dirs/dl"
 export NNN_OPTS="ex"
+export NNN_FIFO="/tmp/nnn.fifo"
 
+export QT_QPA_PLATFORMTHEME=gtk2
+export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
 if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
     export _JAVA_AWT_WM_NONREPARENTING=1
     export KITTY_ENABLE_WAYLAND=1
@@ -51,7 +56,5 @@ if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
     export GDK_BACKEND=wayland
     export QT_QPA_PLATFORM=wayland-egl
     export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
-    export QT_QPA_PLATFORMTHEME=gtk2
     export SDL_VIDEODRIVER=wayland
-    export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
 fi
