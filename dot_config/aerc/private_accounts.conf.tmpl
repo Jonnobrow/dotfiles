@@ -1,0 +1,16 @@
+[Mailbox]
+source   = maildir://~/.local/share/mail/mailbox/
+outgoing = smtps+plain://{{ (keepassxc "Mailbox").UserName }}:{{ (keepassxc "Mailbox").Password }}@smtp.mailbox.org:465
+default  = INBOX
+from     = Jonathan Bartlett <jonathan@jonnobrow.co.uk>
+copy-to  = Sent
+postpone = Drafts
+sign     = true
+
+[University]
+source   = maildir://~/.local/share/mail/uni/
+outgoing = smtps+plain://{{ (keepassxc "Southampton Email").UserName }}:{{ (keepassxc "Southampton Email").Password}}@smtp.office365.com:587
+default  = INBOX
+folders  = INBOX,Archive,Drafts,Sent,Spam,Trash
+from     = Jonathan Bartlett <jsb1g18@soton.ac.uk>
+copy-to  = Sent
