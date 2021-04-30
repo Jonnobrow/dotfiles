@@ -116,19 +116,34 @@ local servers = {
         root_dir = lspconfig.util.root_pattern("package.json", ".git")
     },
     -- ghcide = {},
-    html = {
-    },
+    html = {},
     jsonls = {
         commands = {
             Format = {
                 function()
-                    vim.lsp.buf.range_formatting({},{0,0},{vim.fn.line("$"), 0})
+                    vim.lsp.buf.range_formatting({}, {0, 0},
+                                                 {vim.fn.line("$"), 0})
                 end
             }
         }
     },
-    pyright = {settings = {python = {formatting = {provider = 'yapf'}}}},
-    -- rust_analyzer = {},
+    pyls = {
+        settings = {
+            pyls = {plugins = {pyls_mypy = {enabled = true, live_mode = false}}}
+        }
+    },
+    rust_analyzer = {
+        settings = {
+            ["rust-analyzer"] = {
+                assist = {
+                    importMergeBehavior = "last",
+                    importPrefix = "by_self"
+                },
+                cargo = {loadOutDirsFromCheck = true},
+                procMacro = {enable = true}
+            }
+        }
+    },
     -- sumneko_lua = {
     --  cmd = {'lua-language-server'},
     --  settings = {
