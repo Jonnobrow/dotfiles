@@ -78,6 +78,10 @@ battail() {
     tail -f $1 | bat --paging=never -l $2
 }
 
+bfzf() {
+    fzf --preview 'bat --color=always --style=numbers --line-range=:500 {}'
+}
+
 # ZSH Plugins
 source ~/.local/share/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.local/share/zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
