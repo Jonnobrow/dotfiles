@@ -1,13 +1,18 @@
+
 [user]
 	signingkey 		= {{ .gpg_keyid }}
 	email	     		= {{ .email }}
 	name	     		= {{ .name }}
+
 [gpg]
 	program    		= gpg2
+
 [init]
 	defaultBranch = main
+
 [pull]
 	rebase        = true
+
 [alias]
 	lg            = log --stat --pretty --graph --date=relative
 	lgs						= log --pretty="format:%h %G? %aN  %s"
@@ -19,9 +24,21 @@
 # define command which will be used when "nvim" is set as a merge tool
 [mergetool "nvim"]
   cmd = nvim -f -c \"Gdiffsplit!\" \"$MERGED\"
+
 # set "nvim" as tool for merging
 [merge]
   tool = nvim
+
 # automatically launch merge tool without displaying a prompt
 [mergetool]
   prompt = false
+
+# Send email commands
+[sendemail]
+  smtpserver = /usr/bin/msmtp
+  smtpserveroption = -C
+  smtpserveroption = /home/{{ .chezmoi.username }}/.config/msmtp/msmtprc
+  smtpserveroption = -a
+  smtpserveroption = mailbox
+
+# vim: ft=ini tabstop=2
