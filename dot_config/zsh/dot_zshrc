@@ -48,6 +48,36 @@ alias vim='nvim'
 alias find='fd'
 alias grep='rg'
 
+# Bat
+batshow () {
+    # Show older version of file with bat
+    # Example: batshow v0.6.0:src/main.rs rs
+    args=($(echo "$1" | tr ":" "\n"))
+    if [ -z "$2" ]; then
+        if [ -z "${args[2]}"]; then
+            filename=$(basename -- "${args[1]}")
+        else
+            filename=$(basename -- "${args[2]}")
+        fi
+        echo $filename
+        ft="${filename##*.}"
+        echo $ft
+        echo "Detected filetype: $ft"
+    else
+        ft="$2"
+    fi
+    git show $1 | bat -l $ft
+}
+
+batdiff() {
+    git diff --name-only --diff-filter=d $@ | xargs bat --diff
+}
+
+battail() {
+    # Example: battail /var/log/pacman.log log
+    tail -f $1 | bat --paging=never -l $2
+}
+
 # ZSH Plugins
 source ~/.local/share/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.local/share/zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
