@@ -31,7 +31,7 @@ path=/home/jb/.local/share/mail
 [user]
 name=Jonathan Bartlett
 primary_email=jonathan@jonnobrow.co.uk
-other_email=jsb1g18@soton.ac.uk;
+other_email=jsb1g18@soton.ac.uk;jonathscott2047@gmail.com;
 
 # Configuration for "notmuch new"
 #
@@ -48,8 +48,8 @@ other_email=jsb1g18@soton.ac.uk;
 #		in the mail store.
 #
 [new]
-tags=unread;inbox;
-ignore=
+tags=new;inbox;
+ignore=trash;
 
 # Search configuration
 #
@@ -86,3 +86,6 @@ exclude_tags=deleted;spam;trash;
 #
 [maildir]
 synchronize_flags=true
+
+[index]
+decrypt=true

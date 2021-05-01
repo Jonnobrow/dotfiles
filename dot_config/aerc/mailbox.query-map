@@ -1,0 +1,7 @@
+inbox   = tag:mailbox and tag:inbox
+sent    = tag:mailbox and tag:sent
+archive = tag:mailbox and tag:archive
+drafts  = tag:mailbox and tag:drafts
+srht    = tag:mailbox and tag:srht
+bin     = tag:mailbox and tag:trash
+unread  = tag:mailbox and tag:unread
