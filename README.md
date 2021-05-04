@@ -46,13 +46,18 @@ Some highlights from my setup:
 
 ### mail, contacts and calendar
 
-For the most part I use [neomutt](https://neomutt.org/) in conjunction with
-[msmtp](https://marlam.de/msmtp/) and [isync](https://isync.sourceforge.io/) for mail.
+For mail I use [aerc](https://git.sr.ht/~sircmpwn/aerc) in conjunction with:
+    - [msmtp](https://marlam.de/msmtp/)
+    - [isync](https://isync.sourceforge.io/)
+    - [notmuch](https://notmuchmail.org/)
+    - [afew](https://afew.readthedocs.io/en/latest/index.html)
+
+This is far from the ideal setup at the moment because of the infancy of Aerc, however it is
+constantly improving and much simpler tool to configure than Mutt/Neomutt.
+
 For calendar and contacts I use [vdirsyncer](https://github.com/pimutils/vdirsyncer),
 [khard](https://github.com/scheibler/khard/) and
 [khal](https://github.com/pimutils/khal).
-
-My setup is an adaptation of [the guide here](https://wiki.installgentoo.com/wiki/A_modern_mutt_setup).
 
 I also use [goimapnotify](https://gitlab.com/shackra/goimapnotify) to listen for changes
 on remote server rather than polling for new mail.
@@ -66,7 +71,7 @@ I use [Firefox](https://mozilla.org/en-GB/firefox/new) with a few extensions.
 - HTTPS Everywhere
 - UBlock Origin
 - KeepassXC Browser
-- [Tridactly](https://tridactyl.xyz)
+- [Tridactyl](https://tridactyl.xyz)
 
 ### my wm
 
