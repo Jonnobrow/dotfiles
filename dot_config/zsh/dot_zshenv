@@ -23,6 +23,28 @@ export PATH="$XDG_DATA_HOME/cargo/bin:$PATH"
 export GOPATH="$XDG_DATA_HOME/go"
 export PATH="$PATH:$GOPATH/bin"
 
+## AWS
+export AWS_SHARED_CREDENTIALS_FILE="$XDG_CONFIG_HOME"/aws/credentials
+export AWS_CONFIG_FILE="$XDG_CONFIG_HOME"/aws/config
+
+## Notmuch
+export NOTMUCH_CONFIG="$XDG_CONFIG_HOME"/notmuch/notmuchrc
+export NMBGIT="$XDG_DATA_HOME"/notmuch/nmbug
+
+## Docker
+export DOCKER_CONFIG="$XDG_CONFIG_HOME"/docker
+
+## NPM
+export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME"/npm/npmrc
+
+## Less - Heck Less, all my homies used bat
+export LESSHISTFILE=-
+
+## X - Don't use it often but ready if I do
+export XAUTHORITY="$XDG_RUNTIME_DIR"/Xauthority
+export XINITRC="$XDG_CONFIG_HOME"/X11/xinitrc
+export XSERVERRC="$XDG_CONFIG_HOME"/X11/xserverrc
+
 # Editor
 export VISUAL="$HOME/.local/bin/visual"
 export EDITOR=nvim
@@ -61,3 +83,4 @@ fi
 
 # MANPAGER
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+

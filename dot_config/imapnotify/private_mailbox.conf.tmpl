@@ -8,6 +8,6 @@
     "username": "{{ (keepassxc "Mailbox").UserName }}",
     "password": "{{ (keepassxc "Mailbox").Password }}",
     "onNewMail": "mbsync -c /home/{{.chezmoi.username}}/.config/isync/mbsyncrc mailbox",
-    "onNewMailPost": "mu index && notify-send 'New Mail',
+    "onNewMailPost": "notmuch new && notify-send 'New Mail from Mailbox'",
     "boxes": [ "INBOX" ]
 }

@@ -1,0 +1,36 @@
+#default filter chain
+[FolderNameFilter]
+maildir_separator = /
+folder_transforms = Junk:spam Drafts:drafts Sent:sent Archive:archive Trash:trash
+
+[SpamFilter]
+[KillThreadsFilter]
+[ListMailsFilter]
+[SentMailsFilter]
+sent_tag = sent
+
+[ArchiveSentMailsFilter]
+
+[Filter.1]
+message = "Get mailing lists out"
+query = 'tag:lists'
+tags =  +unread;-new;
+
+[Filter.2]
+message = "Tag all messages from rusty-kunst"
+query = 'subject:rusty-kunst'
+tags =  +rusty-kunst;-new;-inbox;
+
+[InboxFilter]
+
+[MailMover]
+folders = mailbox/INBOX mailbox/Junk mailbox/Archive uni/INBOX 
+rename = True
+max_age = 30
+
+mailbox/INBOX = 'tag:spam':mailbox/Junk 'NOT tag:inbox':mailbox/Archive 'tag:rusty-kunst':mailbox/srht
+mailbox/Junk = 'NOT tag:spam AND tag:inbox':mailbox/INBOX 'NOT tag:spam':mailbox/Archive 
+uni/INBOX = 'tag:spam':uni/Junk 'NOT tag:inbox':uni/Archive
+mailbox/Archive = 'tag:inbox':mailbox/INBOX
+
+
