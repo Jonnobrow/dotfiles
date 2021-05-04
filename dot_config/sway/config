@@ -33,9 +33,8 @@ input "1:1:AT_Translated_Set_2_keyboard" {
     xkb_options caps:swapescape
 }
 
-input "39:32402:DELL07EA:00_06CB:7E92_Touchpad" {
+input "1739:32402:DELL07EA:00_06CB:7E92_Touchpad" {
     tap enabled
-    natural_scroll enabled
 }
 
 
@@ -68,7 +67,8 @@ bindsym XF86AudioNext exec mpc next
 bindsym XF86AudioPrev exec mpc prev
 bindsym XF86Search exec $menu
 
-#bindsym $mod+x exec "$HOME/.local/bin/wofi_csv Power"
+bindsym $mod+x exec /usr/bin/eww open-many blur_full weather profile quote search_full incognito-icon vpn-icon home_dir screenshot power_full reboot_full lock_full logout_full suspend_full 
+bindsym $mod+Shift+x exec /usr/bin/eww close-all
 
 bindsym $mod+Shift+c reload
 
@@ -129,6 +129,10 @@ bindsym $mod+Shift+6 move container to workspace 6
 
 # Autostart
 exec --no-startup-id /usr/bin/mako
+exec_always {
+    /usr/bin/eww kill
+    /usr/bin/eww daemon
+}
 #exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent
 
 assign [app_id="keepassxc"] 3
@@ -151,9 +155,8 @@ gaps inner 20
 #}
 
 
-bar 1 {
+bar {
     swaybar_command waybar
+    id 1
 }
-bar 2 {
-    swaybar_command waybar --config $HOME/.config/waybar/bottom
-}
+exec --no-startup-id waybar --config ~/.config/waybar/bottom
