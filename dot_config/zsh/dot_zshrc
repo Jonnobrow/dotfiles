@@ -44,9 +44,6 @@ alias pins="paru -Slq | fzf -m --preview 'cat <(paru -Si {1}) <(paru -Fl {1} | a
 alias vi='nvim'
 alias vim='nvim'
 
-# yarn
-alias yarn="yarn --use-yarnrc $XDG_CONFIG_HOME/yarn/config"
-
 # Find and Grep
 alias find='fd'
 alias grep='rg'
@@ -73,16 +70,13 @@ batshow () {
 }
 
 batdiff() {
+    echo "Running: git diff --name-only --diff-filter=d $@ | xargs bat --diff"
     git diff --name-only --diff-filter=d $@ | xargs bat --diff
 }
 
 battail() {
     # Example: battail /var/log/pacman.log log
     tail -f $1 | bat --paging=never -l $2
-}
-
-bfzf() {
-    fzf --preview 'bat --color=always --style=numbers --line-range=:500 {}'
 }
 
 # ZSH Plugins

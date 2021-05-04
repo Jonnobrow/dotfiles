@@ -1,9 +1,9 @@
 unread  = tag:uni and tag:unread
-inbox   = tag:uni and tag:inbox
-archive = tag:uni and tag:archive
-drafts  = tag:uni and tag:drafts
-sent    = tag:uni and tag:sent
-spam    = tag:uni and tag:spam
+inbox   = tag:uni and (tag:inbox and tag:INBOX)
+archive = tag:uni and (tag:archive and tag:Archive)
+drafts  = tag:uni and (tag:drafts and tag:Drafts)
+sent    = tag:uni and (tag:sent and tag:Sent)
+spam    = tag:uni and (tag:spam and tag:Spam)
 lists   = tag:uni and tag:lists
-bin     = tag:uni and tag:trash
-
+bin     = tag:uni and (tag:trash and tag:Trash)
+all     = tag:uni

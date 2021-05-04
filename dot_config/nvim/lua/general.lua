@@ -38,7 +38,7 @@ opt('wrap', false, window)
 opt('colorcolumn', '100', window)
 opt('spelllang', 'en_gb')
 
-opt('updatetime', '150')
+opt('updatetime', 150)
 
 autocmd('nvim_dotfiles',
         [[BufWritePost $HOME/.config/nvim/* !chezmoi add <afile>]], true)
