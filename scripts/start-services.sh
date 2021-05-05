@@ -20,8 +20,6 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
     systemctl --user enable --now goimapnotify@mailbox.service
     systemctl --user enable --now goimapnotify@uni.service
 
-    # Music
-    systemctl --now disable mpd.service
-    systemctl --now --user enable mpd.service
-
+    systemctl --user enable --now ssh-agent.service
+    systemctl --user enable --now gammastep.service
 fi

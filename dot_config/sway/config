@@ -10,7 +10,7 @@ set $right l
 set $term foot 
 set $menu "wofi --show run"
 set $browser "firefox"
-set $visual "$HOME/.local/bin/visual"
+set $visual "foot nvim"
 set $lock "/usr/bin/swaylock"
 
 output * bg $wallpaper fill
@@ -66,9 +66,6 @@ bindsym XF86AudioPlay exec mpc toggle
 bindsym XF86AudioNext exec mpc next
 bindsym XF86AudioPrev exec mpc prev
 bindsym XF86Search exec $menu
-
-bindsym $mod+x exec /usr/bin/eww open-many blur_full weather profile quote search_full incognito-icon vpn-icon home_dir screenshot power_full reboot_full lock_full logout_full suspend_full 
-bindsym $mod+Shift+x exec /usr/bin/eww close-all
 
 bindsym $mod+Shift+c reload
 
@@ -128,12 +125,13 @@ bindsym $mod+Shift+5 move container to workspace 5
 bindsym $mod+Shift+6 move container to workspace 6
 
 # Autostart
+exec --no-startup-id systemctl --user import-environment; systemctl --user start graphical-session.target
 exec --no-startup-id /usr/bin/mako
 exec_always {
     /usr/bin/eww kill
     /usr/bin/eww daemon
 }
-#exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent
+exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent
 
 assign [app_id="keepassxc"] 3
        
@@ -144,7 +142,11 @@ client.urgent               $color0 $background $foreground $color7 $color5
 
 default_floating_border normal
 default_border pixel
-gaps inner 20
+gaps {
+    top 3
+    bottom 30
+    horizontal 20
+}
      
 #set $gnome-schema org.gnome.desktop.interface
 
@@ -153,7 +155,6 @@ gaps inner 20
 #    gsettings set $gnome-schema icon-theme 'Paper-Mono-Dark'
 #    gsettings set $gnome-schema cursor-theme 'Adwaita'
 #}
-
 
 bar {
     swaybar_command waybar

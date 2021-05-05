@@ -86,6 +86,17 @@ Atop Sway I used the following:
 - Swaylock as my lockscreen
 - Swayidle for idle locking
 
+### gammastep
+
+- Requires `geoclue2` and the related configuration for gammastep (/etc/geoclue/geoclue.conf):
+
+```
+[gammastep]
+allowed=true
+system=false
+users=
+```
+
 ### misc
 
 #### Node Package Install
