@@ -2,7 +2,7 @@ export HISTSIZE=1000000
 export SAVEHIST=1000000
 
 # follow XDG Base Directory specification
-export TERMINAL=kitty
+export TERMINAL=foot
 
 ## zsh
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
@@ -71,7 +71,6 @@ export NNN_FIFO="/tmp/nnn.fifo"
 export QT_QPA_PLATFORMTHEME=gtk2
 export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
 export _JAVA_AWT_WM_NONREPARENTING=1
-export KITTY_ENABLE_WAYLAND=1
 export MOZ_ENABLE_WAYLAND=1
 export GDK_BACKEND=wayland
 export QT_QPA_PLATFORM=wayland-egl

@@ -7,7 +7,7 @@ set $down j
 set $up k
 set $right l
 
-set $term kitty 
+set $term foot 
 set $menu "wofi --show run"
 set $browser "firefox"
 set $visual "$HOME/.local/bin/visual"
@@ -38,7 +38,7 @@ input "1739:32402:DELL07EA:00_06CB:7E92_Touchpad" {
 }
 
 
-bindsym $mod+Return exec "kitty"
+bindsym $mod+Return exec $term
 bindsym $mod+d exec $menu
 bindsym $mod+w exec $browser
 bindsym $mod+Shift+w exec $visual
