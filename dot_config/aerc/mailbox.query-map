@@ -1,8 +1,13 @@
-inbox   = tag:mailbox and (tag:inbox    or tag:INBOX)
-sent    = tag:mailbox and (tag:sent     or tag:Sent)
-archive = tag:mailbox and (tag:archive  or tag:Archive)
-drafts  = tag:mailbox and (tag:drafts   or tag:Drafts)
-srht    = tag:mailbox and tag:srht
-bin     = tag:mailbox and (tag:trash    or tag:Trash)
-unread  = tag:mailbox and tag:unread
+inbox   = tag:inbox    
+sent    = tag:sent     
+archive = tag:archive
+drafts  = tag:drafts   
+srht    = tag:srht
+bin     = tag:trash    
+unread  = tag:unread
 all     = tag:mailbox
+
+# Other
+sky         = tag:sky
+memberships = tag:membership
+holidays    = tag:holidays

@@ -1,7 +1,7 @@
 #default filter chain
 [FolderNameFilter]
 maildir_separator = /
-folder_transforms = Junk:spam Drafts:drafts Sent:sent Archive:archive Trash:trash
+folder_transforms = Junk:spam Drafts:drafts Sent:sent Archive:archive Trash:trash INBOX:inbox
 
 [SpamFilter]
 [KillThreadsFilter]

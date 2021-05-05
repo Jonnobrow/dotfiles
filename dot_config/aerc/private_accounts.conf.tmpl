@@ -4,11 +4,13 @@ outgoing = smtps+plain://{{ (keepassxc "Mailbox").UserName }}:{{ (keepassxc "Mai
 from     = Jonathan Bartlett <jonathan@jonnobrow.co.uk>
 sign     = true
 query-map= ~/.config/aerc/mailbox.query-map
-default  = unread
+default  = tag:unread
+exclude-tags = uni
 
 [University]
 source   = notmuch://~/.local/share/mail/
 outgoing = smtps+plain://{{ (keepassxc "Southampton Email").UserName }}:{{ (keepassxc "Southampton Email").Password}}@smtp.office365.com:587
 from     = Jonathan Bartlett <jsb1g18@soton.ac.uk>
 query-map= ~/.config/aerc/uni.query-map
-default  = unread
+default  = tag:unread
+exclude-tags = mailbox

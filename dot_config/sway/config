@@ -159,4 +159,3 @@ bar {
     swaybar_command waybar
     id 1
 }
-exec --no-startup-id waybar --config ~/.config/waybar/bottom
