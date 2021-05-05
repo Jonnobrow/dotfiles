@@ -37,6 +37,10 @@ alias ls="exa"
 alias lsd="exa -ls size"
 alias tree="exa -T --git-ignore"
 
+# fzf
+source /usr/share/fzf/key-bindings.zsh
+source /usr/share/fzf/completion.zsh
+
 # pins
 alias pins="paru -Slq | fzf -m --preview 'cat <(paru -Si {1}) <(paru -Fl {1} | awk \"{print \$2}\")' | xargs -ro paru -S"
 
@@ -45,39 +49,8 @@ alias vi='nvim'
 alias vim='nvim'
 
 # Find and Grep
-alias find='fd'
-alias grep='rg'
-
-# Bat
-batshow () {
-    # Show older version of file with bat
-    # Example: batshow v0.6.0:src/main.rs rs
-    args=($(echo "$1" | tr ":" "\n"))
-    if [ -z "$2" ]; then
-        if [ -z "${args[2]}"]; then
-            filename=$(basename -- "${args[1]}")
-        else
-            filename=$(basename -- "${args[2]}")
-        fi
-        echo $filename
-        ft="${filename##*.}"
-        echo $ft
-        echo "Detected filetype: $ft"
-    else
-        ft="$2"
-    fi
-    git show $1 | bat -l $ft
-}
-
-batdiff() {
-    echo "Running: git diff --name-only --diff-filter=d $@ | xargs bat --diff"
-    git diff --name-only --diff-filter=d $@ | xargs bat --diff
-}
-
-battail() {
-    # Example: battail /var/log/pacman.log log
-    tail -f $1 | bat --paging=never -l $2
-}
+alias find='echo fd'
+alias grep='echo rg'
 
 # ZSH Plugins
 source ~/.local/share/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -120,10 +93,18 @@ n ()
             rm -f "$NNN_TMPFILE" > /dev/null
     fi
 }
+
+dotedit () 
+{
+    chezmoi edit $1 && chezmoi apply $1
+}
+
 # Mail and calendar
-alias mutt="neomutt"
-alias mail="neomutt"
 alias cal="khal calendar"
 alias cali="ikhal"
 alias cpg="$(which advcp) -g"
 alias mvg="$(which advmv) -g"
+
+alias clear="echo ctrl+l"
+alias rm="echo trash"
+alias exit="echo ctrl+d"
