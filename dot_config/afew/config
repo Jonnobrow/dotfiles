@@ -21,12 +21,17 @@ message = "Tag all messages from rusty-kunst"
 query = 'subject:rusty-kunst'
 tags =  +rusty-kunst;-new;-inbox;
 
+[Filter.3]
+message = "Tag all Sky messages"
+query = 'from:sky.uk'
+tags = +sky;-inbox;
+
 [InboxFilter]
 
 [MailMover]
 folders = mailbox/INBOX mailbox/Junk mailbox/Archive uni/INBOX 
 rename = True
-max_age = 30
+max_age = 60
 
 mailbox/INBOX = 'tag:spam':mailbox/Junk 'NOT tag:inbox':mailbox/Archive 'tag:rusty-kunst':mailbox/srht
 mailbox/Junk = 'NOT tag:spam AND tag:inbox':mailbox/INBOX 'NOT tag:spam':mailbox/Archive 

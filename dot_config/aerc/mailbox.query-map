@@ -1,13 +1,11 @@
-inbox   = tag:inbox    
-sent    = tag:sent     
-archive = tag:archive
-drafts  = tag:drafts   
-srht    = tag:srht
-bin     = tag:trash    
-unread  = tag:unread
-all     = tag:mailbox
+inbox=path:mailbox/** and tag:inbox    
+unread=path:mailbox/** and tag:unread
+sent=path:mailbox/** and tag:sent     
+sourcehut=path:mailbox/** and tag:srht
+bin=path:mailbox/** and tag:trash    
+all=path:mailbox/** and not tag:trash and not tag:spam
 
 # Other
-sky         = tag:sky
-memberships = tag:membership
-holidays    = tag:holidays
+sky=tag:sky
+memberships=tag:membership
+holidays=tag:holiday

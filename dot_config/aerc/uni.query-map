@@ -1,9 +1,3 @@
-unread  = tag:uni and tag:unread
-inbox   = tag:uni and tag:inbox
-archive = tag:uni and tag:archive
-drafts  = tag:uni and tag:drafts
-sent    = tag:uni and tag:sent
-spam    = tag:uni and tag:spam
-lists   = tag:uni and tag:lists
-bin     = tag:uni and tag:trash
-all     = tag:uni
+unread  = path:uni/** and tag:unread
+inbox   = path:uni/** and tag:inbox
+all     = path:uni/** and not tag:trash and not tag:spam
