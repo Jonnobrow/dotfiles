@@ -1,0 +1,4 @@
+#!/bin/sh
+input=`cat`
+echo "$input" | /usr/bin/msmtp -C $HOME/.config/msmtp/msmtprc --read-envelope-from -a $1
+echo "$input" | notmuch insert --folder $1/Sent +sent 

@@ -43,7 +43,7 @@ opt('updatetime', 150)
 autocmd('nvim_dotfiles',
         [[BufWritePost $HOME/.config/nvim/* !chezmoi add <afile>]], true)
 autocmd('word_processing',
-        [[FileType latex,tex,md,markdown setlocal spell showbreak=↳ wrap linebreak nolist]],
+        [[FileType latex,tex,md,markdown,mail setlocal spell showbreak=↳ wrap linebreak nolist]],
         true)
 autocmd('lightbulb',
         [[CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()]],

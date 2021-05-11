@@ -1,6 +1,6 @@
 [Mailbox]
 source=notmuch://~/.local/share/mail/
-outgoing=smtps+plain://{{ (keepassxc "Mailbox").UserName }}:{{ (keepassxc "Mailbox").Password }}@smtp.mailbox.org:465
+outgoing=/home/jb/.local/bin/sendmail mailbox
 from=Jonathan Bartlett <jonathan@jonnobrow.co.uk>
 sign=true
 query-map=~/.config/aerc/mailbox.query-map
@@ -9,7 +9,7 @@ exclude-tags=uni
 
 [University]
 source=notmuch://~/.local/share/mail/
-outgoing=smtps+plain://{{ (keepassxc "Southampton Email").UserName }}:{{ (keepassxc "Southampton Email").Password}}@smtp.office365.com:587
+outgoing=~/.local/bin/sendmail uni
 from=Jonathan Bartlett <jsb1g18@soton.ac.uk>
 query-map=~/.config/aerc/uni.query-map
 default=unread
