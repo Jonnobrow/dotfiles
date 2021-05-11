@@ -21,11 +21,6 @@ for i = 1, 10 do g['loaded_' .. disabled_built_ins[i]] = 1 end
 -- General Settings
 require('general')
 
--- Colorscheme
-opt('termguicolors', true)
-opt('background', 'dark')
-cmd [[ colorscheme spaceduck ]]
-
 -- Plugins
 local execute = vim.api.nvim_command
 local fn = vim.fn
@@ -44,3 +39,8 @@ cmd [[command! PackerCompile packadd packer.nvim | lua require('plugins').compil
 
 -- Keybindings
 require('keybinds')
+
+-- Colorscheme
+opt('termguicolors', true)
+opt('background', 'dark')
+cmd [[ colorscheme spaceduck ]]

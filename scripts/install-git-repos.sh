@@ -4,21 +4,15 @@ set -euo pipefail
 DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 . "$DIR/base.sh"
 
-
-# VIM PLUG
-VIM_PLUG_PATH="$HOME/.local/share/nvim/site/autoload"
-if [ ! -d "$VIM_PLUG_PATH" ]; then
-	curl -fLo $VIM_PLUG_PATH/plug.vim --create-dirs \
-		https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-
-	if ! [ -x "$(command -v nvim)" ]; then
-		nvim +PlugInstall +qall --headless
-	fi
+PACK_PATH="$HOME/.local/share/nvim/site/pack/packer/start"
+if [ ! -d "$PACK_PATH" ]; then
+    mkdir -pv $PACK_PATH
 fi
+git clone https://github.com/wbthomason/packer.nvim $PACK_PATH/packer.nvim
 
 # ZSH Plugins
 ZSH_PLUGIN_DIR="$HOME/.local/share/zsh"
-if [! -d "$ZSH_PLUGIN_DIR" ]; then
+if [ ! -d "$ZSH_PLUGIN_DIR" ]; then
 	git clone https://github.com/zsh-users/zsh-autosuggestions.git \
 		$ZSH_PLUGIN_DIR/zsh-autosuggestions
 	git clone https://github.com/zsh-users/zsh-syntax-highlighting.git \

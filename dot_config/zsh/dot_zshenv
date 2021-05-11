@@ -80,3 +80,8 @@ export SDL_VIDEODRIVER=wayland
 # MANPAGER
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
+# ADB and Fastboot
+export PATH="$PATH:$HOME/.local/bin/platform-tools"
+
+# Add local bins
+export PATH="$PATH:$HOME/.local/bin/"

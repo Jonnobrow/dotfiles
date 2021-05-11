@@ -7,5 +7,3 @@ format = "via [🐋 $context](blue bold)"
 [directory]
 truncation_length = 8
 truncation_symbol = "…/"
-
-
