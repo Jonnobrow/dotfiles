@@ -58,6 +58,10 @@ install-rust:
 	@echo 'Installing Rust.'
 	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
+install-other-configs:
+	@echo 'Install Configs outside of user space.'
+	bash ./scripts/install-other-config.sh
+
 configure-sys:
 	@echo 'Configuring system defaults.'
 	bash ./scripts/configure-sys.sh
@@ -84,6 +88,7 @@ run:
 	$(MAKE) ensure-deps
 	$(MAKE) chezmoi-init
 	$(MAKE) chezmoi-apply
+	$(MAKE) install-other-configs
 	$(MAKE) start-services
 	@echo "Done"
 
@@ -94,4 +99,5 @@ all:
 	$(MAKE) chezmoi-init
 	$(MAKE) ensure-dirs
 	$(MAKE) chezmoi-apply
+	$(MAKE) install-other-configs
 	$(MAKE) start-services

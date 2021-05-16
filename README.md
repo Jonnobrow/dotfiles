@@ -113,3 +113,10 @@ npm list --global --parseable --depth=0 | sed '1d' | awk '{gsub(/\/.*\//,"",$1);
 pacman -Qmeq > Aurfile
 pacman -Qneq > Pacfile
 ```
+
+#### Mopidy and Reflector
+These run as system services rather than user services and therefore the configuration is
+outside that which chezmoi is capable of handling.
+I have copied these to source control since I don't touch them very often and they get copied by a
+script on install to a new device. The services are started by the main service target on the
+makefile.

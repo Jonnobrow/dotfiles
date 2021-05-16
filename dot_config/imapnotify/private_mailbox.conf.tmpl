@@ -7,7 +7,7 @@
     },
     "username": "{{ (keepassxc "Mailbox").UserName }}",
     "password": "{{ (keepassxc "Mailbox").Password }}",
-    "onNewMail": "mbsync -c /home/{{.chezmoi.username}}/.config/isync/mbsyncrc mailbox",
+    "onNewMail": "afew --move-mails && mbsync -c /home/{{.chezmoi.username}}/.config/isync/mbsyncrc mailbox",
     "onNewMailPost": "notmuch new && notify-send 'New Mail from Mailbox' --icon=mail",
     "boxes": [ "INBOX" ]
 }

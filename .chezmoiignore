@@ -4,10 +4,13 @@ Pacfile
 Aurfile
 Npmfile
 scripts/
+other/
 
 {{- if not .secrets }}
 .ssh/id_ed25519_github
 .ssh/id_ed25519_github.pub
 .ssh/id_ed25519_gitlab
 .ssh/id_ed25519_gitlab.pub
+.ssh/id_ed25519_sourcehut
+.ssh/id_ed25519_sourcehut.pub
 {{- end }}

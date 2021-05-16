@@ -78,6 +78,9 @@ event = 'BufEnter'},
         'iamcco/markdown-preview.nvim',
         run = 'cd app && yarn install'
     }
+    use {
+        'dhruvasagar/vim-table-mode'
+    }
 
     -- Git
     use {

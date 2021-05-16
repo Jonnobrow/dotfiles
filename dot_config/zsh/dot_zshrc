@@ -65,6 +65,13 @@ fi
 # Starship (Prompt)
 eval "$(starship init zsh)"
 
+# newsboat
+news() {
+    newsboat -c "${XDG_CACHE_HOME}"/newsboat/cache.db \
+        -C "${XDG_CONFIG_HOME}"/newsboat/config \
+        -u "${XDG_CONFIG_HOME}"/newsboat/urls 
+}
+
 # nnn
 n ()
 {

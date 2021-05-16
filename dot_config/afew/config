@@ -12,19 +12,34 @@ sent_tag = sent
 [ArchiveSentMailsFilter]
 
 [Filter.1]
-message = "Get mailing lists out"
-query = 'tag:lists'
-tags =  +unread;-new;
+message = "Remove messages for postmaster"
+query = 'to:postmaster@jonnobrow.co.uk'
+tags = -new;-inbox;+postmaster;
 
 [Filter.2]
-message = "Tag all messages from rusty-kunst"
-query = 'subject:rusty-kunst'
-tags =  +rusty-kunst;-new;-inbox;
+message = "Get mailing lists out"
+query = 'tag:lists'
+tags = +unread;-new;
 
 [Filter.3]
+message = "Tag all messages from projects"
+query = 'from:gitlab.com or from:github.com or from:sr.ht'
+tags = +proj;-new;-inbox;
+
+[Filter.4]
 message = "Tag all Sky messages"
 query = 'from:sky.uk'
 tags = +sky;-inbox;
+
+[Filter.5]
+message = "Move emails from unrecognised"
+query = 'to:jonnobrow.co.uk and not to:jonathan@jonnobrow.co.uk and not to:contact@jonnobrow.co.uk and not to:postmaster@jonnobrow.co.uk and not to:jsb@jonnobrow.co.uk'
+tags = -inbox;+wildcard;
+
+[Filter.6]
+message = "Tag articles"
+query = 'to:articles@jonnobrow.co.uk'
+tags = +article;
 
 [InboxFilter]
 
@@ -33,7 +48,7 @@ folders = mailbox/INBOX mailbox/Junk mailbox/Archive uni/INBOX
 rename = True
 max_age = 60
 
-mailbox/INBOX = 'tag:spam':mailbox/Junk 'NOT tag:inbox':mailbox/Archive 'tag:rusty-kunst':mailbox/srht
+mailbox/INBOX = 'tag:spam':mailbox/Junk 'NOT tag:inbox':mailbox/Archive 'tag:proj':mailbox/proj 'tag:wildcard':mailbox/wildcard
 mailbox/Junk = 'NOT tag:spam AND tag:inbox':mailbox/INBOX 'NOT tag:spam':mailbox/Archive 
 uni/INBOX = 'tag:spam':uni/Junk 'NOT tag:inbox':uni/Archive
 mailbox/Archive = 'tag:inbox':mailbox/INBOX
