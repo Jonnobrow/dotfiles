@@ -1,17 +1,5 @@
 include "$HOME/.config/sway/colours"
-
-set $mod Mod4
-
-set $left h
-set $down j
-set $up k
-set $right l
-
-set $term foot 
-set $menu "wofi --show run"
-set $browser "firefox"
-set $visual "foot nvim"
-set $lock "/usr/bin/swaylock"
+include "$HOME/.config/sway/bindings"
 
 output * bg $wallpaper fill
 
@@ -37,100 +25,9 @@ input "1739:32402:DELL07EA:00_06CB:7E92_Touchpad" {
     tap enabled
 }
 
-
-bindsym $mod+Return exec $term
-bindsym $mod+d exec $menu
-bindsym $mod+w exec $browser
-bindsym $mod+Shift+w exec $visual
-bindsym $mod+Shift+q kill
-
-floating_modifier $mod normal
-
-bindsym $mod+$left focus left
-bindsym $mod+$down focus down
-bindsym $mod+$up focus up
-bindsym $mod+$right focus right
-
-bindsym $mod+Shift+$left move left
-bindsym $mod+Shift+$down move down
-bindsym $mod+Shift+$up move up
-bindsym $mod+Shift+$right move right
-
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
-bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
-bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
-bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
-bindsym XF86MonBrightnessUp exec brightnessctl set +5%
-bindsym XF86AudioPlay exec mpc toggle
-bindsym XF86AudioNext exec mpc next
-bindsym XF86AudioPrev exec mpc prev
-bindsym XF86Search exec $menu
-
-bindsym $mod+Shift+c reload
-
-#bindsym Print exec --no-startup-id "$HOME/.local/bin/screenshot"
-#bindsym Shift+Print exec --no-startup-id "$HOME/.local/bin/screencap"
-
-bindsym $mod+Shift+e exec swaynag -t warning -m 'Really exit sway?' -b 'Yes, exit sway' 'swaymsg exit'
-
-bindsym $mod+b splith
-bindsym $mod+v splitv
-
-bindsym $mod+y fullscreen disable; floating enable; resize set 640 480; sticky enable; move window to position 1270 590
-bindsym $mod+Shift+y fullscreen disable; floating disable; sticky disable
-
-bindsym $mod+f fullscreen
-bindsym $mod+Shift+space floating toggle
-        
-bindsym $mod+space focus mode_toggle
-bindsym $mod+a focus parent
-
-mode "resize" {
-    # left will shrink the containers width
-    # right will grow the containers width
-    # up will shrink the containers height
-    # down will grow the containers height
-    bindsym $left resize shrink width 10px
-    bindsym $down resize grow height 10px
-    bindsym $up resize shrink height 10px
-    bindsym $right resize grow width 10px
-
-    # Ditto, with arrow keys
-    bindsym Left resize shrink width 10px
-    bindsym Down resize grow height 10px
-    bindsym Up resize shrink height 10px
-    bindsym Right resize grow width 10px
-
-    # Return to default mode
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
-bindsym $mod+r mode "resize"
-
-bindsym $mod+Shift+minus move scratchpad
-bindsym $mod+minus scratchpad show
-
-bindsym $mod+1 workspace 1
-bindsym $mod+2 workspace 2
-bindsym $mod+3 workspace 3
-bindsym $mod+4 workspace 4
-bindsym $mod+5 workspace 5
-bindsym $mod+6 workspace 6
-bindsym $mod+Shift+1 move container to workspace 1
-bindsym $mod+Shift+2 move container to workspace 2
-bindsym $mod+Shift+3 move container to workspace 3
-bindsym $mod+Shift+4 move container to workspace 4
-bindsym $mod+Shift+5 move container to workspace 5
-bindsym $mod+Shift+6 move container to workspace 6
-
 # Autostart
 exec --no-startup-id systemctl --user import-environment; systemctl --user start graphical-session.target
 exec --no-startup-id /usr/bin/mako
-exec_always {
-    /usr/bin/eww kill
-    /usr/bin/eww daemon
-}
 exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent
 
 assign [app_id="keepassxc"] 3
@@ -148,14 +45,6 @@ gaps {
     horizontal 20
 }
      
-#set $gnome-schema org.gnome.desktop.interface
-
-#exec_always {
-#    gsettings set $gnome-schema gtk-theme 'FlatColor'
-#    gsettings set $gnome-schema icon-theme 'Paper-Mono-Dark'
-#    gsettings set $gnome-schema cursor-theme 'Adwaita'
-#}
-
 bar {
     swaybar_command waybar
     id 1

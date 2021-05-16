@@ -14,3 +14,6 @@ mkdir -pv $HOME/.local/share/calendar
 
 # Setup Dir Structure for files
 mkdir -pv $HOME/dirs/{dl,doc,m,v,p}
+mkdir -pv $HOME/dirs/v/screencaps
+mkdir -pv $HOME/dirs/p/screenshots
+
