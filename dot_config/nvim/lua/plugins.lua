@@ -24,6 +24,14 @@ local function init()
         config = [[require('config.telescope')]]
     }
 
+    -- Notes
+    use {
+        {'vimwiki/vimwiki',
+        requires = {{ 'junegunn/fzf' }},
+        config = [[require('config.vimwiki')]]},
+        'michal-h21/vim-zettel'
+    }
+
     -- Completion and Linting
     use {
         {'kosayoda/nvim-lightbulb', config = [[require('config.lightbulb')]]},
