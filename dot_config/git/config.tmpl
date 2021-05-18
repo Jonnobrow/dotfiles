@@ -39,11 +39,11 @@
 [mergetool "nvim"]
   cmd = nvim -f -c \"Gdiffsplit!\" \"$MERGED\"
 
-[diff]
-  tool = bat
+[difftool "nvim"]
+  cmd = nvim -f -c \"Gdiffsplit!\" \"$MERGED\"
 
-[difftool "bat"]
-  cmd = bat --diff
+[diff]
+  tool = nvim
 
 # set "nvim" as tool for merging
 [merge]

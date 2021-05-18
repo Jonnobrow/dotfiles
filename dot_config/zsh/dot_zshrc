@@ -22,15 +22,6 @@ compinit
 bindkey -v
 export KEYTIMEOUT=1
 bindkey -v '^?' backward-delete-char
-# enable substring search
-zle -N history-substring-search-up
-zle -N history-substring-search-down
-## vi bindings
-bindkey -M vicmd 'k' history-substring-search-up
-bindkey -M vicmd 'j' history-substring-search-down
-## arrow keys
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
 
 # exa not ls
 alias ls="exa"
@@ -43,7 +34,7 @@ source /usr/share/fzf/completion.zsh
 source ~/.config/zsh/fuzzy.zsh
 
 # pins
-alias pins="paru -Slq | fzf -m --preview 'cat <(paru -Si {1}) <(paru -Fl {1} | awk \"{print \$2}\")' | xargs -ro paru -S"
+alias pins="paru -Slq | fzf -m --preview 'bat --style=numbers --color=always --line-range :500 -l bash <(paru -Si {1}) <(paru -Fl {1} | awk \"{print \$2}\")' | xargs -ro paru -S"
 
 # vim
 alias vi='nvim'
