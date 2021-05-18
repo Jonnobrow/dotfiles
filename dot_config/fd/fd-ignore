@@ -1,0 +1,7 @@
+.mozilla
+.cache
+.mypy_cache
+cache
+.local
+venv
+.config/Microsoft # Teams :(

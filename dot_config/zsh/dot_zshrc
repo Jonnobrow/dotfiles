@@ -40,6 +40,7 @@ alias tree="exa -T --git-ignore"
 # fzf
 source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/completion.zsh
+source ~/.config/zsh/fuzzy.zsh
 
 # pins
 alias pins="paru -Slq | fzf -m --preview 'cat <(paru -Si {1}) <(paru -Fl {1} | awk \"{print \$2}\")' | xargs -ro paru -S"
