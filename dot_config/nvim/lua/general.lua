@@ -6,7 +6,7 @@ local o, wo, bo = vim.o, vim.wo, vim.bo
 local buffer = {o, bo}
 local window = {o, wo}
 
-opt('textwidth', 100, buffer)
+opt('textwidth', 72, buffer)
 opt('scrolloff', 8)
 
 opt('tabstop', 4, buffer)
@@ -35,7 +35,7 @@ opt('number', true, window)
 opt('relativenumber', true, window)
 opt('signcolumn', 'yes:1', window)
 opt('wrap', false, window)
-opt('colorcolumn', '100', window)
+opt('colorcolumn', '72', window)
 opt('spelllang', 'en_gb')
 
 opt('updatetime', 150)
@@ -43,5 +43,5 @@ opt('updatetime', 150)
 autocmd('nvim_dotfiles',
         [[BufWritePost $HOME/.config/nvim/* !chezmoi add <afile>]], true)
 autocmd('word_processing',
-        [[FileType latex,tex,md,markdown setlocal spell showbreak=↳ wrap linebreak nolist]],
+        [[FileType latex,tex,md,markdown,mail setlocal spell showbreak=↳ wrap linebreak nolist]],
         true)
