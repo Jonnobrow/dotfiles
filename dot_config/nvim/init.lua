@@ -13,8 +13,8 @@ g.python3_host_prog = '/usr/bin/python'
 
 -- Disable some built-in plugins we don't want
 local disabled_built_ins = {
-  'gzip', 'man', 'matchit', 'matchparen', 'shada_plugin', 'tarPlugin', 'tar', 'zipPlugin', 'zip',
-  'netrwPlugin'
+    'gzip', 'man', 'matchit', 'matchparen', 'shada_plugin', 'tarPlugin', 'tar',
+    'zipPlugin', 'zip', 'netrwPlugin'
 }
 for i = 1, 10 do g['loaded_' .. disabled_built_ins[i]] = 1 end
 
@@ -25,12 +25,8 @@ require('general')
 local execute = vim.api.nvim_command
 local fn = vim.fn
 
-local install_path = fn.stdpath('data')..'/site/pack/packer/opt/packer.nvim'
+local install_path = fn.stdpath('data') .. '/site/pack/packer/opt/packer.nvim'
 
-if fn.empty(fn.glob(install_path)) > 0 then
-  execute('!git clone https://github.com/wbthomason/packer.nvim '..install_path)
-  execute 'packadd packer.nvim'
-end
 cmd [[command! PackerInstall packadd packer.nvim | lua require('plugins').install()]]
 cmd [[command! PackerUpdate packadd packer.nvim | lua require('plugins').update()]]
 cmd [[command! PackerSync packadd packer.nvim | lua require('plugins').sync()]]

@@ -14,6 +14,8 @@ opt('softtabstop', 0, buffer)
 opt('expandtab', true, buffer)
 opt('shiftwidth', 4, buffer)
 
+opt('clipboard', 'unnamedplus')
+
 opt('completeopt', 'menuone,noselect')
 opt('syntax', 'on')
 opt('encoding', 'UTF-8')
@@ -40,8 +42,6 @@ opt('spelllang', 'en_gb')
 
 opt('updatetime', 150)
 
-autocmd('nvim_dotfiles',
-        [[BufWritePost $HOME/.config/nvim/* !chezmoi add <afile>]], true)
 autocmd('word_processing',
         [[FileType latex,tex,md,markdown,mail setlocal spell showbreak=↳ wrap linebreak nolist]],
         true)
