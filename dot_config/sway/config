@@ -26,12 +26,11 @@ input "1739:32402:DELL07EA:00_06CB:7E92_Touchpad" {
 }
 
 # Autostart
-exec --no-startup-id systemctl --user import-environment; systemctl --user start graphical-session.target
 exec --no-startup-id /usr/bin/mako
-exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent
+exec --no-startup-id /usr/bin/wlsunset -T 5700 -t 3600 -l 51.5 -L -0.1 -g 0.7
 
-assign [app_id="keepassxc"] 3
-       
+
+# Theme
 client.focused              $color0 $background $foreground $color7 $color3
 client.focused_inactive     $color0 $background $foreground $color7 #000000
 client.unfocused            $color0 $background $foreground $color7 #000000
@@ -42,7 +41,7 @@ default_border pixel
 gaps {
     top 3
     bottom 30
-    horizontal 20
+    inner 20
 }
      
 bar {

@@ -17,6 +17,3 @@ sudo cp -iv "$DIR/other/mopidy.conf" /etc/mopidy/mopidy.conf
 
 ansi --green "Install reflector configuration"
 sudo cp -iv "$DIR/other/reflector.conf" /etc/xdg/reflector/reflector.conf
-
-ansi --green "Install geoclue configuration"
-sudo cp -iv "$DIR/other/geoclue.conf" /etc/geoclue/geoclue.conf
