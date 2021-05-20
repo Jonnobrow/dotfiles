@@ -24,4 +24,4 @@ map('n', '<Leader>q', '<cmd>qa<CR>', silent)
 -- [ space + b + d] destroy buffer, fails if unsaved
 map('n', '<Leader>bd', '<Cmd>bd<CR>', silent)
 -- Yank to clipboad
-map({'n', 'v'}, 'y+', '<cmd>set opfunc=util#clipboard_yank<cr>g@', silent)
+map({'n', 'v'}, '<Leader>y', '"+y', silent)

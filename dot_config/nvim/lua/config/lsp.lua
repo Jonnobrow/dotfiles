@@ -144,47 +144,6 @@ local servers = {
             }
         }
     },
-    -- sumneko_lua = {
-    --  cmd = {'lua-language-server'},
-    --  settings = {
-    --    Lua = {
-    --      diagnostics = {globals = {'vim'}},
-    --      runtime = {version = 'LuaJIT', path = vim.split(package.path, ';')},
-    --      workspace = {
-    --        library = {
-    --          [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-    --          [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true
-    --        }
-    --      }
-    --    }
-    --  }
-    -- },
-    texlab = {
-        settings = {
-            latex = {
-                forwardSearch = {
-                    executable = 'okular',
-                    args = {'--unique', 'file:%p#src:%l%f'}
-                }
-            }
-        },
-        commands = {
-            TexlabForwardSearch = {
-                function()
-                    local pos = vim.api.nvim_win_get_cursor(0)
-                    local params = {
-                        textDocument = {uri = vim.uri_from_bufnr(0)},
-                        position = {line = pos[1] - 1, character = pos[2]}
-                    }
-                    lsp.buf_request(0, 'textDocument/forwardSearch', params,
-                                    function(err, _, _, _)
-                        if err then error(tostring(err)) end
-                    end)
-                end,
-                description = 'Run synctex forward search'
-            }
-        }
-    },
     tsserver = {},
     vimls = {},
     yamlls = {},

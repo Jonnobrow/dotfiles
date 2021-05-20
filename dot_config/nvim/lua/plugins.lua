@@ -12,8 +12,10 @@ local function init()
     use {'wbthomason/packer.nvim', opt = true}
 
     -- Search
-    use {'junegunn/fzf.vim', config = [[require('config.fzf')]]}
-    use 'gfanto/fzf-lsp.nvim'
+    use {
+        {'junegunn/fzf.vim', config = [[require('config.fzf')]]},
+        use 'gfanto/fzf-lsp.nvim'
+    }
 
     -- Notes
     use {
