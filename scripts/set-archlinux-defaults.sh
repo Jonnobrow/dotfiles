@@ -2,8 +2,8 @@
 set -euo pipefail
 
 DIR=$(dirname "$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)")
-. "$DIR/base.sh"
-. "$DIR/ansi"
+. "$DIR/scripts/base.sh"
+. "$DIR/scripts/ansi"
 
 if [[ "$OSTYPE" != "linux-gnu"* ]]; then
 	ansi --yellow "Platform is not linux-gnu"
@@ -24,9 +24,9 @@ sudo sed -i '/VerbosePkgLists$/s/^#//g' /etc/pacman.conf
 
 ansi --green "Enable timedatectl and set up timezone"
 sudo timedatectl set-ntp true
-sudo ln -sf /usr/share/zoneinfo/GB /etc/localtime
+sudo ln -sf /usr/share/zoneinfo/Europe/London /etc/localtime
 sudo hwclock --systohc
 
-ansi-green "Setup locale"
-sudo sed -i '/en_US.UTF-8$/s/^#//g' /etc/pacman.conf
+ansi --green "Setup locale"
+sudo sed -i '/en_GB.UTF-8$/s/^#//g' /etc/pacman.conf
 sudo locale-gen

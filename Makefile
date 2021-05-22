@@ -54,10 +54,6 @@ install-firefox:
 	@echo 'Installing FlyingFox.'
 	bash ./scripts/install-firefox.sh
 
-install-rust:
-	@echo 'Installing Rust.'
-	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-
 install-other-configs:
 	@echo 'Install Configs outside of user space.'
 	bash ./scripts/install-other-config.sh
@@ -79,7 +75,6 @@ ensure-deps:
 	$(MAKE) install-chezmoi
 	$(MAKE) install-deps
 	$(MAKE) install-aur
-	$(MAKE) install-rust
 	$(MAKE) install-language-servers
 	$(MAKE) install-npm
 	$(MAKE) install-firefox
@@ -97,7 +92,7 @@ all:
 	$(MAKE) install-git-repos
 	$(MAKE) configure-sys
 	$(MAKE) chezmoi-init
-	$(MAKE) ensure-dirs
+	$(MAKE) ensure-directories
 	$(MAKE) chezmoi-apply
 	$(MAKE) install-other-configs
 	$(MAKE) start-services

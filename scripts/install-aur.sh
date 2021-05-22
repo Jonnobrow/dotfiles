@@ -18,6 +18,10 @@ if ! isavailable paru; then
 	ansi --yellow "Paru not available. Installing."
 	PARU_PATH=/tmp/paru
 
+	if [ -d $PARU_PATH ]; then
+		sudo /usr/bin/rm -rf $PARU_PATH
+	fi
+
 	git clone https://aur.archlinux.org/paru.git $PARU_PATH
 	(cd $PARU_PATH && makepkg -si)
 fi
@@ -25,3 +29,7 @@ fi
 AUR_BUNDLE_FILE="$DIR/Aurfile"
 ansi --green "Using $AUR_BUNDLE_FILE bundle file"
 paru -S --nouseask - <"$AUR_BUNDLE_FILE"
+
+# Install Gammastep
+ansi --gren "Installing gammastep from pkgbuild"
+cd $DIR/pkgbuilds/gammastep && paru -Ui

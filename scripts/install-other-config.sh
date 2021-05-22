@@ -12,6 +12,8 @@ fi
 
 sudo -v
 
+sudo mkdir -pv /etc/mopidy /etc/xdg/reflector
+
 ansi --green "Install mopidy configuration"
 sudo cp -iv "$DIR/other/mopidy.conf" /etc/mopidy/mopidy.conf
 

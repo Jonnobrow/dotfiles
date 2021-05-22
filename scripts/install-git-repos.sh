@@ -8,7 +8,10 @@ PACK_PATH="$HOME/.local/share/nvim/site/pack/packer/start"
 if [ ! -d "$PACK_PATH" ]; then
     mkdir -pv $PACK_PATH
 fi
-git clone https://github.com/wbthomason/packer.nvim $PACK_PATH/packer.nvim
+
+if [ ! -d "$PACK_PATH/packer.nvim" ]; then
+    git clone https://github.com/wbthomason/packer.nvim $PACK_PATH/packer.nvim
+fi
 
 # ZSH Plugins
 ZSH_PLUGIN_DIR="$HOME/.local/share/zsh"
