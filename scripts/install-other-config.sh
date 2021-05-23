@@ -19,3 +19,8 @@ sudo cp -iv "$DIR/other/mopidy.conf" /etc/mopidy/mopidy.conf
 
 ansi --green "Install reflector configuration"
 sudo cp -iv "$DIR/other/reflector.conf" /etc/xdg/reflector/reflector.conf
+
+ansi --green "Install getty configuration"
+sudo mkdir -pv /etc/systemd/system/getty@tty1.service.d
+sudo cp -iv "$DIR/other/getty@tty1-override.conf" \
+    /etc/systemd/system/getty@tty1.service.d

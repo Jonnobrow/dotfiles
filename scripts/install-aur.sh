@@ -29,7 +29,3 @@ fi
 AUR_BUNDLE_FILE="$DIR/Aurfile"
 ansi --green "Using $AUR_BUNDLE_FILE bundle file"
 paru -S --nouseask - <"$AUR_BUNDLE_FILE"
-
-# Install Gammastep
-ansi --gren "Installing gammastep from pkgbuild"
-cd $DIR/pkgbuilds/gammastep && paru -Ui

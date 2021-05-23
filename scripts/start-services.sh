@@ -28,8 +28,11 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
     systemctl --user enable --now gammastep.service
 
     # Start relector (pacman mirrors)
-    sudo systemctl enable --now reflector.service
+    sudo systemctl enable --now reflector.timer
 
     # Start mopidy
     sudo systemctl enable --now mopidy.service
+
+    # Start getty
+    sudo systemctl enable --now getty@tty1.service
 fi
