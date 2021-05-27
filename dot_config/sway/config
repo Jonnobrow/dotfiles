@@ -29,6 +29,8 @@ input "1739:32402:DELL07EA:00_06CB:7E92_Touchpad" {
 exec --no-startup-id /usr/bin/mako
 exec --no-startup-id /usr/bin/wlsunset -T 5700 -t 3600 -l 51.5 -L -0.1 -g 0.7
 
+for_window [app_id="com.nextcloud.desktopclient.nextcloud"] floating enable
+
 
 # Theme
 client.focused              $color0 $background $foreground $color7 $color3

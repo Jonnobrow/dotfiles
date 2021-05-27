@@ -1,0 +1,11 @@
+#!/bin/sh
+fuzzel \
+    --font="Hack Nerd Font Mono:size=10" \
+    --no-icons \
+    --terminal=foot \
+    --width 72 \
+    --background=0f111bff \
+    --text-color=ecf0c1ff \
+    --match-color=f0f1ceff \
+    --selection-color=686f9aff \
+    ${@}

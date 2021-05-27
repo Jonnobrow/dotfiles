@@ -14,7 +14,7 @@ set $right l
 
 # Variables: Update these to modify the apps launched with binds
 set $term    foot 
-set $menu    "wofi --show run"
+set $menu    "/home/{{ .chezmoi.username }}/.local/bin/fuzzel-launcher"
 set $browser "firefox"
 set $visual  "foot nvim"
 set $lock    "/usr/bin/swaylock"
@@ -54,7 +54,7 @@ bindsym XF86Search            exec $menu
 
 # Reload/Exit Sway
 bindsym $mod+Shift+c reload
-bindsym $mod+Shift+e exec swaynag -t warning -m 'Really exit sway?' -b 'Yes, exit sway' 'swaymsg exit'
+bindsym $mod+Shift+e exec swaynag -t warning -m 'Really exit sway?' -B 'Yes, exit sway' 'swaymsg exit'
 
 # Print Screen
 bindsym Print       exec grim -g "$(slurp)" $(xdg-user-dir PICTURES)/screenshots/$(date +'%s_grim.png')
