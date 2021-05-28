@@ -14,7 +14,7 @@ local function init()
     -- Search
     use {
         {'junegunn/fzf.vim', config = [[require('config.fzf')]]},
-        use 'gfanto/fzf-lsp.nvim'
+        'gfanto/fzf-lsp.nvim'
     }
 
     -- Notes
