@@ -13,26 +13,30 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
 
     # Mail
 	if [ -f "$HOME/.config/systemd/user/mbsync.service" ]; then
+        ansi --green "Enabling and starting mbsync"
 		systemctl --user enable --now mbsync.timer
 	fi
+    ansi --green "Enabling and starting goimapnotify"
     systemctl --user enable --now goimapnotify@mailbox.service
     systemctl --user enable --now goimapnotify@uni.service
 
     # Contacts and Calendar
+    ansi --green "Enabling and starting vdirsyncer"
     systemctl --user enable --now vdirsyncer.service
 
     # Start the SSH Agent
+    ansi --green "Enabling and starting ssh-agent"
     systemctl --user enable --now ssh-agent.service
 
-    # Start Gammastep (Screen Brightness)
-    systemctl --user enable --now gammastep.service
-
     # Start relector (pacman mirrors)
+    ansi --green "Enabling and starting reflector"
     sudo systemctl enable --now reflector.timer
 
     # Start mopidy
+    ansi --green "Enabling and starting mopidy"
     sudo systemctl enable --now mopidy.service
 
     # Start getty
+    ansi --green "Enabling and starting getty"
     sudo systemctl enable --now getty@tty1.service
 fi

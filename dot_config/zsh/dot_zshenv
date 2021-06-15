@@ -26,6 +26,9 @@ export PATH="$PATH:$GOPATH/bin"
 export AWS_SHARED_CREDENTIALS_FILE="$XDG_CONFIG_HOME"/aws/credentials
 export AWS_CONFIG_FILE="$XDG_CONFIG_HOME"/aws/config
 
+## Weechat
+export WEECHAT_HOME="$XDG_CONFIG_HOME"/weechat
+
 ## Notmuch
 export NOTMUCH_CONFIG="$XDG_CONFIG_HOME"/notmuch/notmuchrc
 export NMBGIT="$XDG_DATA_HOME"/notmuch/nmbug
