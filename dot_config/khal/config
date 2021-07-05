@@ -1,26 +1,14 @@
 [calendars]
 
-[[home]]
-path = ~/.local/share/calendar/mailbox/home/
+[[personal]]
+path = ~/.local/share/calendar/nextcloud/personal
 type = calendar
 color = "light green"
 
-[[tasks]]
-path = ~/.local/share/calendar/mailbox/tasks/
-type = calendar
-color = "light red"
-
 [[birthdays]]
-path = ~/.local/share/calendar/mailbox/birthdays/
+path = ~/.local/share/calendar/nextcloud/contact_birthdays
 type = birthdays
 color = "light blue"
-
-[[uni_calendar]]
-path = ~/.local/share/calendar/uni/
-type = calendar
-readonly = True
-color = "light magenta"
-
 
 [locale]
 timeformat = %H:%M
@@ -30,5 +18,5 @@ datetimeformat = %Y-%m-%d %H:%M
 longdatetimeformat = %Y-%m-%d %H:%M
 
 [default]
-default_calendar = home
+default_calendar = personal
 highlight_event_days = True

@@ -28,8 +28,25 @@ input "1739:32402:DELL07EA:00_06CB:7E92_Touchpad" {
 # Autostart
 exec --no-startup-id /usr/bin/mako
 exec --no-startup-id /usr/bin/wlsunset -T 5700 -t 3600 -l 51.5 -L -0.1 -g 0.7
+exec /usr/bin/dino
+exec /usr/bin/keepassxc
+
 
 for_window [app_id="com.nextcloud.desktopclient.nextcloud"] floating enable
+for_window [title="foot-float"] floating enable
+for_window [app_id="pavucontrol"] floating enable
+for_window [app_id="tridactyl"]   floating enable,\
+  resize set width 1150 height 420
+for_window [app_id="keepassxc"]               floating enable
+for_window [app_id="dino"]                    floating enable
+for_window [app_id="firefox" title="^Picture-in-Picture$"] \
+    floating enable, move position 1200 650, sticky enable
+for_window [app_id="firefox" title="Sharing\ Indicator$"] \
+    floating enable, no_focus, move position 0 0
+for_window [app_id="firefox" title="^Library$"] \
+    floating enable
+for_window [app_id="firefox" title="^Page Info\ —\ *"] \
+  resize set width 1800 550, floating enable
 
 
 # Theme

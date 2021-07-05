@@ -1,51 +1,36 @@
 [general]
 status_path = "~/.local/share/vdirsyncer/status/"
 
-[pair mailboxcontacts]
-a = "mailboxcontacts_local"
-b = "mailboxcontacts_remote"
-collections = [["contacts", "contacts", "32"]]
+[pair nextcloudcontacts]
+a = "nextcloudcontacts_local"
+b = "nextcloudcontacts_remote"
+collections = ["contacts"]
 conflict_resolution = ["command", "nvim", "-d"]
 
-[storage mailboxcontacts_local]
+[storage nextcloudcontacts_local]
 type = "filesystem"
-path = "~/.local/share/contacts/mailbox/"
+path = "~/.local/share/contacts/nextcloud/"
 fileext = ".vcf"
 
-[storage mailboxcontacts_remote]
+[storage nextcloudcontacts_remote]
 type = "carddav"
-url = "https://dav.mailbox.org"
-username = "{{ (keepassxc "Mailbox").UserName }}"
-password = "{{ (keepassxc "Mailbox").Password }}"
+url = "https://nc.jonnobrow.co.uk/remote.php/dav/"
+username = "{{ (keepassxc "Server (Coffee Shop)/Nextcloud").UserName }}"
+password = "{{ (keepassxc "Server (Coffee Shop)/Nextcloud").Password }}"
 
-[pair uni]
-a = "uni_remote"
-b = "uni_local"
-collections = null
-partial_sync = "ignore"
-
-[storage uni_local]
-type = "filesystem"
-path = "~/.local/share/calendar/uni/"
-fileext = ".ics"
-
-[storage uni_remote]
-type = "http"
-url = "https://timetable.soton.ac.uk/Feed/Index/jRthV6aULm35GWYft5APY3YsIEwXiqbrEvlWhSkpOS7iSPE3PdV-_6j7sQC3xVkRXI_pRdOqSTinpWu4-s_Xbg2"
-
-[pair mailboxcalendars]
-a = "mailboxcalendars_local"
-b = "mailboxcalendars_remote"
-collections = [["tasks", "tasks", "MzM"], ["home", "home", "Y2FsOi8vMC80Mg"], ["birthdays", "birthdays", "Y2FsOi8vMS8w"]]
+[pair nextcloudcalendars]
+a = "nextcloudcalendars_local"
+b = "nextcloudcalendars_remote"
+collections = ["personal", "contact_birthdays"]
 conflict_resolution = ["command", "nvim", "-d"]
 
-[storage mailboxcalendars_local]
+[storage nextcloudcalendars_local]
 type = "filesystem"
-path = "~/.local/share/calendar/mailbox/"
+path = "~/.local/share/calendar/nextcloud/"
 fileext = ".ics"
 
-[storage mailboxcalendars_remote]
+[storage nextcloudcalendars_remote]
 type = "caldav"
-url = "https://dav.mailbox.org"
-username = "{{ (keepassxc "Mailbox").UserName }}"
-password = "{{ (keepassxc "Mailbox").Password }}"
+url = "https://nc.jonnobrow.co.uk/remote.php/dav/"
+username = "{{ (keepassxc "Server (Coffee Shop)/Nextcloud").UserName }}"
+password = "{{ (keepassxc "Server (Coffee Shop)/Nextcloud").Password }}"

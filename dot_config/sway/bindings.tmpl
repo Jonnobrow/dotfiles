@@ -14,8 +14,11 @@ set $right l
 
 # Variables: Update these to modify the apps launched with binds
 set $term    foot 
-set $menu    "/home/{{ .chezmoi.username }}/.local/bin/fuzzel-launcher"
-set $browser "firefox"
+set $menu    j4-dmenu-desktop --display-binary --no-generic \
+                --term=foot \
+                --usage-log=$HOME/.local/share/j4/log \
+                --dmenu='fzfmenu -d'
+set $browser "fzfmenu -p"
 set $visual  "foot nvim"
 set $lock    "/usr/bin/swaylock"
 
