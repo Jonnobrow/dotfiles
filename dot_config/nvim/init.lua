@@ -39,4 +39,4 @@ require('keybinds')
 -- Colorscheme
 opt('termguicolors', true)
 opt('background', 'dark')
-cmd [[ colorscheme spaceduck ]]
+cmd [[ colorscheme gruvbox ]]

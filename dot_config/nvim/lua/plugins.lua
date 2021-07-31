@@ -67,7 +67,8 @@ local function init()
         config = [[require('config.lualine')]]
     }
 
-    use {'pineapplegiant/spaceduck', branch = 'main'}
+    use {'morhetz/gruvbox'}
+
 end
 
 local plugins = setmetatable({}, {
