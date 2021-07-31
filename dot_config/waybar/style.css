@@ -1,7 +1,7 @@
 /*
  * Import Theme
  */
-@import "./themes/spaceduck.css";
+@import "./themes/gruvbox.css";
 
 * {
     border: none;
