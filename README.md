@@ -11,6 +11,9 @@ This time round I am:
 - Respecting the XDG directory spec
 - Automating more stuff with Make (see inspiration: [benmezger/dotfiles](https://github.com/benmezger/dotfiles))
 
+## Credits
+- Background by [u/-lemniscat on reddit](https://www.reddit.com/r/swaywm/comments/oqujk9/as_requested_here_is_some_background_for_sway/)
+
 ## installing
 
 ```shell
