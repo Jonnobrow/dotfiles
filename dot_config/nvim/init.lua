@@ -2,6 +2,7 @@ local g = vim.g
 local cmd = vim.cmd
 local o, wo, bo = vim.o, vim.wo, vim.bo
 local api = vim.api
+local map = require('utils').map
 
 -- Packer
 local install_path = vim.fn.stdpath 'data' .. '/site/pack/packer/start/packer.nvim'
@@ -21,14 +22,13 @@ vim.api.nvim_exec( [[
 
 local use = require('packer').use
 require('packer').startup(function()
-  use 'wbthomason/packer.nvim' -- Package manager
-
-  -- theme
-  use 'morhetz/gruvbox'
-
+  use 'wbthomason/packer.nvim' -- package manager
+  use 'morhetz/gruvbox' -- theme
+  
   -- lualine
   use {
     'hoob3rt/lualine.nvim',
+    config = [[require('config.lualine')]],
     requires = {'kyazdani42/nvim-web-devicons', opt = true}
   }
   
@@ -36,6 +36,27 @@ require('packer').startup(function()
   use {
     'akinsho/bufferline.nvim',
     requires = 'kyazdani42/nvim-web-devicons'
+  }
+
+  -- fzf
+  use {
+    {'junegunn/fzf.vim', config = [[require('config.fzf')]]},
+    'gfanto/fzf-lsp.nvim'
+  }
+
+  -- Git
+  use {
+    { 'tpope/vim-fugitive',
+        cmd = { 'Git', 'Gstatus', 'Gblame', 'Gpush', 'Gpull' },
+        disable = true },
+    {
+      'lewis6991/gitsigns.nvim',
+      requires = { 'nvim-lua/plenary.nvim' },
+      config = [[require('config.gitsigns')]],
+    },
+    { 'TimUntersberger/neogit', 
+        cmd = 'Neogit', 
+        config = [[require('config.neogit')]] },
   }
 end)
 
@@ -116,13 +137,6 @@ o.background = 'dark'
 cmd [[colorscheme gruvbox]]
 
 -- Keybindings
-local map_key = vim.api.nvim_set_keymap
-local function map(modes, lhs, rhs, opts)
-  opts = opts or {}
-  opts.noremap = opts.noremap == nil and true or opts.noremap
-  if type(modes) == 'string' then modes = {modes} end
-  for _, mode in ipairs(modes) do map_key(mode, lhs, rhs, opts) end
-end
 
 -- > [ space + w + h ] move cursor to left window
 map('n', '<leader>wh', '<cmd>wincmd h<cr>', silent)
@@ -142,7 +156,7 @@ map('n', '<Leader>bd', '<Cmd>bd<CR>', silent)
 map({'n', 'v'}, '<Leader>y', '"+y', silent)
 
 -- Plugin Configuration
+-- Most plugins have their own file under lua/config
 
 -- > Bufferline : akinsho/bufferline
 require('bufferline').setup{}
-require('config.lualine')
