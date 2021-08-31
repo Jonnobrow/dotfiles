@@ -58,6 +58,12 @@ require('packer').startup(function()
         cmd = 'Neogit', 
         config = [[require('config.neogit')]] },
   }
+
+  -- Notes
+  use {
+    {'vimwiki/vimwiki', config = [[require('config.vimwiki')]]},
+    {'michal-h21/vim-zettel', config = [[require('config.vim-zettel')]]}
+  }
 end)
 
 -- Leader and Local Leader
