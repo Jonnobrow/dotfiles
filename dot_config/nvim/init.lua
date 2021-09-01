@@ -2,7 +2,6 @@ local g = vim.g
 local cmd = vim.cmd
 local o, wo, bo = vim.o, vim.wo, vim.bo
 local api = vim.api
-local map = require('utils').map
 
 -- Packer
 local install_path = vim.fn.stdpath 'data' .. '/site/pack/packer/start/packer.nvim'
@@ -165,25 +164,6 @@ o.termguicolors = true
 o.background = 'dark'
 cmd [[colorscheme gruvbox]]
 
--- Keybindings
-
--- > [ space + w + h ] move cursor to left window
-map('n', '<leader>wh', '<cmd>wincmd h<cr>', silent)
--- > [ space + w + l ] move cursor to bottom window
-map('n', '<leader>wj', '<cmd>wincmd j<cr>', silent)
--- > [ space + w + j ] move cursor to top window
-map('n', '<leader>wk', '<cmd>wincmd k<cr>', silent)
--- > [ space + w + k ] move cursor to right window
-map('n', '<leader>wl', '<cmd>wincmd l<cr>', silent)
--- [ space + w + s ] current buffer, horizontal split
-map('n', '<Leader>ws', '<Cmd>split<CR>', silent)
--- [ space + w + v ] current buffer, vertical split
-map('n', '<Leader>wv', '<Cmd>vsplit<CR>', silent)
--- [ space + b + d] destroy buffer, fails if unsaved
-map('n', '<Leader>bd', '<Cmd>bd<CR>', silent)
--- Yank to clipboad
-map({'n', 'v'}, '<Leader>y', '"+y', silent)
-
 -- Plugin Configuration
 -- Most plugins have their own file under lua/config
 
@@ -202,3 +182,26 @@ require('which-key').setup{
     }
 }
 
+-- Keybindings
+require('which-key').register({
+    ["<leader>w"] = {
+        name = "+window",
+        h = {"<cmd>wincmd h<cr>", "Move Cursor to Left Window"},
+        j = {"<cmd>wincmd j<cr>", "Move Cursor to Bottom Window"},
+        k = {"<cmd>wincmd k<cr>", "Move Cursor to Top  Window"},
+        l = {"<cmd>wincmd l<cr>", "Move Cursor to Right Window"},
+        s = {"<cmd>split<cr>", "Horizontal Split"},
+        v = {"<cmd>vsplit<cr>", "Vertical Split"},
+        w = {"<cmd>write<cr>", "Write Changes"},
+        q = {"<cmd>wq<cr>", "Write Changes and Quit"},
+        Q = {"<cmd>q!<cr>", "Force Quit"},
+        c = {"<cmd>close<cr>", "Close current window"}
+    },
+    ["<leader>b"] = {
+        name = "+buffer",
+        d = {"<cmd>bd<cr>", "Destroy Buffer"}
+    },
+    ["<leader>"] = {
+        y = {'"+y', "Yank to clipboard"}
+    }
+})

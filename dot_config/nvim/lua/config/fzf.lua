@@ -1,9 +1,13 @@
-local map = require('utils').map
-local silent = {silent = true}
+local wk = require('which-key')
 
-map('n', '<leader>ff', '<cmd>FZF<cr>', silent)
-map('n', '<leader>bb', '<cmd>Buffers<cr>', silent)
-map('n', '<leader>ll', '<cmd>Line<cr>', silent)
-map('n', '<leader>rg', '<cmd>Rg<cr>', silent)
-map('n', '<leader>fh', '<cmd>FZF ~<cr>', silent)
-map('n', '<leader>gs', '<cmd>GFiles?<cr>', silent)
+wk.register({
+    ["<leader>f"] = {
+        name = "+FZF",
+        f = {"<cmd>FZF<cr>", "Search Files (Current Dir)"},
+        b = {"<cmd>Buffers<cr>", "Search Buffers"},
+        l = {"<cmd>Line<cr>", "Search Lines"},
+        h = {"<cmd>FZF ~<cr>", "Search File (Home Dir)"},
+        g = {"<cmd>GFiles?<cr>", "Search Git Files"},
+        r = {"<cmd>Rg<cr>", "Search Body (Ripgrep)"}
+    }
+})

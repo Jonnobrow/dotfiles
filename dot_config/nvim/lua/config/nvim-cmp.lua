@@ -1,5 +1,3 @@
-local map = require('utils').map
-
 local cmp = require('cmp')
 
 -- lsp symbols for autocomplete from SmiteshP/Dotfiles

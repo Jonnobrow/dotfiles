@@ -8,3 +8,13 @@ g.zettel_options = {{
 g.zettel_format = "%y%m%d-%H%M-%title"
 g.zettel_date_format = "%y-%m-%d"
 g.zettel_default_title = "Note"
+
+local wk = require('which-key')
+wk.register({
+    ["<leader>z"] = {
+        name = "+zettel",
+        o = { "<cmd>ZettelOpen<cr>", "Open Zettel File" },
+        n = { "<cmd>ZettelNew<cr>", "New Note" },
+        i = { "<cmd>ZettelInbox<cr>", "Insert Inbox"},
+    }
+})
