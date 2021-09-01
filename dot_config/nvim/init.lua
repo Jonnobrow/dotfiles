@@ -64,6 +64,26 @@ require('packer').startup(function()
     {'vimwiki/vimwiki', config = [[require('config.vimwiki')]]},
     {'michal-h21/vim-zettel', config = [[require('config.vim-zettel')]]}
   }
+
+  -- Completion and Snippets
+  use {
+    "hrsh7th/nvim-cmp",
+    requires = {
+      "hrsh7th/vim-vsnip",
+      "hrsh7th/cmp-buffer",
+      "hrsh7th/cmp-path",
+      "hrsh7th/cmp-vsnip",
+      "hrsh7th/cmp-nvim-lsp",
+      "f3fora/cmp-spell",
+      "rafamadriz/friendly-snippets"
+    },
+    config = [[require('config.nvim-cmp')]]
+  }
+  
+  use 'folke/which-key.nvim' 
+
+
+  -- LSP
 end)
 
 -- Leader and Local Leader
@@ -166,3 +186,16 @@ map({'n', 'v'}, '<Leader>y', '"+y', silent)
 
 -- > Bufferline : akinsho/bufferline
 require('bufferline').setup{}
+
+-- > Which Key : folke/which-key
+require('which-key').setup{
+    plugins = {
+        marks = false,
+        registers = false,
+        spelling = {
+            enabled = true,
+            suggestions = 20,
+        }
+    }
+}
+
