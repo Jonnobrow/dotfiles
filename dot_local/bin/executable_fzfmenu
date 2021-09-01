@@ -2,13 +2,15 @@
 FZF_DEFAULT_OPTS=
 profile=
 dmenu=
+scratchpad=
 
-while getopts pd opt; do
+while getopts pds opt; do
   case $opt in
   p) profile=1 ;;
   d) dmenu=1 ;;
+  s) scratchpad=1 ;;
   ?)
-    printf 'Usage: %s -p|-d\n' "$0"
+    printf 'Usage: %s -p|-d|-s\n' "$0"
     exit 2
     ;;
   esac
@@ -28,4 +30,17 @@ fi
 
 if [ -n "$dmenu" ]; then
   foot -T 'foot-float' sh -c "fzf --no-sort < /proc/$$/fd/0 > /proc/$$/fd/1"
+fi
+
+# Inspired by
+# https://github.com/shervinsahba/dotfiles/blob/main/src/scratchpad-rofi
+if [ -n "$scratchpad" ]; then
+    scratch=$(swaymsg -t get_tree | jq '.nodes[] | .nodes[] | select(.name=="__i3_scratch") | .floating_nodes[] | [.pid,.name]' | \
+        sed '/^[][]*$/d' | sed '/,$/{N;s/\n//}' | tr -d "\"" | sed 's/,/ -/g' | sed 's/^[[:space:]]//g')
+    temp=$(mktemp)
+    foot -T 'foot-float' sh -c "echo \"$scratch\" | fzf --no-sort > $temp"
+    if [ -s "$temp" ]; then
+        pid=$(cat $temp | perl -nE 'my($id) = split("-"); $id =~ tr/ //d; if($id){say $id}')
+        nohup swaymsg "[pid=\"$pid\"] scratchpad show" >/dev/null 2>&1 &
+    fi
 fi

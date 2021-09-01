@@ -19,13 +19,15 @@ set $menu    j4-dmenu-desktop --display-binary --no-generic \
                 --usage-log=$HOME/.local/share/j4/log \
                 --dmenu='fzfmenu -d'
 set $browser "fzfmenu -p"
+set $scratchpad "fzfmenu -s"
 set $visual  "foot nvim"
 set $lock    "/usr/bin/swaylock"
 
 # Main App Launch Bindings
 bindsym $mod+Return  exec $term
 bindsym $mod+d       exec $menu
-bindsym $mod+w       exec $browser
+bindsym $mod+s       exec $scratchpad
+bindsym $mod+w       exec browser
 bindsym $mod+Shift+w exec $visual
 bindsym $mod+Shift+q kill
 
