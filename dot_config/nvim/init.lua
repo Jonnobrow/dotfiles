@@ -82,8 +82,11 @@ require('packer').startup(function()
   
   use 'folke/which-key.nvim' 
 
-
   -- LSP
+	use {
+		"neovim/nvim-lspconfig",
+		config = [[require("config.lsp")]]
+	}
 end)
 
 -- Leader and Local Leader
