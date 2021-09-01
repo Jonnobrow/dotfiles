@@ -9,4 +9,5 @@ typescript-language-server
 typescript
 vscode-html-languageserver-bin
 vscode-json-languageserver
+vscode-langservers-extracted
 yaml-language-server

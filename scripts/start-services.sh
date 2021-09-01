@@ -18,7 +18,6 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
 	fi
     ansi --green "Enabling and starting goimapnotify"
     systemctl --user enable --now goimapnotify@mailbox.service
-    systemctl --user enable --now goimapnotify@uni.service
 
     # Contacts and Calendar
     ansi --green "Enabling and starting vdirsyncer"

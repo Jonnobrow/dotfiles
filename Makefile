@@ -42,10 +42,6 @@ install-aur:
 	@echo 'Installing aur dependencies.'
 	bash ./scripts/install-aur.sh
 
-install-language-servers:
-	@echo 'Installing LSP Language Servers.'
-	bash ./scripts/install-language-servers.sh
-
 install-npm:
 	@echo 'Install NPM Packages.'
 	bash ./scripts/install-node-packages.sh
