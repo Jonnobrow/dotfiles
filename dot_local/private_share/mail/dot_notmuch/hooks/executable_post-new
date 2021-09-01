@@ -1,5 +1,5 @@
 #!/bin/sh
-accs=("mailbox" "uni")
+accs=("mailbox")
 for acc in "${accs[@]}"; do
     unread=$(/usr/bin/notmuch count tag:unread and tag:$acc)
     if [[ $unread != 0 ]]; then
