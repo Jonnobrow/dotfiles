@@ -1,163 +1,111 @@
-local lspconfig = require('lspconfig')
-local lsp_status = require('lsp-status')
-local lspkind = require('lspkind')
-local lsp = vim.lsp
-local buf_keymap = vim.api.nvim_buf_set_keymap
-local cmd = vim.cmd
+-- Diagnostics symbols for display in the sign column.
+vim.fn.sign_define("LspDiagnosticsSignError", { texthl = "LspDiagnosticsSignError", text = "✖", numhl = "LspDiagnosticsSignError" })
+vim.fn.sign_define("LspDiagnosticsSignWarning", { texthl = "LspDiagnosticsSignWarning", text = "❢", numhl = "LspDiagnosticsSignWarning" })
+vim.fn.sign_define("LspDiagnosticsSignHint", { texthl = "LspDiagnosticsSignHint", text = "", numhl = "LspDiagnosticsSignHint" })
+vim.fn.sign_define("LspDiagnosticsSignInformation", { texthl = "LspDiagnosticsSignInformation", text = "𝓲", numhl = "LspDiagnosticsSignInformation" })
 
-local kind_symbols = {
-    Text = '',
-    Method = 'Ƒ',
-    Function = 'ƒ',
-    Constructor = '',
-    Variable = '',
-    Class = '',
-    Interface = 'ﰮ',
-    Module = '',
-    Property = '',
-    Unit = '',
-    Value = '',
-    Enum = '了',
-    Keyword = '',
-    Snippet = '﬌',
-    Color = '',
-    File = '',
-    Folder = '',
-    EnumMember = '',
-    Constant = '',
-    Struct = ''
+-- Common Configuration
+local common_config = {}
+
+local function key_maps(bufnr)
+	--Enable completion triggered by <c-x><c-o>
+	vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
+
+	-- Mappings.
+	local opts = { buffer=bufnr, noremap=true, silent=true }
+
+	local maps = {
+		["<leader>l"] = {
+			name = "Lsp",
+			a = { "<cmd>lua vim.lsp.buf.code_action()<CR>", "Code Action" },
+			d = { "<cmd>lua vim.lsp.buf.definition()<CR>", "Definition" },
+			D = { "<cmd>lua vim.lsp.buf.declaration()<CR>", "Declaration" },
+			i = { "<cmd>lua vim.lsp.buf.implementation()<CR>", "Implementation" },
+			k = { "<cmd>lua vim.lsp.buf.hover()<CR>", "Hover" },
+			h = { "<cmd>lua vim.lsp.buf.signature_help()<CR>", "Help" },
+			n = { "<cmd>lua vim.lsp.buf.rename()<CR>", "Rename" },
+			r = { "<cmd>lua vim.lsp.buf.references()<CR>", "References" },
+		},
+		["[d"] = { "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", "Prev Diagnostics" },
+		["]d"] = { "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", "Next Diagnostics" }
+	}
+
+	require("which-key").register(maps, opts);
+end
+
+local function documentHighlight(client)
+	-- Set autocommands conditional on server_capabilities
+	if client.resolved_capabilities.document_highlight then
+		vim.api.nvim_exec(
+		[[
+			augroup lsp_document_highlight
+			autocmd! * <buffer>
+			autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+			autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+			augroup END
+		]],
+		false
+		)
+	end
+end
+
+function common_config.common_on_attach(client, bufnr)
+	key_maps(bufnr)
+	documentHighlight(client)
+end
+
+-- cmp-lsp capabilities
+common_config.capabilities = vim.lsp.protocol.make_client_capabilities()
+common_config.capabilities = require('cmp_nvim_lsp').update_capabilities(common_config.capabilities)
+
+-- Python :: npm i -g pyright
+require("lspconfig").pyright.setup {
+	cmd = { "/usr/bin/pyright-langserver", "--stdio" },
+	on_attach = common_config.common_on_attach,
+	capabilities = common_config.capabilities,
+	filetypes = { "python" },
+	rootPatterns = { ".git", "setup.py", "setup.cfg", "pyproject.toml", "requirements.txt" },
+	settings = {
+		python = {
+			analysis = {
+				typeCheckingMode = "basic",
+				reportUnusedImport = true,
+				autoSearchPaths = true,
+				useLibraryCodeForTypes = true,
+				diagnosticMode = "workspace",
+			}
+		}
+	}
 }
 
-local sign_define = vim.fn.sign_define
-sign_define('LspDiagnosticsSignError', {text = '', numhl = 'RedSign'})
-sign_define('LspDiagnosticsSignWarning', {text = '', numhl = 'YellowSign'})
-sign_define('LspDiagnosticsSignInformation', {text = '', numhl = 'WhiteSign'})
-sign_define('LspDiagnosticsSignHint', {text = '', numhl = 'BlueSign'})
-lsp_status.config {
-    kind_labels = kind_symbols,
-    select_symbol = function(cursor_pos, symbol)
-        if symbol.valueRange then
-            local value_range = {
-                ['start'] = {
-                    character = 0,
-                    line = vim.fn.byte2line(symbol.valueRange[1])
-                },
-                ['end'] = {
-                    character = 0,
-                    line = vim.fn.byte2line(symbol.valueRange[2])
-                }
-            }
+-- Docker :: npm i -g dockerfile-language-server-nodejs
+require'lspconfig'.dockerls.setup{
+	on_attach = common_config.common_on_attach,
+    capabilities = capabilities
+}
 
-            return require('lsp-status/util').in_range(cursor_pos, value_range)
+-- Yaml :: yarn global add yaml-language-server
+require'lspconfig'.yamlls.setup{
+	on_attach = common_config.common_on_attach,
+    capabilities = capabilities
+}
+
+-- JSON :: npm i -g vscode-langservers-extracted
+require'lspconfig'.jsonls.setup {
+  cmd = {"vscode-json-languageserver", "--stdio"},
+  on_attach = common_config.common_on_attach,
+  capabilities = capabilities,
+  commands = {
+      Format = {
+        function()
+          vim.lsp.buf.range_formatting({},{0,0},{vim.fn.line("$"),0})
         end
-    end,
-    current_function = false
+      }
+    }
 }
 
-lsp_status.register_progress()
-lspkind.init {symbol_map = kind_symbols}
-lsp.handlers['textDocument/publishDiagnostics'] =
-    lsp.with(lsp.diagnostic.on_publish_diagnostics, {
-        virtual_text = false,
-        signs = true,
-        update_in_insert = false,
-        underline = true
-    })
-
-local keymap_opts = {noremap = true, silent = true}
-local function on_attach(client)
-    lsp_status.on_attach(client)
-    buf_keymap(0, 'n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>',
-               keymap_opts)
-    buf_keymap(0, 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>',
-               keymap_opts)
-    buf_keymap(0, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', keymap_opts)
-    buf_keymap(0, 'n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>',
-               keymap_opts)
-    buf_keymap(0, 'n', '<c-s>', '<cmd>lua vim.lsp.buf.signature_help()<CR>',
-               keymap_opts)
-    buf_keymap(0, 'n', 'gTD', '<cmd>lua vim.lsp.buf.type_definition()<CR>',
-               keymap_opts)
-    buf_keymap(0, 'n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>',
-               keymap_opts)
-    buf_keymap(0, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>',
-               keymap_opts)
-    buf_keymap(0, 'n', 'gA', '<cmd>lua vim.lsp.buf.code_action()<CR>',
-               keymap_opts)
-    buf_keymap(0, 'n', '<leader>e',
-               '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>',
-               keymap_opts)
-    buf_keymap(0, 'n', '<leader>E',
-               '<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>', keymap_opts)
-    buf_keymap(0, 'n', ']e', '<cmd>lua vim.lsp.diagnostic.goto_next()<cr>',
-               keymap_opts)
-    buf_keymap(0, 'n', '[e', '<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>',
-               keymap_opts)
-
-    if client.resolved_capabilities.document_formatting then
-        buf_keymap(0, 'n', '<leader>lf',
-                   '<cmd>lua vim.lsp.buf.formatting()<cr>', keymap_opts)
-    end
-
-    if client.resolved_capabilities.document_highlight == true then
-        cmd('augroup lsp_aucmds')
-        cmd('au CursorHold <buffer> lua vim.lsp.buf.document_highlight()')
-        cmd(
-            'au CursorHold <buffer> lua vim.lsp.diagnostic.show_line_diagnostics()')
-        cmd('au CursorMoved <buffer> lua vim.lsp.buf.clear_references()')
-        cmd('augroup END')
-    end
-end
-
-local servers = {
-    bashls = {},
-    cssls = {
-        filetypes = {"css", "scss", "less", "sass"},
-        root_dir = lspconfig.util.root_pattern("package.json", ".git")
-    },
-    -- ghcide = {},
-    html = {},
-    jsonls = {
-        commands = {
-            Format = {
-                function()
-                    vim.lsp.buf.range_formatting({}, {0, 0},
-                                                 {vim.fn.line("$"), 0})
-                end
-            }
-        }
-    },
-    pyls = {
-        settings = {
-            pyls = {plugins = {pyls_mypy = {enabled = true, live_mode = false}}}
-        }
-    },
-    rust_analyzer = {
-        settings = {
-            ["rust-analyzer"] = {
-                assist = {
-                    importMergeBehavior = "last",
-                    importPrefix = "by_self"
-                },
-                cargo = {loadOutDirsFromCheck = true},
-                procMacro = {enable = true}
-            }
-        }
-    },
-    tsserver = {},
-    vimls = {},
-    yamlls = {},
-    terraformls = {settings = {trace = {server = "on"}}}
+-- Go :: GO111MODULE=on go get golang.org/x/tools/gopls@latest
+require'lspconfig'.gopls.setup{
+  on_attach = common_config.common_on_attach,
+  capabilities = capabilities
 }
-
-local snippet_capabilities = {
-    textDocument = {completion = {completionItem = {snippetSupport = true}}}
-}
-
-for server, config in pairs(servers) do
-    config.on_attach = on_attach
-    config.capabilities = vim.tbl_deep_extend('keep', config.capabilities or {},
-                                              lsp_status.capabilities,
-                                              snippet_capabilities)
-    lspconfig[server].setup(config)
-end
