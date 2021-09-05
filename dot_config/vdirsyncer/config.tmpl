@@ -21,8 +21,9 @@ password = "{{ (keepassxc "Nextcloud").Password }}"
 [pair nextcloudcalendars]
 a = "nextcloudcalendars_local"
 b = "nextcloudcalendars_remote"
-collections = ["personal", "contact_birthdays", "personal_shared_by_IzzyBobLucas", "boo", "tutoring", "work_shared_by_IzzyBobLucas", "my-tasks", "sky"]
+collections = ["personal", "contact_birthdays", "personal_shared_by_IzzyBobLucas", "boo", "tutoring", "my-tasks", "sky"]
 conflict_resolution = ["command", "nvim", "-d"]
+metadata = ["color"]
 
 
 [storage nextcloudcalendars_local]

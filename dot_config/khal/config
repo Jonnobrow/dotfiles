@@ -1,34 +1,9 @@
 [calendars]
 
 [[personal]]
-path = ~/.local/share/calendar/nextcloud/personal
-type = calendar
-color = "light green"
-
-[[boo]]
-path = ~/.local/share/calendar/nextcloud/boo
-type = calendar
-color = "light magenta"
-
-[[izzy_personal]]
-path = ~/.local/share/calendar/nextcloud/personal_shared_by_IzzyBobLucas
-type = calendar
-color = "light red"
-
-[[izzy_work]]
-path = ~/.local/share/calendar/nextcloud/work_shared_by_IzzyBobLucas
-type = calendar
-color = "light cyan"
-
-[[tutoring]]
-path = ~/.local/share/calendar/nextcloud/tutoring
-type = calendar
-color = "light gray"
-
-[[birthdays]]
-path = ~/.local/share/calendar/nextcloud/contact_birthdays
-type = birthdays
-color = "light blue"
+path = ~/.local/share/calendar/nextcloud/*
+type = discover
+color = auto
 
 [locale]
 timeformat = %H:%M
@@ -40,3 +15,6 @@ longdatetimeformat = %Y-%m-%d %H:%M
 [default]
 default_calendar = personal
 highlight_event_days = True
+
+[keybindings]
+external_edit = x
