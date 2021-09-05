@@ -1,6 +1,7 @@
 local g = vim.g
 
 g.zettel_fzf_command = "rg --column --line-number --ignore-case --no-heading --color=always"
+g.zettel_fzf_options = {"--exact", "--tiebreak=end", "--preview-window=right,70%"}
 g.zettel_options = {{
     front_matter = {{"tags", ""}, {"type","note"}},
     template = "~/dirs/doc/z/templates/note.tpl"
@@ -14,7 +15,7 @@ wk.register({
     ["<leader>z"] = {
         name = "+zettel",
         o = { "<cmd>ZettelOpen<cr>", "Open Zettel File" },
-        n = { "<cmd>ZettelNew<cr>", "New Note" },
+        n = { ":ZettelNew<space>", "New Note" },
         i = { "<cmd>ZettelInbox<cr>", "Insert Inbox"},
     }
 })

@@ -25,6 +25,7 @@ local function key_maps(bufnr)
 			h = { "<cmd>lua vim.lsp.buf.signature_help()<CR>", "Help" },
 			n = { "<cmd>lua vim.lsp.buf.rename()<CR>", "Rename" },
 			r = { "<cmd>lua vim.lsp.buf.references()<CR>", "References" },
+            f = { "<cmd>lua vim.lsp.buf.formatting()<CR>", "Formatting"}
 		},
 		["[d"] = { "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", "Prev Diagnostics" },
 		["]d"] = { "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", "Next Diagnostics" }
@@ -108,4 +109,54 @@ require'lspconfig'.jsonls.setup {
 require'lspconfig'.gopls.setup{
   on_attach = common_config.common_on_attach,
   capabilities = capabilities
+}
+
+-- General Language Server
+local vint = {
+    lintCommand = "vint -",
+    lintStdin = true,
+    lintFormats = {"%f:%l%c: %m"},
+    lintSource = "vint"
+}
+local isort = {
+    formatCommand = "isort --stdout -",
+    formatStdin = true
+}
+local flake8 = {
+    lintCommand = "flake8 --max-line-length 72 --format '%(path)s:%(row)d:%(col)d: %(code)s %(code)s %(text)s' --stdin-display-name ${INPUT} -",
+    lintStdin = true,
+    lintIgnoreExitCode = true,
+    lintFormats = {"%f:%l:%c: %t%n%n%n %m"},
+    lintSource = "flake8"
+}
+local prettier = {
+    formatCommand = ([[
+        $([ -n "$(command -v node_modules/.bin/prettier)" ] && echo "node_modules/.bin/prettier" || echo "prettier")
+        ${--config-precedence:configPrecedence}
+        ${--tab-width:tabWidth}
+        ${--single-quote:singleQuote}
+        ${--trailing-comma:trailingComma}
+    ]]):gsub(
+        "\n",
+        ""
+    )
+}
+-- https://github.com/mattn/efm-langserver
+require('lspconfig').efm.setup {
+    on_attach = on_attach,
+    init_options = {documentFormatting = true},
+    root_dir = vim.loop.cwd,
+    settings = {
+        rootMarkers = {".git/"},
+        languages = {
+            vim = {vint},
+            python = {isort, flake8},
+            yaml = {prettier},
+            json = {prettier},
+            html = {prettier},
+            scss = {prettier},
+            css = {prettier},
+            markdown = {prettier},
+        }
+    }
 }

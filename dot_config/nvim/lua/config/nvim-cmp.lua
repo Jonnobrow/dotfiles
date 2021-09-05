@@ -100,3 +100,8 @@ cmp.setup({
         { name = "spell" },
 	}
 })
+
+local g = vim.g
+g.vsnip_filetypes = {
+    vimwiki = {'markdown'}
+}

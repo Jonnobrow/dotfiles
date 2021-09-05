@@ -15,6 +15,10 @@ vim.api.nvim_exec( [[
     autocmd!
     autocmd BufWritePost init.lua PackerCompile
   augroup end
+  augroup LengthHighlight 
+    autocmd BufEnter * highlight OverLength ctermbg=darkgrey guibg=#592929
+    autocmd BufEnter * match OverLength /\%82v.*/
+  augroup END
 ]],
   false
 )
@@ -86,6 +90,9 @@ require('packer').startup(function()
 		"neovim/nvim-lspconfig",
 		config = [[require("config.lsp")]]
 	}
+
+  -- GPG
+  use 'jamessan/vim-gnupg'
 end)
 
 -- Leader and Local Leader
@@ -109,8 +116,9 @@ for i = 1, 10 do
 end
 
 -- Default VIM Settings
-o.textwidth = 72
-bo.textwidth = 72
+o.textwidth = 80
+bo.textwidth = 80
+vim.opt.formatoptions:remove('t')
 o.scroll = 7
 o.wildignore = '*.o,*~,*.pyc'
 o.wildmode = 'longest,full'
