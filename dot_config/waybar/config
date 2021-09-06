@@ -4,7 +4,7 @@
     "height": 24, // Waybar height
     // "width": 1366, // Waybar width
     // Choose the order of the modules
-    "modules-left": ["sway/workspaces", "sway/mode"],
+    "modules-left": ["idle_inhibitor","sway/workspaces", "sway/mode"],
     "modules-center": ["sway/window"],
     "modules-right": ["pulseaudio", "network", "cpu", "memory", "battery", "tray", "clock"],
     "sway/workspaces": {
@@ -21,6 +21,13 @@
             "focused": "",
             "default": ""
         }
+    },
+    "idle_inhibitor": {
+    	"format": "{icon}  ",
+	    "format-icons": {
+	        "activated": "",
+	        "deactivated": ""
+	    }
     },
     "sway/mode": {
         "format": "<span style=\"italic\">{}</span>"
