@@ -4,8 +4,12 @@
 # term=foot (or xterm-256color if built with -Dterminfo=disabled)
 # login-shell=no
 
-font=Hack Nerd Font Mono:size=8, Noto Color Emoji:size=6
 # font-bold=<bold variant of regular font>
+{{ if (eq .chezmoi.hostname "jblp") }}
+font=Hack Nerd Font Mono:size=8, Noto Color Emoji:size=6
+{{ else }}
+font=Hack Nerd Font Mono:size=11, Noto Color Emoji:size=9
+{{ end }}
 # font-italic=<italic variant of regular font>
 # font-bold-italic=<bold+italic variant of regular font>
 # line-height=<font metrics>

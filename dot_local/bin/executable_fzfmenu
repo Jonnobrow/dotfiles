@@ -3,14 +3,16 @@ FZF_DEFAULT_OPTS=
 profile=
 dmenu=
 scratchpad=
+powermenu=
 
-while getopts pds opt; do
+while getopts pdsx opt; do
   case $opt in
   p) profile=1 ;;
   d) dmenu=1 ;;
   s) scratchpad=1 ;;
+  x) powermenu=1;;
   ?)
-    printf 'Usage: %s -p|-d|-s\n' "$0"
+    printf 'Usage: %s -p|-d|-s|-x\n' "$0"
     exit 2
     ;;
   esac
@@ -42,5 +44,18 @@ if [ -n "$scratchpad" ]; then
     if [ -s "$temp" ]; then
         pid=$(cat $temp | perl -nE 'my($id) = split("-"); $id =~ tr/ //d; if($id){say $id}')
         nohup swaymsg "[pid=\"$pid\"] scratchpad show" >/dev/null 2>&1 &
+    fi
+fi
+
+if [ -n "$powermenu" ]; then
+    options="shutdown - shutdown now
+reboot - reboot 
+reload - swaymsg \"reload\" 
+exit - swaymsg \"exit\""
+    temp=$(mktemp)
+    foot -T 'foot-float' sh -c "echo \"$options\" | fzf --no-sort > $temp"
+    if [ -s "$temp" ]; then
+        cmd=$(cat $temp | cut -d"-" -f2)
+        exec $cmd
     fi
 fi
