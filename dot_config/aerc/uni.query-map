@@ -1,3 +1,0 @@
-unread  = path:uni/** and tag:unread
-inbox   = path:uni/** and tag:inbox
-all     = path:uni/** and not tag:trash and not tag:spam
