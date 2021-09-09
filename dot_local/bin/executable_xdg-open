@@ -7,9 +7,13 @@ case "${1%%:*}" in
 		exec zathura "$1"
 		;;
 	mailto)
-		exec aerc "$1"
+		exec foot -T 'foot-float' sh -c "aerc \"$1\""
 		;;
+    *.py|*.md|*.go)
+        exec foot sh -c "nvim \"$1\""
+        ;;
 	*)
 		echo "Don't know how to open $@" >&2
+        /usr/bin/xdg-open $@
 		;;
 esac

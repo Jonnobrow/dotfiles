@@ -87,4 +87,4 @@ export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export PATH="$PATH:$HOME/.local/bin/platform-tools"
 
 # Add local bins
-export PATH="$PATH:$HOME/.local/bin/"
+export PATH="$HOME/.local/bin/:$PATH"

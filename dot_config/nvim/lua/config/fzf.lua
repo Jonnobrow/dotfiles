@@ -8,6 +8,7 @@ wk.register({
         l = {"<cmd>Line<cr>", "Search Lines"},
         h = {"<cmd>FZF ~<cr>", "Search File (Home Dir)"},
         g = {"<cmd>GFiles?<cr>", "Search Git Files"},
-        r = {"<cmd>Rg<cr>", "Search Body (Ripgrep)"}
+        r = {"<cmd>Rg<cr>", "Search Body (Ripgrep)"},
+        z = {"<cmd>FZF ~/dirs/doc/z<cr>", "Search Zettel Files"}
     }
 })
