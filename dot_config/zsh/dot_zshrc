@@ -98,6 +98,11 @@ dotedit ()
     chezmoi edit $1 && chezmoi apply $1
 }
 
+tn() 
+{
+    todo new -l my-tasks "$@"
+}
+
 # Mail and calendar
 alias cal="khal calendar"
 alias cali="ikhal"

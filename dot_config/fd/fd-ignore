@@ -4,4 +4,15 @@
 cache
 .local
 venv
-.config/Microsoft # Teams :(
+.config/Microsoft* # Teams :(
+.vscode-oss
+.mozilla
+.yarn
+.electron-gyp
+.java
+.cache
+.zoom
+.config/Code\ -\ OSS
+.config/code-oss
+.rbenv
+.minecraft

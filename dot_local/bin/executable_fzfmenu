@@ -4,15 +4,17 @@ profile=
 dmenu=
 scratchpad=
 powermenu=
+opener=
 
-while getopts pdsx opt; do
+while getopts pdsxo opt; do
   case $opt in
   p) profile=1 ;;
   d) dmenu=1 ;;
   s) scratchpad=1 ;;
   x) powermenu=1;;
+  o) opener=1;;
   ?)
-    printf 'Usage: %s -p|-d|-s|-x\n' "$0"
+    printf 'Usage: %s -p|-d|-s|-x|-o\n' "$0"
     exit 2
     ;;
   esac
@@ -58,4 +60,9 @@ exit - swaymsg \"exit\""
         cmd=$(cat $temp | cut -d"-" -f2)
         exec $cmd
     fi
+fi
+
+if [ -n "$opener" ]; then
+    temp=$(mktemp)
+    foot -T 'foot-float' sh -c "fzf --preview 'bat {}' --bind 'enter:execute(xdg-open {})'"
 fi
