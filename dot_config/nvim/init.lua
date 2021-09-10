@@ -16,8 +16,8 @@ vim.api.nvim_exec( [[
     autocmd BufWritePost init.lua PackerCompile
   augroup end
   augroup LengthHighlight 
-    autocmd BufEnter * highlight OverLength ctermbg=darkgrey guibg=#592929
-    autocmd BufEnter * match OverLength /\%82v.*/
+    autocmd BufEnter *.{py,md,lua,go,yaml,yml} highlight OverLength ctermbg=darkgrey guibg=#592929
+    autocmd BufEnter *.{py,md,lua,go,yaml,yml} match OverLength /\%82v.*/
   augroup END
 ]],
   false
@@ -192,6 +192,11 @@ require('which-key').setup{
 
 -- Keybindings
 require('which-key').register({
+    ["<leader>p"] = {
+        name = "+packer",
+        s = {"<cmd>PackerSync<cr>", "Packer Sync"},
+        i = {"<cmd>PackerInstall<cr>", "Packer Install"}
+    },
     ["<leader>w"] = {
         name = "+window",
         h = {"<cmd>wincmd h<cr>", "Move Cursor to Left Window"},
@@ -200,16 +205,18 @@ require('which-key').register({
         l = {"<cmd>wincmd l<cr>", "Move Cursor to Right Window"},
         s = {"<cmd>split<cr>", "Horizontal Split"},
         v = {"<cmd>vsplit<cr>", "Vertical Split"},
-        w = {"<cmd>write<cr>", "Write Changes"},
+        w = {"<cmd>w<cr>", "Write Changes"},
         q = {"<cmd>wq<cr>", "Write Changes and Quit"},
         Q = {"<cmd>q!<cr>", "Force Quit"},
         c = {"<cmd>close<cr>", "Close current window"}
     },
     ["<leader>b"] = {
         name = "+buffer",
-        d = {"<cmd>bd<cr>", "Destroy Buffer"}
+        d = {"<cmd>bd<cr>", "Destroy Buffer"},
+        s = {"<cmd>wa<cr>", "Write all Buffers"},
     },
     ["<leader>"] = {
-        y = {'"+y', "Yank to clipboard"}
+        y = {'"+y', "Yank to clipboard"},
+        q = {"<cmd>q<cr>", "Quit"}
     }
 })

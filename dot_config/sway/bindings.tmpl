@@ -20,17 +20,20 @@ set $menu    j4-dmenu-desktop --display-binary --no-generic \
                 --dmenu='fzfmenu -d'
 set $browser "fzfmenu -p"
 set $scratchpad "fzfmenu -s"
+set $lock "fzfmenu -x"
 set $visual  "foot nvim"
-set $lock    "/usr/bin/swaylock"
 set $opener  "fzfmenu -o"
+set $todo "fzfmenu -t"
 
 # Main App Launch Bindings
 bindsym $mod+Return  exec $term
 bindsym $mod+d       exec $menu
 bindsym $mod+s       exec $scratchpad
 bindsym $mod+w       exec $browser
+bindsym $mod+x       exec $lock
 bindsym $mod+Shift+w exec $visual
 bindsym $mod+o       exec $opener
+bindsym $mod+t       exec $todo
 bindsym $mod+Shift+q kill
 
 floating_modifier $mod normal
