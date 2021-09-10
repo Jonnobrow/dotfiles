@@ -5,14 +5,16 @@ dmenu=
 scratchpad=
 powermenu=
 opener=
+todo=
 
-while getopts pdsxo opt; do
+while getopts pdsxot opt; do
   case $opt in
   p) profile=1 ;;
   d) dmenu=1 ;;
   s) scratchpad=1 ;;
   x) powermenu=1;;
   o) opener=1;;
+  t) todo=1;;
   ?)
     printf 'Usage: %s -p|-d|-s|-x|-o\n' "$0"
     exit 2
@@ -53,7 +55,8 @@ if [ -n "$powermenu" ]; then
     options="shutdown - shutdown now
 reboot - reboot 
 reload - swaymsg \"reload\" 
-exit - swaymsg \"exit\""
+exit - swaymsg \"exit\"
+lock - swaylock"
     temp=$(mktemp)
     foot -T 'foot-float' sh -c "echo \"$options\" | fzf --no-sort > $temp"
     if [ -s "$temp" ]; then
@@ -65,4 +68,9 @@ fi
 if [ -n "$opener" ]; then
     temp=$(mktemp)
     foot -T 'foot-float' sh -c "fzf --preview 'bat {}' --bind 'enter:execute(xdg-open {})'"
+fi
+
+if [ -n "$todo" ]; then
+    temp=$(mktemp)
+    foot -T 'foot-float' sh -c "todo list my-tasks | fzf | cut -d\"[\" -f1 | sed -r \"s/\\s+//g\" | xargs todo done"
 fi

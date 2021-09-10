@@ -9,6 +9,6 @@ wk.register({
         h = {"<cmd>FZF ~<cr>", "Search File (Home Dir)"},
         g = {"<cmd>GFiles?<cr>", "Search Git Files"},
         r = {"<cmd>Rg<cr>", "Search Body (Ripgrep)"},
-        z = {"<cmd>FZF ~/dirs/doc/z<cr>", "Search Zettel Files"}
+        z = {"<cmd>call fzf#vim#files('~/dirs/doc/z/', {'options': ['--preview', 'bat {}']})<cr>", "Search Zettel Files"}
     }
 })
