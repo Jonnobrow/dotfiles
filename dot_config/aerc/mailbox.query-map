@@ -6,3 +6,4 @@ wild=path:mailbox/** and tag:wildcard
 bin=path:mailbox/** and tag:trash    
 all=path:mailbox/** and not tag:trash and not tag:spam
 archive=path:mailbox/** and tag:archive
+sky=path:mailbox/** and tag:sky
