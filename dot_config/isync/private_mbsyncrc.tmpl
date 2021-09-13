@@ -17,69 +17,13 @@ Account mailbox
 MaildirStore mailbox-local
 Path ~/.local/share/mail/mailbox/
 Inbox ~/.local/share/mail/mailbox/INBOX
+SubFolders Verbatim
 
-Channel mailbox-inbox
-Far :mailbox-remote:"INBOX"
-Near :mailbox-local:INBOX
+Channel mailbox
+Far :mailbox-remote:
+Near :mailbox-local:
+Patterns *
 Create Both
 Expunge Both
 SyncState *
-
-Channel mailbox-drafts
-Far :mailbox-remote:"Drafts"
-Near :mailbox-local:Drafts
-Create Both
-Expunge Both
-SyncState *
-
-Channel mailbox-sent
-Far :mailbox-remote:"Sent"
-Near :mailbox-local:Sent
-Create Both
-Expunge Both
-SyncState *
-
-Channel mailbox-trash
-Far :mailbox-remote:"Trash"
-Near :mailbox-local:Trash
-Create Both
-Expunge Both
-SyncState *
-
-Channel mailbox-archive
-Far :mailbox-remote:"Archive"
-Near :mailbox-local:Archive
-Create Both
-Expunge Both
-SyncState *
-
-Channel mailbox-spam
-Far :mailbox-remote:"Junk"
-Near :mailbox-local:Spam
-Create Both
-Expunge Both
-SyncState *
-
-Channel mailbox-proj
-Far :mailbox-remote:"Projects"
-Near :mailbox-local:proj
-Create Both
-Expunge Both
-SyncState *
-
-Channel mailbox-wildcard
-Far :mailbox-remote:"Wildcard"
-Near :mailbox-local:wildcard
-Create Both
-Expunge Both
-SyncState *
-
-Group mailbox
-Channel mailbox-inbox
-Channel mailbox-drafts
-Channel mailbox-sent
-Channel mailbox-trash
-Channel mailbox-archive
-Channel mailbox-spam
-Channel mailbox-proj
-Channel mailbox-wildcard
+CopyArrivalDate yes
