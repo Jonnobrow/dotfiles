@@ -1,8 +1,9 @@
 [Mailbox]
-source=notmuch://~/.local/share/mail/
+source=maildir://~/.local/share/mail/mailbox
 outgoing=/home/jb/.local/bin/sendmail mailbox
 from=Jonathan Bartlett <jsb@jonnobrow.co.uk>
+aliases=jonathan@jonnobrow.co.uk,jonathanscott2047@gmail.com
 sign=true
 query-map=~/.config/aerc/mailbox.query-map
-default=unread
-exclude-tags=uni
+folders-sort=INBOX,Sent,Archive
+copy-to=Sent
