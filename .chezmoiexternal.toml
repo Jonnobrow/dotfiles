@@ -1,0 +1,20 @@
+[".local/share/zsh/zsh-syntax-highlighting"]
+    type = "archive"
+    url = "https://github.com/zsh-users/zsh-syntax-highlighting/archive/master.tar.gz"
+    exact = true
+    stripComponents = 1
+[".local/share/zsh/zsh-autosuggestions"]
+    type = "archive"
+    url = "https://github.com/zsh-users/zsh-autosuggestions/archive/master.tar.gz"
+    exact = true
+    stripComponents = 1
+[".local/share/zsh/zsh-history-substring-search"]
+    type = "archive"
+    url = "https://github.com/zsh-users/zsh-history-substring-search/archive/master.tar.gz"
+    exact = true
+    stripComponents = 1
+[".local/share/nvim/site/pack/packer/start/packer.nvim"]
+    type = "archive"
+    url = "https://github.com/wbthomason/packer.nvim/archive/master.tar.gz"
+    exact = true
+    stripComponents = 1
