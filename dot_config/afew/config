@@ -1,56 +1,38 @@
-#default filter chain
-[FolderNameFilter]
-maildir_separator = /
-folder_transforms = Junk:spam Drafts:drafts Sent:sent Archive:archive Trash:trash INBOX:inbox
-
 [SpamFilter]
 [KillThreadsFilter]
 [ListMailsFilter]
 [SentMailsFilter]
 sent_tag = sent
-
 [ArchiveSentMailsFilter]
 
 [Filter.1]
-message = "Remove messages for postmaster"
-query = 'to:postmaster@jonnobrow.co.uk'
-tags = -new;-inbox;+postmaster;
-
-[Filter.2]
 message = "Get mailing lists out"
 query = 'tag:lists'
-tags = +unread;-new;
+tags = -inbox
 
-[Filter.3]
+[Filter.2]
 message = "Tag all messages from projects"
 query = 'from:gitlab.com or from:github.com or from:sr.ht'
-tags = +proj;-new;-inbox;
+tags = +proj;-inbox;
 
-[Filter.4]
+[Filter.3]
 message = "Tag all Sky messages"
 query = 'from:sky.uk'
 tags = +sky;-inbox;
 
-[Filter.5]
+[Filter.4]
 message = "Move emails from unrecognised"
-query = 'to:jonnobrow.co.uk and not to:jonathan@jonnobrow.co.uk and not to:contact@jonnobrow.co.uk and not to:postmaster@jonnobrow.co.uk and not to:jsb@jonnobrow.co.uk'
+query = 'to:jonnobrow.co.uk and not to:jonathan@jonnobrow.co.uk and not to:jsb@jonnobrow.co.uk'
 tags = -inbox;+wildcard;
-
-[Filter.6]
-message = "Tag articles"
-query = 'to:articles@jonnobrow.co.uk'
-tags = +article;
 
 [InboxFilter]
 
 [MailMover]
-folders = mailbox/INBOX mailbox/Junk mailbox/Archive uni/INBOX 
+folders = mailbox/INBOX
 rename = True
 max_age = 60
 
-mailbox/INBOX = 'tag:spam':mailbox/Junk 'NOT tag:inbox':mailbox/Archive 'tag:proj':mailbox/proj 'tag:wildcard':mailbox/wildcard
-mailbox/Junk = 'NOT tag:spam AND tag:inbox':mailbox/INBOX 'NOT tag:spam':mailbox/Archive 
-uni/INBOX = 'tag:spam':uni/Junk 'NOT tag:inbox':uni/Archive
-mailbox/Archive = 'tag:inbox':mailbox/INBOX
+mailbox/INBOX = 'tag:spam':mailbox/Junk 'NOT tag:inbox AND tag:sky':mailbox/INBOX/Sky 'NOT tag:inbox AND tag:proj':mailbox/INBOX/Projects 'NOT tag:inbox AND tag:wildcard':mailbox/INBOX/Wildcard 'NOT tag:inbox AND tag:lists':mailbox/INBOX/Lists
+
 
 
