@@ -16,3 +16,4 @@ venv
 .config/code-oss
 .rbenv
 .minecraft
+.git

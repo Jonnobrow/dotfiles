@@ -1,9 +1,0 @@
-#!/bin/sh
-accs=("mailbox")
-for acc in "${accs[@]}"; do
-    unread=$(/usr/bin/notmuch count tag:unread and tag:$acc)
-    if [[ $unread != 0 ]]; then
-        notify-send "$unread mail for $acc"
-    fi
-done
-

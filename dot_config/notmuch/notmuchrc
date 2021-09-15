@@ -31,7 +31,7 @@ path=/home/jb/.local/share/mail
 [user]
 name=Jonathan Bartlett
 primary_email=jonathan@jonnobrow.co.uk
-other_email=jsb1g18@soton.ac.uk;jonathscott2047@gmail.com;
+other_email=jsb@jonnobrow.co.uk;jonathscott2047@gmail.com;
 
 # Configuration for "notmuch new"
 #
