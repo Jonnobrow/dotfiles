@@ -1,0 +1,16 @@
+{{if (eq .chezmoi.osRelease.name "Arch Linux") -}}
+#!/usr/bin/env bash
+set -euo pipefail
+
+if ! type paru&>/dev/null; then
+	PARU_PATH=/tmp/paru
+	if [ -d $PARU_PATH ]; then
+		sudo /usr/bin/rm -rf $PARU_PATH
+	fi
+	git clone https://aur.archlinux.org/paru.git $PARU_PATH
+	(cd $PARU_PATH && makepkg -si)
+fi
+
+paru -Syu --nouseask - <"Pacfile"
+paru -S --nouseask --sudoloop - <"Aurfile"
+{{ end }}
