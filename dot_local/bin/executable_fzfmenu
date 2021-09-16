@@ -67,10 +67,12 @@ fi
 
 if [ -n "$opener" ]; then
     temp=$(mktemp)
-    foot -T 'foot-float' sh -c "fzf --preview 'bat {}' --bind 'enter:execute(xdg-open {})'"
+    foot -T 'foot-float' sh -c "fzf --preview 'bat {}' > $temp"
+    if [ -s "$temp" ]; then
+        nohup xdg-open "$(cat $temp)" >/dev/null 2>&1 &
+    fi
 fi
 
 if [ -n "$todo" ]; then
-    temp=$(mktemp)
-    foot -T 'foot-float' sh -c "todo list my-tasks | fzf | cut -d\"[\" -f1 | sed -r \"s/\\s+//g\" | xargs todo done"
+    foot -T 'foot-float' sh -c "todo list my-tasks --startable | fzf | cut -d\"[\" -f1 | sed -r \"s/\\s+//g\" | xargs todo done"
 fi

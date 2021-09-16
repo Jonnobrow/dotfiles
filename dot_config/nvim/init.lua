@@ -19,6 +19,13 @@ vim.api.nvim_exec( [[
     autocmd BufEnter *.{py,md,lua,go,yaml,yml} highlight OverLength ctermbg=darkgrey guibg=#592929
     autocmd BufEnter *.{py,md,lua,go,yaml,yml} match OverLength /\%82v.*/
   augroup END
+  augroup Spell
+    autocmd BufEnter *.md set spell
+    autocmd VimEnter * highlight SpellBad cterm=underline ctermfg=203 guifg=#ff5f5f
+    autocmd VimEnter * highlight SpellLocal cterm=underline ctermfg=203 guifg=#ff5f5f
+    autocmd VimEnter * highlight SpellRare cterm=underline ctermfg=203 guifg=#ff5f5f
+    autocmd VimEnter * highlight SpellCap cterm=underline ctermfg=203 guifg=#ff5f5f
+  augroup END
 ]],
   false
 )
@@ -119,6 +126,8 @@ end
 o.textwidth = 80
 bo.textwidth = 80
 vim.opt.formatoptions:remove('t')
+o.clipboard="unnamedplus,unnamed"
+o.spelllang="en_gb"
 o.scroll = 7
 o.wildignore = '*.o,*~,*.pyc'
 o.wildmode = 'longest,full'
