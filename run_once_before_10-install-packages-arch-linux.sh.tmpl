@@ -11,6 +11,5 @@ if ! type paru&>/dev/null; then
 	(cd $PARU_PATH && makepkg -si)
 fi
 
-paru -Syu --nouseask - <"Pacfile"
-paru -S --nouseask --sudoloop - <"Aurfile"
+paru -Syu --nouseask --sudoloop - <"$HOME/.local/share/chezmoi/Pacfile"
 {{ end }}

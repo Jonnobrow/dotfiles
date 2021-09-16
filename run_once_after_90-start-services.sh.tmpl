@@ -22,9 +22,6 @@ systemctl --user enable --now ssh-agent.service
 # Start relector (pacman mirrors)
 sudo systemctl enable --now reflector.timer
 
-# Start mopidy
-sudo systemctl enable --now mopidy.service
-
 # Start getty
 sudo systemctl enable --now getty@tty1.service
 {{- end }}
