@@ -226,6 +226,7 @@ require('which-key').register({
     },
     ["<leader>"] = {
         y = {'"+y', "Yank to clipboard"},
-        q = {"<cmd>q<cr>", "Quit"}
+        q = {"<cmd>q<cr>", "Quit"},
+        m = {"<cmd>call mkdir(expand(\"%:p:h\"), \"p\")<CR>", "Make current directory"}
     }
 })

@@ -25,10 +25,10 @@ done
 if [ -n "$profile" ]; then
   temp=$(mktemp)
   foot -T 'foot-float' \
-    sh -c "fd -t d -d 1 -I '[a-zA-Z0-9]\.+' --base-directory ~/.mozilla/firefox\
-    | fzf --no-sort > $temp"
+    sh -c "cat ~/.mozilla/firefox/profiles.ini | \grep Name | cut -d= -f2 \
+      | fzf --no-sort > $temp"
   if [ -s "$temp" ]; then
-    nohup firefox --profile "$HOME"/.mozilla/firefox/"$(cat "$temp")" >/dev/null 2>&1 &
+    nohup firefox -p $(cat "$temp") >/dev/null 2>&1 &
   else
     printf '%s is empty' "$temp"
   fi
