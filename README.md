@@ -37,7 +37,6 @@ running mbsync on login, is fine for my usage.
 
 I use [Firefox](https://mozilla.org/en-GB/firefox/new) with a few extensions. 
 
-- [FlyingFox](https://flyingfox.netlify.app/): Minimal and Configurable Theme
 - HTTPS Everywhere
 - UBlock Origin
 - KeepassXC Browser

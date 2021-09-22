@@ -1,61 +1,30 @@
-" vim: filetype=vim
-"
-sanitize tridactyllocal tridactylsync
+" Gruvbox Colour Scheme
+colourscheme --url https://raw.githubusercontent.com/bezmi/base16-tridactyl/master/base16-gruvbox-dark-soft.css base16-gruvbox-dark-soft
 
-" Blank tab
-set newtab about:blank
-
-" Editor Command
-set editorcmd ~/.local/bin/visual
-
-" Search
-unbind <C-f>
-bind / fillcmdline find
-bind ? fillcmdline find -?
-bind n findnext 1
-bind N findnext -1
-bind ,<Space> nohlsearch
-
-" Smooth Scrolling
-set smoothscroll true
-bind j scrollline 5
-bind k scrollline -5
-
-" Tabs
-bind J back
-bind K forward
-bind H tabprev
-bind L tabnext
-bind x tabclose
-
-" Cool Shit
-alias tabsort jsb browser.tabs.query({}).then(tabs => tabs.sort((t1, t2) => t1.url.localeCompare(t2.url)).forEach((tab, index) => browser.tabs.move(tab.id, {index})))
-alias tabuniq jsb browser.tabs.query({}).then(tabs => browser.tabs.remove(tabs.filter((tab, index) => tabs.slice(index + 1).find(t => t.url == tab.url)).map(tab => tab.id)))
-alias logall js let l=prompt() ; Object.keys(tri.config.get("logging")).forEach(k => tri.config.set("logging", k, l))
-alias gitclone jsb -p tri.native.run("git clone --depth=1 '" + JS_ARG + "' /home/jb/dirs/doc/proj/" + JS_ARG.split("/").slice(-1))
-alias rsssave jsb -p tri.native.run('cat >> ~/.config/newsboat/urls', JS_ARG + "\n")
-alias openGithubNotifications composite js Array.from(document.querySelectorAll("li.list-group-item > span:nth-child(1) > a:nth-child(2)")).map(e => e.href) | jsb -p JS_ARG.forEach(url => tri.excmds.tabopen(url))
-
-" Cool Shit Binds
-bind <A-v> js tri.excmds.shellescape(document.location.href).then(url => tri.native.run(`mpv --ontop --keepaspect-window --profile=protocol.http '${url}'`))
-bind ;v composite hint -qpipe a href | js -p JS_ARG.map(h => `'${h}'`).join(" ") | ! mpv
-
-" Site Specific
-bindurl reddit.com <Space><Space> urlmodify -t www old
-bindurl https://github.com/notifications <Space><Space> openGithubNotifications
-bindurl youtu((\.be)|(be\.com)) f hint -J
-
-" Sane hinting mode
-set hintfiltermode vimperator-reflow
-set hintnames numeric
-
-
-" Search
+" Good defaults
+set allowautofocus false
+set hintchars fdsqjklmrezauiopwxcvghtybn
 set searchengine ddg
-set searchurls.ddg https://duckduckgo.com/html?q=%s
-set searchurls.amazon https://smile.amazon.co.uk/s/ref=nb_sb_noss?field-keywords=%s
+set tabopencontaineraware true
+set visualenterauto false
+set wordpattern [^\s\/]+
+set newtab https://jonnobrow.github.io/startpage
 
-" Native Things
-setpref browser.autofocus false
-setpref browser.doanload.dir "/home/jb/dirs/dl"
-setpref browser.download.folderList 2
+" Disable all searchurls
+jsb Object.keys(tri.config.get("searchurls")).reduce((prev, u) => prev.catch(()=>{}).then(_ => tri.excmds.setnull("searchurls." + u)), Promise.resolve())
+set searchurls.ddg https://duckduckgo.com/html?q=%s
+
+" Binds
+bind gd tabdetach
+bind gD composite tabduplicate; tabdetach
+
+" Redirects
+autocmd DocStart ^http(s?)://www.reddit.com js tri.excmds.urlmodify("-t", "www", "old")
+autocmd DocStart ^http(s?)://www.amazon.co.uk js tri.excmds.urlmodify("-t", "www", "smile")
+
+
+" Editor that removes tmp
+set editorcmd foot -T foot-float sh -c 'nvim %f'
+alias editor_rm composite editor | jsb -p tri.native.run(`\rm -f '${JS_ARG[0]}'`)
+bind --mode=insert <C-i> editor_rm
+bind --mode=input <C-i> editor_rm
