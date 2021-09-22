@@ -1,0 +1,42 @@
+/***
+ * Hide Tabs
+ */
+#main-window[tabsintitlebar="true"]:not([extradragspace="true"]) #TabsToolbar > .toolbar-items {
+  opacity: 0;
+  pointer-events: none;
+}
+#main-window:not([tabsintitlebar="true"]) #TabsToolbar {
+    visibility: collapse !important;
+}
+
+/***
+ * Tree-style tab
+ */
+#sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"] #sidebar-header {
+  display: none;
+}
+
+/*Collapse in default state and add transition*/
+#sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"] {
+  overflow: hidden;
+  min-width: 40px;
+  max-width: 40px;
+  transition: all 0.2s ease;
+  border-right: 1px solid #0c0c0d;
+  z-index: 2;
+}
+
+/*Expand to 260px on hover*/
+#sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"]:hover,
+#sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"] #sidebar {
+  min-width: 260px !important;
+  max-width: 260px !important;
+  z-index: 1;
+}
+
+@-moz-document regexp("moz-extension://.+/sidebar/sidebar.html.*") {
+  :root,
+  #background {
+    background-color: rgb(40, 42, 48); /* https://github.com/piroor/treestyletab/blob/0eede581d763f92344fe64b1c042839f3b8ca955/webextensions/resources/ui-color.css#L198 */
+  }
+}
