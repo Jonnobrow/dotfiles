@@ -47,6 +47,8 @@ goimapnotify
 grim
 groff
 grub
+gruvbox-dark-gtk
+gruvbox-dark-icons-gtk
 helm
 htop
 hugo
@@ -64,6 +66,7 @@ linux-firmware
 linux-lts
 luarocks
 lvm2
+lxappearance
 m4
 make
 mako
@@ -100,7 +103,9 @@ pulseaudio
 pulseaudio-alsa
 python-language-server
 python-pynvim
+qt5-styleplugins
 qt5-wayland
+qt5ct
 rbenv
 rclone
 reflector
@@ -112,7 +117,9 @@ rustscan
 shc
 signal-desktop
 slurp
+spotify-qt
 starship
+steam
 sudo
 sway
 swayidle
@@ -149,6 +156,7 @@ wireguard-tools
 wl-clipboard
 wlsunset
 wofi
+xdg-user-dirs
 xorg-xwayland
 yarn
 ydotool
@@ -158,3 +166,4 @@ zathura
 zathura-pdf-mupdf
 zoom
 zsh
+zsh-theme-powerlevel10k

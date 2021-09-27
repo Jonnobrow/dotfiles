@@ -20,7 +20,6 @@ bind gD composite tabduplicate; tabdetach
 
 " Redirects
 autocmd DocStart ^http(s?)://www.reddit.com js tri.excmds.urlmodify("-t", "www", "old")
-autocmd DocStart ^http(s?)://www.amazon.co.uk js tri.excmds.urlmodify("-t", "www", "smile")
 
 
 " Editor that removes tmp
