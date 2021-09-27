@@ -1,0 +1,2 @@
+#!/bin/bash
+chezmoi execute-template < $1 | bash
