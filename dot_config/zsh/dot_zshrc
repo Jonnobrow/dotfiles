@@ -64,7 +64,7 @@ fi
 # Starship (Prompt)
 #eval "$(starship init zsh)"
 # Powerlevel10k
-source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+source ~/.local/share/zsh/powerlevel10k/powerlevel10k.zsh-theme
 
 # newsboat
 news() {
