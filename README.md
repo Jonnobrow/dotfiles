@@ -42,12 +42,18 @@ I use [Firefox](https://mozilla.org/en-GB/firefox/new) with a few extensions.
 - KeepassXC Browser
 - [Tridactyl](https://tridactyl.xyz)
 
-### my wm
+### my wm (Arch)
 
 [Sway](https://swaywm.org) all the way, with:
 - Waybar as my bar
 - Swaylock as my lockscreen
 - Swayidle for idle locking
+
+### macos
+
+I use macos for work so here is the stuff I use to make that more like Arch.
+
+- [Kitty](sw.kovidgoyal.net/)
 
 ### Package Bundle Files
 

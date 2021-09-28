@@ -20,10 +20,12 @@ tab_powerline_style angled
 tab_title_template  "{index}: {title}"
 # END GENERAL CONFIG
 
+{{ if (eq .chezmoi.os "darwin") }}
 # BEGIN MACOS CONFIG
 include macos.conf
 # END MACOS CONFIG
-
+{{ else if (eq .chezmoi.os "linux") }}
 # BEGIN ARCH CONFIG
 include arch.conf
 # END ARCH CONFIG
+{{ end }}
