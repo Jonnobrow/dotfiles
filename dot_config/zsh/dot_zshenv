@@ -88,3 +88,12 @@ export PATH="$PATH:$HOME/.local/bin/platform-tools"
 
 # Add local bins
 export PATH="$HOME/.local/bin/:$PATH"
+
+# KUNST
+export KUNST_SIZE="300x300"
+export KUNST_POSITION="-100-100"
+export KUNST_MUSIC_DIR="/media/music"
+
+# MPD
+export MPD_HOST="127.0.0.1"
+export MPD_PORT="6969"
