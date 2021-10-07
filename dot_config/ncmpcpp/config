@@ -1,7 +1,7 @@
 [mpd]
 mpd_music_dir = "/media/music"
 mpd_host = "localhost"
-mpd_port = "6969"
+mpd_port = "6600"
 mpd_crossfade_time = "2"
 
 [visualizer]

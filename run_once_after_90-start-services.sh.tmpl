@@ -24,4 +24,7 @@ sudo systemctl enable --now reflector.timer
 
 # Start getty
 sudo systemctl enable --now getty@tty1.service
+
+# Start MPD
+sudo systemctl enable --user --now mpd.service
 {{- end }}

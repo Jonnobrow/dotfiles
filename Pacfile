@@ -64,6 +64,7 @@ kde-cli-tools
 keepassxc
 khal
 khard
+kitty
 kubectl
 kubeseal
 kunst-git
@@ -79,8 +80,10 @@ mako
 man-db
 man-pages
 minecraft-launcher
+mopidy
 mpc
 mpd
+mpdscribble
 mpv
 msmtp
 mutt-ics
