@@ -105,3 +105,4 @@ local g = vim.g
 g.vsnip_filetypes = {
     vimwiki = {'markdown'}
 }
+g.vsnip_snippet_dir = "~/.config/nvim/vsnip"

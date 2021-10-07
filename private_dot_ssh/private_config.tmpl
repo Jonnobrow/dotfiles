@@ -14,7 +14,7 @@ Host jbpc
     Hostname 192.168.2.1
     User jb
 
-Host jbpi
+Host mocha
     Hostname 192.168.4.3
     User ubuntu
     IdentityFile ~/.ssh/id_ed25519
@@ -26,7 +26,12 @@ Host espresso
 
 Host cappuccino
     Hostname 192.168.4.2
-    User jb
+    User root
+    IdentityFile ~/.ssh/id_ed25519
+
+Host cortado
+    Hostname 192.168.4.53
+    User root
     IdentityFile ~/.ssh/id_ed25519
 
 Host bbs
