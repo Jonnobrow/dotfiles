@@ -1,5 +1,6 @@
 aerc
 afew
+ansible
 apache
 autoconf
 automake
@@ -17,6 +18,9 @@ chezmoi
 cmake
 code
 darktable
+deemix-git
+deemix-gui-git
+deemix-pyweb-git
 dhcpcd
 digikam
 dino
@@ -44,6 +48,7 @@ git-delta-git
 git-lfs
 go
 goimapnotify
+google-chrome
 grim
 groff
 grub
@@ -62,6 +67,7 @@ khard
 kitty
 kubectl
 kubeseal
+kunst-git
 libtool
 linux-firmware
 linux-lts
@@ -74,8 +80,10 @@ mako
 man-db
 man-pages
 minecraft-launcher
+mopidy
 mpc
 mpd
+mpdscribble
 mpv
 msmtp
 mutt-ics
@@ -103,6 +111,8 @@ powerline-fonts
 pulseaudio
 pulseaudio-alsa
 python-language-server
+python-pip
+python-pylast
 python-pynvim
 qt5-styleplugins
 qt5-wayland
@@ -118,6 +128,7 @@ rustscan
 shc
 signal-desktop
 slurp
+sops
 spotify-qt
 starship
 steam
@@ -128,7 +139,9 @@ swaylock
 swi-prolog
 sxiv
 syncthing
+taskfile-git
 tcpdump
+tealdeer
 teams
 teams-for-linux
 terminus-font
@@ -139,11 +152,12 @@ texlive-core
 texlive-latexextra
 texlive-science
 tk
-tldr
 tmux
 todoman
 transmission-cli
 trash-cli
+ueberzug
+unrar
 urlscan
 usbutils
 vdirsyncer
@@ -152,6 +166,7 @@ waybar
 wev
 wf-recorder
 wget
+whatsappqt
 which
 wireguard-tools
 wl-clipboard
@@ -167,4 +182,5 @@ zathura
 zathura-pdf-mupdf
 zoom
 zsh
+zsh-completions
 zsh-theme-powerlevel10k

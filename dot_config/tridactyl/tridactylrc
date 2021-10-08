@@ -8,7 +8,7 @@ set searchengine ddg
 set tabopencontaineraware true
 set visualenterauto false
 set wordpattern [^\s\/]+
-set newtab https://jonnobrow.github.io/startpage
+set newtab https://start.jonnobrow.co.uk/A0KzFUFVbYQjaZbDcDugD
 
 " Disable all searchurls
 jsb Object.keys(tri.config.get("searchurls")).reduce((prev, u) => prev.catch(()=>{}).then(_ => tri.excmds.setnull("searchurls." + u)), Promise.resolve())

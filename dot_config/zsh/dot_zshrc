@@ -64,7 +64,7 @@ fi
 # Starship (Prompt)
 #eval "$(starship init zsh)"
 # Powerlevel10k
-source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+source ~/.local/share/zsh/powerlevel10k/powerlevel10k.zsh-theme
 
 # newsboat
 news() {
@@ -121,6 +121,9 @@ alias mvg="$(which advmv) -g"
 alias clear="echo ctrl+l"
 alias rm="echo trash"
 alias exit="echo ctrl+d"
+
+# Kubernetes
+alias kdbgbox="kubectl run -i --tty --rm debug --image=busybox --restart=Never -- sh"
 
 # To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
 [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh

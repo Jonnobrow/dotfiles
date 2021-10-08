@@ -18,3 +18,8 @@
     url = "https://github.com/wbthomason/packer.nvim/archive/master.tar.gz"
     exact = true
     stripComponents = 1
+[".local/share/zsh/powerlevel10k"]
+    type = "archive"
+    url = "https://github.com/romkatv/powerlevel10k/archive/master.tar.gz"
+    exact = true
+    stripComponents = 1
