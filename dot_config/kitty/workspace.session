@@ -1,0 +1,14 @@
+new_tab Shell
+cd ~
+enabled_layouts tall, stack
+layout stack
+launch zsh
+
+new_tab Editor
+cd ~
+enabled_layouts tall, stack
+layout stack
+launch nvim
+
+new_tab Email
+launch --title "Email" aerc
