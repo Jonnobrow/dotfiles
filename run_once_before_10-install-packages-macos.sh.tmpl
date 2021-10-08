@@ -1,0 +1,24 @@
+{{- if (eq .chezmoi.os "darwin") -}}
+#!/bin/bash
+
+brew bundle --no-lock --file=/dev/stdin <<EOF
+brew "git"
+brew "bat"
+brew "chezmoi"
+brew "exa"
+brew "fzf"
+brew "fd"
+brew "ripgrep"
+brew "git-lfs"
+cask "keepassxc"
+brew "khal"
+brew "khard"
+cask "kitty"
+brew "tealdeer"
+brew "neovim"
+cask "signal"
+brew "todoman"
+cask "karabiner-elements"
+brew "vdirsyncer"
+EOF
+{{ end -}}
