@@ -114,6 +114,7 @@ python-language-server
 python-pip
 python-pylast
 python-pynvim
+python-virtualenv
 qt5-styleplugins
 qt5-wayland
 qt5ct
