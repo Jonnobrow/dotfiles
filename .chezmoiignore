@@ -5,6 +5,8 @@ Aurfile
 Npmfile
 scripts/
 other/
+run
+install.sh
 
 {{- if not .secrets }}
 .ssh/id_ed25519_github

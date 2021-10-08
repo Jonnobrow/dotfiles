@@ -10,6 +10,7 @@ brew "fzf"
 brew "fd"
 brew "ripgrep"
 brew "git-lfs"
+brew "git-delta"
 cask "keepassxc"
 brew "khal"
 brew "khard"
@@ -21,4 +22,9 @@ brew "todoman"
 cask "karabiner-elements"
 brew "vdirsyncer"
 EOF
+
+$(brew --prefix)/opt/fzf/install
+
+brew tap homebrew/cask-fonts
+brew install --cask font-hack-nerd-font
 {{ end -}}

@@ -36,9 +36,10 @@ alias lsd="exa -ls size"
 alias tree="exa -T --git-ignore"
 
 # fzf
-source /usr/share/fzf/key-bindings.zsh
-source /usr/share/fzf/completion.zsh
+[ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
+[ -f /usr/share/fzf/completions.zsh ] && source /usr/share/fzf/completion.zsh
 source ~/.config/zsh/fuzzy.zsh
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # pins
 alias pins="paru -Slq | fzf -m --preview 'bat --style=numbers --color=always --line-range :500 -l bash <(paru -Si {1}) <(paru -Fl {1} | awk \"{print \$2}\")' | xargs -ro paru -S"
@@ -127,3 +128,4 @@ alias kdbgbox="kubectl run -i --tty --rm debug --image=busybox --restart=Never -
 
 # To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
 [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
+
