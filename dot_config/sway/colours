@@ -1,4 +1,4 @@
-set $wallpaper "$HOME/.config/sway/wall.jpg"
+set $wallpaper "$HOME/.config/wallpapers/wall.jpg"
 
 set $background "#282828"
 set $foreground "#ebdbb2"
