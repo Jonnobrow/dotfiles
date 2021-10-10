@@ -1,12 +1,141 @@
 {{- if (eq .chezmoi.os "darwin") -}}
-#!/bin/bash
+#!/usr/bin/env bash
 
-set -eufo pipefail
+# ~/.macos — https://mths.be/macos
+
+
+# Ask for the administrator password upfront
+sudo -v
+
+# Keep-alive: update existing `sudo` time stamp until `.macos` has finished
+while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+
+# Set computer name (as done via System Preferences → Sharing)
+sudo scutil --set ComputerName "jbl76mac"
+sudo scutil --set HostName "jbl76mac"
+sudo scutil --set LocalHostName "jbl76mac"
+sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "jbl76mac"
 
 # Set key repeat and disable press and hold
 defaults write -g InitialKeyRepeat -int 8
 defaults write -g KeyRepeat -int 1
 defaults write -g ApplePressAndHoldEnabled -bool false
+
+# Trackpad: enable tap to click for this user and for the login screen
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
+defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+
+# Trackpad: map bottom right corner to right-click
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadCornerSecondaryClick -int 2
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadRightClick -bool true
+defaults -currentHost write NSGlobalDomain com.apple.trackpad.trackpadCornerClickBehavior -int 1
+defaults -currentHost write NSGlobalDomain com.apple.trackpad.enableSecondaryClick -bool true
+
+# Disable “natural” (Lion-style) scrolling
+defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
+
+# Set language and text formats
+# Note: if you’re in the US, replace `EUR` with `USD`, `Centimeters` with
+# `Inches`, `en_GB` with `en_US`, and `true` with `false`.
+defaults write NSGlobalDomain AppleLanguages -array "en"
+defaults write NSGlobalDomain AppleLocale -string "en_GB@currency=GBP"
+defaults write NSGlobalDomain AppleMeasurementUnits -string "Centimeters"
+defaults write NSGlobalDomain AppleMetricUnits -bool true
+
+# Show language menu in the top right corner of the boot screen
+sudo defaults write /Library/Preferences/com.apple.loginwindow showInputMenu -bool true
+
+# Set the timezone; see `sudo systemsetup -listtimezones` for other values
+sudo systemsetup -settimezone "Europe/London" > /dev/null
+
+# Enable subpixel font rendering on non-Apple LCDs
+# Reference: https://github.com/kevinSuttle/macOS-Defaults/issues/17#issuecomment-266633501
+defaults write NSGlobalDomain AppleFontSmoothing -int 1
+
+# Enable HiDPI display modes (requires restart)
+sudo defaults write /Library/Preferences/com.apple.windowserver DisplayResolutionEnabled -bool true
+
+# Finder: allow quitting via ⌘ + Q; doing so will also hide desktop icons
+defaults write com.apple.finder QuitMenuItem -bool true
+
+# Finder: disable window animations and Get Info animations
+defaults write com.apple.finder DisableAllAnimations -bool true
+
+# Finder: show hidden files by default
+defaults write com.apple.finder AppleShowAllFiles -bool true
+
+# Finder: show all filename extensions
+defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+
+# Show the ~/Library folder
+chflags nohidden ~/Library && xattr -d com.apple.FinderInfo ~/Library
+
+# Show the /Volumes folder
+sudo chflags nohidden /Volumes
+
+# Set the icon size of Dock items to 36 pixels
+defaults write com.apple.dock tilesize -int 36
+
+# Change minimize/maximize window effect
+defaults write com.apple.dock mineffect -string "scale"
+
+# Minimize windows into their application’s icon
+defaults write com.apple.dock minimize-to-application -bool true
+
+# Wipe all (default) app icons from the Dock
+# This is only really useful when setting up a new Mac, or if you don’t use
+# the Dock to launch apps.
+defaults write com.apple.dock persistent-apps -array
+
+# Show only open applications in the Dock
+defaults write com.apple.dock static-only -bool true
+
+# Don’t animate opening applications from the Dock
+defaults write com.apple.dock launchanim -bool false
+
+# Don’t show Dashboard as a Space
+defaults write com.apple.dock dashboard-in-overlay -bool true
+
+# Don’t automatically rearrange Spaces based on most recent use
+defaults write com.apple.dock mru-spaces -bool false
+
+# Remove the auto-hiding Dock delay
+defaults write com.apple.dock autohide-delay -float 0
+# Remove the animation when hiding/showing the Dock
+defaults write com.apple.dock autohide-time-modifier -float 0
+
+# Automatically hide and show the Dock
+defaults write com.apple.dock autohide -bool true
+
+# Make Dock icons of hidden applications translucent
+defaults write com.apple.dock showhidden -bool true
+
+# Don’t show recent applications in Dock
+defaults write com.apple.dock show-recents -bool false
+
+# Hot corners
+# Possible values:
+#  0: no-op
+#  2: Mission Control
+#  3: Show application windows
+#  4: Desktop
+#  5: Start screen saver
+#  6: Disable screen saver
+#  7: Dashboard
+# 10: Put display to sleep
+# 11: Launchpad
+# 12: Notification Center
+# 13: Lock Screen
+# Top left screen corner → Mission Control
+defaults write com.apple.dock wvous-tl-corner -int 2
+defaults write com.apple.dock wvous-tl-modifier -int 0
+# Top right screen corner → Desktop
+defaults write com.apple.dock wvous-tr-corner -int 4
+defaults write com.apple.dock wvous-tr-modifier -int 0
+# Bottom left screen corner → Start screen saver
+defaults write com.apple.dock wvous-bl-corner -int 5
+defaults write com.apple.dock wvous-bl-modifier -int 0
 
 {{ end -}}
 
