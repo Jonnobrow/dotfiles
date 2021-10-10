@@ -1,12 +1,13 @@
 bash-language-server
 dockerfile-language-server-nodejs
+neovim
 node-gyp
 npm
 prettier
 pyright
 semver
-typescript-language-server
 typescript
+typescript-language-server
 vscode-html-languageserver-bin
 vscode-json-languageserver
 vscode-langservers-extracted

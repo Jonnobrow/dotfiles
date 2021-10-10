@@ -1,0 +1,15 @@
+version: '3'
+
+tasks:
+  bundle:update-all:
+    cmds:
+      - task: bundle:pacman
+      - echo "Pacman Bundle File Updated"
+      - task: bundle:npm
+      - echo "Node Bundle File Updated"
+  bundle:pacman:
+    cmds:
+      - pacman -Qeq > Pacfile
+  bundle:npm:
+    cmds:
+      - yarn global list --parseable --depth=0 | rg info | awk -F"[\"\@]" '/info/{print $2}' > Npmfile

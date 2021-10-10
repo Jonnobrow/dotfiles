@@ -1,0 +1,8 @@
+{{ if (or (eq .chezmoi.os "linux") (eq .chezmoi.os "darwin")) -}}
+#!/usr/bin/env bash
+set -euo pipefail
+
+go install github.com/mattn/efm-langserver@latest
+go install golang.org/x/tools/gopls@latest
+go install github.com/go-task/task/v3/cmd/task@latest
+{{- end }}

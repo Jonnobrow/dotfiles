@@ -50,6 +50,7 @@ require('packer').startup(function()
 
   -- fzf
   use {
+    {'junegunn/fzf', run = function() vim.fn['fzf#install'](0) end},
     {'junegunn/fzf.vim', config = [[require('config.fzf')]]},
     'gfanto/fzf-lsp.nvim'
   }

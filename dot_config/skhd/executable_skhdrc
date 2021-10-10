@@ -1,5 +1,5 @@
 # Launch Apps
-alt - return : kitty
+alt - return : open -a kitty
 
 # Navigation
 alt - h : yabai -m window --focus west

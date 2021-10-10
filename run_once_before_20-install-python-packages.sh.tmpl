@@ -1,0 +1,6 @@
+{{ if (or (eq .chezmoi.os "linux") (eq .chezmoi.os "darwin")) -}}
+#!/usr/bin/env bash
+set -euo pipefail
+
+python3 -m pip install pynvim 
+{{- end }}

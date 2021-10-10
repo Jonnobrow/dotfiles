@@ -2,26 +2,27 @@
 #!/bin/bash
 
 brew bundle --no-lock --file=/dev/stdin <<EOF
-brew "git"
 brew "bat"
 brew "chezmoi"
 brew "exa"
-brew "fzf"
 brew "fd"
-brew "ripgrep"
-brew "git-lfs"
+brew "fzf"
+brew "git"
 brew "git-delta"
-cask "keepassxc"
+brew "git-lfs"
+brew "go"
 brew "khal"
 brew "khard"
-cask "kitty"
-brew "tealdeer"
 brew "neovim"
-cask "signal"
+brew "ripgrep"
+brew "tealdeer"
 brew "todoman"
-cask "karabiner-elements"
 brew "vdirsyncer"
 brew "yarn"
+cask "karabiner-elements"
+cask "keepassxc"
+cask "kitty"
+cask "signal"
 EOF
 
 $(brew --prefix)/opt/fzf/install

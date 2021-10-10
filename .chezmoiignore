@@ -29,7 +29,6 @@ install.sh
 .config/latexmk
 .config/mako
 .config/mopidy
-.config/mpd
 .config/msmtp
 .config/ncmpcpp
 .config/notmuch
