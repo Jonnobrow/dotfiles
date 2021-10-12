@@ -4,6 +4,7 @@
 brew bundle --no-lock --file=/dev/stdin <<EOF
 brew "bat"
 brew "chezmoi"
+brew "docker"
 brew "exa"
 brew "fd"
 brew "fzf"
@@ -13,6 +14,7 @@ brew "git-lfs"
 brew "go"
 brew "khal"
 brew "khard"
+brew "kubernetes-cli"
 brew "neovim"
 brew "ripgrep"
 brew "tealdeer"
@@ -24,10 +26,14 @@ cask "keepassxc"
 cask "kitty"
 cask "signal"
 cask "slack"
+cask "spotify"
 EOF
 
 $(brew --prefix)/opt/fzf/install
 
 brew tap homebrew/cask-fonts
 brew install --cask font-hack-nerd-font
+
+brew tap tigase/tigase
+brew install beagleim
 {{ end -}}

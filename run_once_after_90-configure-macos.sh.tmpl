@@ -17,8 +17,8 @@ sudo scutil --set LocalHostName "jbl76mac"
 sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "jbl76mac"
 
 # Set key repeat and disable press and hold
-defaults write -g InitialKeyRepeat -int 8
-defaults write -g KeyRepeat -int 1
+defaults write -g InitialKeyRepeat -int 10
+defaults write -g KeyRepeat -int 2
 defaults write -g ApplePressAndHoldEnabled -bool false
 
 # Trackpad: enable tap to click for this user and for the login screen
