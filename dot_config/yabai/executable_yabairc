@@ -48,6 +48,19 @@ yabai -m config mouse_modifier              fn
 yabai -m config mouse_action1               move
 yabai -m config mouse_action2               resize
 
+
+# ===== Spaces =================================
+yabai -m space 1 --label "Editor"
+yabai -m space 2 --label "Browser"
+yabai -m space 3 --label "Comms"
+yabai -m space 4 --label "Personal"
+
+yabai -m rule --add app="Signal"                space=4
+yabai -m rule --add app="BeagleIM"              space=4
+yabai -m rule --add app="Microsoft Teams"       space=3
+yabai -m rule --add app="Slack"                 space=3
+yabai -m rule --add app="Microsoft Outlook"     space=3
+
 # ===== Rules ==================================
 
 yabai -m rule --add label="Finder" app="^Finder$" title="(Co(py|nnect)|Move|Info|Pref)" manage=off
@@ -60,7 +73,14 @@ yabai -m rule --add label="Dictionary" app="^Dictionary$" manage=off
 yabai -m rule --add label="mpv" app="^mpv$" manage=off
 yabai -m rule --add label="Software Update" title="Software Update" manage=off
 yabai -m rule --add label="About This Mac" app="System Information" title="About This Mac" manage=off
-#yabai -m rule --add label="Teams" app="Microsoft Teams" title=""
+yabai -m rule --add title="Microsoft Teams Notification" window_border=off
+yabai -m rule --add title="Microsoft Teams Notification" manage=off
+yabai -m rule --add app="Cisco AnyConnect Secure Mobility Client" manage=off
+yabai -m rule --add app="Self Service" title="Jamf Self Service" manage=off
+yabai -m rule --add app="BeagleIM" title="Preferences" manage=off
+yabai -m rule --add app="Microsoft Teams" title="Loading Microsoft Teams" manage=off 
+yabai -m rule --add app="Jabra Direct" manage=off 
+
 
 set +x
 printf "yabai: configuration loaded...\\n"t

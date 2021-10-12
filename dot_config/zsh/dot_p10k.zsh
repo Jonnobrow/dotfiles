@@ -53,6 +53,8 @@
     dir                       # current directory
     vcs                       # git status
     command_execution_time    # previous command duration
+
+
     # =========================[ Line #2 ]=========================
     newline                   # \n
     virtualenv                # python virtual environment
@@ -66,6 +68,11 @@
     # virtualenv              # python virtual environment
     # context                 # user@host
     time                      # current time
+    virtualenv                
+    aws
+    gcloud
+    todo
+    kubecontext
     # =========================[ Line #2 ]=========================
     newline                   # \n
   )
@@ -99,6 +106,10 @@
   # Don't show Python version.
   typeset -g POWERLEVEL9K_VIRTUALENV_SHOW_PYTHON_VERSION=false
   typeset -g POWERLEVEL9K_VIRTUALENV_{LEFT,RIGHT}_DELIMITER=
+
+  # Kubecontext
+  typeset -g POWERLEVEL9K_VIRTUALENV_SHOW_ON_COMMAND='python|python3|pip|pip3'
+  typeset -g POWERLEVEL9K_KUBECONTEXT_SHOW_ON_COMMAND='kubectl|helm|kubens|kubectx|oc|istioctl|kogito|k9s|helmfile|flux|fluxctl|stern'
 
   # Blue current directory.
   typeset -g POWERLEVEL9K_DIR_FOREGROUND=$blue
