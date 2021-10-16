@@ -55,6 +55,7 @@ grub
 gruvbox-dark-gtk
 gruvbox-dark-icons-gtk
 helm
+helm-docs
 htop
 hugo
 isync
@@ -112,6 +113,7 @@ pulseaudio
 pulseaudio-alsa
 python-language-server
 python-pip
+python-pre-commit
 python-pylast
 python-pynvim
 python-virtualenv
@@ -130,6 +132,7 @@ shc
 signal-desktop
 slurp
 sops
+speedtest-rs
 spotify-qt
 starship
 steam
@@ -155,6 +158,7 @@ texlive-science
 tk
 tmux
 todoman
+traceroute
 transmission-cli
 trash-cli
 ueberzug
@@ -175,6 +179,7 @@ wlsunset
 wofi
 xdg-user-dirs
 xorg-xwayland
+yamllint
 yarn
 ydotool
 youtube-dl

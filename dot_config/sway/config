@@ -54,7 +54,7 @@ for_window [app_id="zoom"] \
 for_window [app_id="zoom" title="^Zoom\ Meeting$"] \
   floating disable
 for_window [title="sxiv" instance="Kunst"] \
-  floating enable, move position 2210 1040, no_focus
+  floating enable, move position 2140 1080, no_focus, sticky enable
 
 
 # Theme
