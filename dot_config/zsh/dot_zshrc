@@ -130,6 +130,11 @@ alias exit="echo ctrl+d"
 # Kubernetes
 alias kdbgbox="kubectl run -i --tty --rm debug --image=busybox --restart=Never -- sh"
 
+# Git
+alias gds="git diff --staged"
+alias gdi="git diff"
+
+
 # To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
 [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
 

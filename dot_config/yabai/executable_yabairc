@@ -4,10 +4,14 @@
 set -x
 
 declare -A color
-
 color["focused"]="0xFF98931A"
 color["normal"]="0xFFD79921"
 color["preselect"]="0xFFD79921"
+
+declare -A displays
+display[1]=$(yabai -m query --displays | jq -r '.[] | select(.uuid=="2E079EA4-38E1-FB0A-ED0D-B332F9D6FB13").index')
+display[2]=$(yabai -m query --displays | jq -r '.[] | select(.uuid=="A354A182-9D76-5886-39F5-FC71B9C78D2B").index')
+
 
 # ===== Loading Scripting Additions ============
 
@@ -50,18 +54,35 @@ yabai -m config mouse_action2               resize
 
 
 # ===== Spaces =================================
-yabai -m space 1 --label "Editor"
-yabai -m space 2 --label "Browser"
-yabai -m space 3 --label "Comms"
-yabai -m space 4 --label "Personal"
 
-yabai -m rule --add app="Signal"                space=4
-yabai -m rule --add app="BeagleIM"              space=4
-yabai -m rule --add app="Microsoft Teams"       space=3
-yabai -m rule --add app="Slack"                 space=3
-yabai -m rule --add app="Microsoft Outlook"     space=3
+Spaces=("Editor" "Browser" "Main 3" "Comms 1" "Comms 2" "Personal")
+for space in {1..6}; do
+    echo "Setting up space $space ${Spaces[$space]}"
+    # Create space if it doesn't exist
+    if [[ $(yabai -m query --spaces | jq ".[] | select(.index==$space) | (., length)") == "" ]]; then
+        yabai -m space --create
+    fi
+    # Label the space
+    yabai -m space $space --label ${Spaces[$(($space - 1))]} 
+    # Focus the space and move to display
+    yabai -m space --focus $space && yabai -m space --display ${displays[$(($space / 4 + 1))]}
+done
+# Focus first space on second display
+yabai -m space --focus 4
+# Then bring focus to first space on primary display
+yabai -m space --focus 1
 
 # ===== Rules ==================================
+
+yabai -m rule --add app="Signal"                space=6
+yabai -m rule --add app="BeagleIM"              space=6
+yabai -m rule --add app="Microsoft Teams"       space=5
+yabai -m rule --add app="Slack"                 space=5
+yabai -m rule --add app="Microsoft Outlook"     space=5
+yabai -m rule --add app="Webex"                 space=4
+yabai -m rule --add app="WhatsApp"              space=4
+yabai -m rule --add app="Code"                  space=1
+yabai -m rule --add app="Spotify"               space=3
 
 yabai -m rule --add label="Finder" app="^Finder$" title="(Co(py|nnect)|Move|Info|Pref)" manage=off
 yabai -m rule --add label="System Preferences" app="^System Preferences$" title=".*" manage=off
@@ -69,7 +90,6 @@ yabai -m rule --add label="App Store" app="^App Store$" manage=off
 yabai -m rule --add label="Activity Monitor" app="^Activity Monitor$" manage=off
 yabai -m rule --add label="KeePassXC" app="^KeePassXC$" manage=off
 yabai -m rule --add label="KeePassXC" app="^KeePassXC$" sticky=on
-yabai -m rule --add label="KeePassXC" app="^KeePassXC$" topmost=on
 yabai -m rule --add label="Calculator" app="^Calculator$" manage=off
 yabai -m rule --add label="Dictionary" app="^Dictionary$" manage=off
 yabai -m rule --add label="mpv" app="^mpv$" manage=off
@@ -84,7 +104,19 @@ yabai -m rule --add app="Microsoft Teams" title="Loading Microsoft Teams" manage
 yabai -m rule --add app="Jabra Direct" manage=off 
 yabai -m rule --add app="Firefox" title="Library" manage=off
 yabai -m rule --add app="DEPNotify" manage=off
+yabai -m rule --add title="Preferences" manage=off
 
+# Move windows at startup
+moveapps() {
+    apps=$(yabai -m query --windows | jq -r --arg APP "$1" '.[] | select(.app==$APP).id')
+    for app in $apps; do
+        yabai -m window $app --space $2
+    done
+}
 
+moveapps Firefox 2
+moveapps kitty 1
+
+killall Dock # Restart Dock so wallpaper is correctly applied
 set +x
 printf "yabai: configuration loaded...\\n"t
