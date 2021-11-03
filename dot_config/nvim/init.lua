@@ -101,6 +101,10 @@ require('packer').startup(function()
 
   -- GPG
   use 'jamessan/vim-gnupg'
+
+  -- Jinja
+  use "lepture/vim-jinja"
+
 end)
 
 -- Leader and Local Leader

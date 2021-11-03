@@ -61,21 +61,22 @@ common_config.capabilities = require('cmp_nvim_lsp').update_capabilities(common_
 
 -- Python :: npm i -g pyright
 require("lspconfig").pyright.setup {
-	cmd = { "/usr/bin/pyright-langserver", "--stdio" },
+	cmd = { "/usr/local/bin/pyright-langserver", "--stdio" },
 	on_attach = common_config.common_on_attach,
 	capabilities = common_config.capabilities,
 	filetypes = { "python" },
 	rootPatterns = { ".git", "setup.py", "setup.cfg", "pyproject.toml", "requirements.txt" },
 	settings = {
-		python = {
-			analysis = {
+        python = {
+            analysis = {
 				typeCheckingMode = "basic",
 				reportUnusedImport = true,
 				autoSearchPaths = true,
 				useLibraryCodeForTypes = true,
 				diagnosticMode = "workspace",
-			}
-		}
+                autoImportCompletions = true
+            }
+        }
 	}
 }
 
@@ -107,6 +108,11 @@ require'lspconfig'.jsonls.setup {
 
 -- Go :: GO111MODULE=on go get golang.org/x/tools/gopls@latest
 require'lspconfig'.gopls.setup{
+  on_attach = common_config.common_on_attach,
+  capabilities = capabilities
+}
+
+require'lspconfig'.terraformls.setup{
   on_attach = common_config.common_on_attach,
   capabilities = capabilities
 }

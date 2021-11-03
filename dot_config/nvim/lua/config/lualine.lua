@@ -59,6 +59,7 @@ ins_left {'diagnostics',
 -- Right: Encoding | Format | Git Branch | Git Diff
 ins_right {'o:encoding', upper = true, condition = conditions.hide_in_width}
 ins_right {'fileformat', upper = true, icons_enabled = true}
+ins_right {'filetype', upper = true, icons_enabled = true}
 ins_right {'branch', icon = '', condition = conditions.check_git_workspace}
 ins_right {'diff', 
             symbols = {added = ' ', modified = '柳 ', removed = ' '},
