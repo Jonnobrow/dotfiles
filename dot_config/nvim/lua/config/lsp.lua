@@ -1,38 +1,12 @@
--- Diagnostics symbols for display in the sign column.
-vim.fn.sign_define("LspDiagnosticsSignError", { texthl = "LspDiagnosticsSignError", text = "✖", numhl = "LspDiagnosticsSignError" })
-vim.fn.sign_define("LspDiagnosticsSignWarning", { texthl = "LspDiagnosticsSignWarning", text = "❢", numhl = "LspDiagnosticsSignWarning" })
-vim.fn.sign_define("LspDiagnosticsSignHint", { texthl = "LspDiagnosticsSignHint", text = "", numhl = "LspDiagnosticsSignHint" })
-vim.fn.sign_define("LspDiagnosticsSignInformation", { texthl = "LspDiagnosticsSignInformation", text = "𝓲", numhl = "LspDiagnosticsSignInformation" })
+local lsp_installer = require "nvim-lsp-installer"
 
--- Common Configuration
-local common_config = {}
+local lsp_keymaps = require "config.lsp.keymaps"
+local capabilities = require "config.lsp.capabilities"
 
-local function key_maps(bufnr)
-	--Enable completion triggered by <c-x><c-o>
-	vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
+require "config.lsp.handlers"
 
-	-- Mappings.
-	local opts = { buffer=bufnr, noremap=true, silent=true }
+local M = {}
 
-	local maps = {
-		["<leader>l"] = {
-			name = "Lsp",
-			a = { "<cmd>lua vim.lsp.buf.code_action()<CR>", "Code Action" },
-			d = { "<cmd>lua vim.lsp.buf.definition()<CR>", "Definition" },
-			D = { "<cmd>lua vim.lsp.buf.declaration()<CR>", "Declaration" },
-			i = { "<cmd>lua vim.lsp.buf.implementation()<CR>", "Implementation" },
-			k = { "<cmd>lua vim.lsp.buf.hover()<CR>", "Hover" },
-			h = { "<cmd>lua vim.lsp.buf.signature_help()<CR>", "Help" },
-			n = { "<cmd>lua vim.lsp.buf.rename()<CR>", "Rename" },
-			r = { "<cmd>lua vim.lsp.buf.references()<CR>", "References" },
-            f = { "<cmd>lua vim.lsp.buf.formatting()<CR>", "Formatting"}
-		},
-		["[d"] = { "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", "Prev Diagnostics" },
-		["]d"] = { "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", "Next Diagnostics" }
-	}
-
-	require("which-key").register(maps, opts);
-end
 
 local function documentHighlight(client)
 	-- Set autocommands conditional on server_capabilities
@@ -58,65 +32,7 @@ end
 -- cmp-lsp capabilities
 common_config.capabilities = vim.lsp.protocol.make_client_capabilities()
 common_config.capabilities = require('cmp_nvim_lsp').update_capabilities(common_config.capabilities)
-
--- Python :: npm i -g pyright
-require("lspconfig").pyright.setup {
-	cmd = { "/usr/local/bin/pyright-langserver", "--stdio" },
-	on_attach = common_config.common_on_attach,
-	capabilities = common_config.capabilities,
-	filetypes = { "python" },
-	rootPatterns = { ".git", "setup.py", "setup.cfg", "pyproject.toml", "requirements.txt" },
-	settings = {
-        python = {
-            analysis = {
-				typeCheckingMode = "basic",
-				reportUnusedImport = true,
-				autoSearchPaths = true,
-				useLibraryCodeForTypes = true,
-				diagnosticMode = "workspace",
-                autoImportCompletions = true
-            }
-        }
-	}
-}
-
--- Docker :: npm i -g dockerfile-language-server-nodejs
-require'lspconfig'.dockerls.setup{
-	on_attach = common_config.common_on_attach,
-    capabilities = capabilities
-}
-
--- Yaml :: yarn global add yaml-language-server
-require'lspconfig'.yamlls.setup{
-	on_attach = common_config.common_on_attach,
-    capabilities = capabilities
-}
-
--- JSON :: npm i -g vscode-langservers-extracted
-require'lspconfig'.jsonls.setup {
-  cmd = {"vscode-json-languageserver", "--stdio"},
-  on_attach = common_config.common_on_attach,
-  capabilities = capabilities,
-  commands = {
-      Format = {
-        function()
-          vim.lsp.buf.range_formatting({},{0,0},{vim.fn.line("$"),0})
-        end
-      }
-    }
-}
-
--- Go :: GO111MODULE=on go get golang.org/x/tools/gopls@latest
-require'lspconfig'.gopls.setup{
-  on_attach = common_config.common_on_attach,
-  capabilities = capabilities
-}
-
-require'lspconfig'.terraformls.setup{
-  on_attach = common_config.common_on_attach,
-  capabilities = capabilities
-}
-
+--
 -- General Language Server
 local vint = {
     lintCommand = "vint -",
@@ -147,12 +63,32 @@ local prettier = {
         ""
     )
 }
--- https://github.com/mattn/efm-langserver
-require('lspconfig').efm.setup {
-    on_attach = on_attach,
-    init_options = {documentFormatting = true},
-    root_dir = vim.loop.cwd,
-    settings = {
+local terraform = {
+    formatCommand = "terraform fmt - ",
+    formatStdin = true
+}
+
+
+local lsp_installer = require("nvim-lsp-installer")
+
+-- Register a handler that will be called for all installed servers.
+lsp_installer.on_server_ready(function(server)
+    local opts = {}
+
+    opts.on_attach = common_config.common_on_attach
+    opts.capabilities = common_config.capabilities
+    -- (optional) Customize the options passed to the server
+    -- if server.name == "tsserver" then
+    --     opts.root_dir = function() ... end
+    -- end
+    if server.name == "yamlls" then
+        opts.settings.yaml.schemaStore.enabled = true
+    end
+
+    if server.name == "efm" then
+        opts.init_options = { documentFormatting = true }
+        opts.root_dir = vim.loop.cwd
+        opts.settings = {
         rootMarkers = {".git/"},
         languages = {
             vim = {vint},
@@ -163,6 +99,14 @@ require('lspconfig').efm.setup {
             scss = {prettier},
             css = {prettier},
             markdown = {prettier},
+            terraform = {terraform}
         }
     }
-}
+    end
+
+    -- This setup() function is exactly the same as lspconfig's setup function.
+    -- Refer to https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
+    server:setup(opts)
+end)
+
+
