@@ -1,10 +1,3 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.config/zsh/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
 # history
 setopt EXTENDED_HISTORY
 setopt HIST_EXPIRE_DUPS_FIRST # expire duplicates first
@@ -36,10 +29,9 @@ alias lsd="exa -ls size"
 alias tree="exa -T --git-ignore"
 
 # fzf
-[ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
-[ -f /usr/share/fzf/completions.zsh ] && source /usr/share/fzf/completion.zsh
+source /usr/share/fzf/key-bindings.zsh
+source /usr/share/fzf/completion.zsh
 source ~/.config/zsh/fuzzy.zsh
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # pins
 alias pins="paru -Slq | fzf -m --preview 'bat --style=numbers --color=always --line-range :500 -l bash <(paru -Si {1}) <(paru -Fl {1} | awk \"{print \$2}\")' | xargs -ro paru -S"
@@ -56,7 +48,6 @@ alias grep='echo rg'
 source ~/.local/share/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.local/share/zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
 source ~/.local/share/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-source ~/.local/share/zsh/zsh-completions/zsh-completions.plugin.zsh
 
 # Chezmoi Completion
 if [ -f "$XDG_CONFIG_HOME/zsh/chezmoi.zsh" ]; then
@@ -64,9 +55,7 @@ if [ -f "$XDG_CONFIG_HOME/zsh/chezmoi.zsh" ]; then
 fi
 
 # Starship (Prompt)
-#eval "$(starship init zsh)"
-# Powerlevel10k
-source ~/.local/share/zsh/powerlevel10k/powerlevel10k.zsh-theme
+eval "$(starship init zsh)"
 
 # newsboat
 news() {
@@ -114,9 +103,6 @@ tn()
     todo new -l my-tasks "$@"
 }
 
-# SSH
-alias ssh="kitty +kitten ssh"
- 
 # Mail and calendar
 alias cal="khal calendar"
 alias cali="ikhal"
@@ -126,17 +112,3 @@ alias mvg="$(which advmv) -g"
 alias clear="echo ctrl+l"
 alias rm="echo trash"
 alias exit="echo ctrl+d"
-
-# Kubernetes
-alias kdbgbox="kubectl run -i --tty --rm debug --image=busybox --restart=Never -- sh"
-
-# Git
-alias gds="git diff --staged"
-alias gdi="git diff"
-
-
-# To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
-[[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
-
-# direnv
-eval "$(direnv hook zsh)"

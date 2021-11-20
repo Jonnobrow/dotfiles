@@ -49,3 +49,11 @@ run_once_before_10-install-packages-arch-linux.sh
 run_once_before_20-install-flyingfox.sh
 run_once_before_20-install-node-packages.sh
 {{- end }}
+
+{{- if (eq .chezmoi.os "linux") }}
+run_once_after_90-configure-macos.sh.tmpl
+run_once_before_10-install-packages-macos.sh.tmpl
+.config/skhd
+.config/yabai
+.config/karabiner
+{{- end}}
