@@ -94,4 +94,3 @@ vim.opt.fillchars = {
 -- Colourscheme
 o.termguicolors = true
 o.background = 'dark'
-cmd [[colorscheme gruvbox]]
