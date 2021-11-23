@@ -213,4 +213,11 @@ return require('packer').startup(function()
 
   use 'folke/which-key.nvim'
   use { "tweekmonster/startuptime.vim", cmd = { "StartupTime" } }
+
+  use {'nvim-orgmode/orgmode',
+    ft = {'org'},
+    config = function()
+            require('jonnobrow.org')
+    end
+    }
 end)

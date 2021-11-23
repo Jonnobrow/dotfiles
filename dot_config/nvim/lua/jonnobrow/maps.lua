@@ -42,9 +42,14 @@ M.init = function()
             g = {"<cmd>Telescope git_files<cr>", "Search Git Files"},
         },
         ["<leader>l"] = {
-            name = "LSP",
+            name = "+LSP",
             d = {"<cmd>lua vim.lsp.buf.definition()<cr>", "Definition"},
             f = {"<cmd>lua vim.lsp.buf.formatting()<cr>", "Formatting"}
+        },
+        ["<leader>o"] = {
+            name = "+Org-Mode",
+            a = {"<cmd>lua require('orgmode').action('agenda.prompt')<cr>", "Open Org Agenda"},
+            c = {"<cmd>lua require('orgmode').action('capture.prompt')<cr>", "Open Capture"},
         }
 })
 end

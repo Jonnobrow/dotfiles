@@ -72,6 +72,7 @@ M.init = function()
       { name = 'luasnip' },
       { name = 'path' },
       { name = 'zsh' },
+      { name = 'orgmode' }
     }),
     mapping = {
         ["<C-d>"] = cmp.mapping.scroll_docs(-5),
