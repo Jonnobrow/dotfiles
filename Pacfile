@@ -18,9 +18,6 @@ chezmoi
 cmake
 code
 darktable
-deemix-git
-deemix-gui-git
-deemix-pyweb-git
 dhcpcd
 digikam
 dino
@@ -48,7 +45,6 @@ git-delta-git
 git-lfs
 go
 goimapnotify
-google-chrome
 grim
 groff
 grub
