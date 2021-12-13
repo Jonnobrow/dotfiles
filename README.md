@@ -3,6 +3,13 @@
 ## credits
 - Background by [u/-lemniscat on reddit](https://www.reddit.com/r/swaywm/comments/oqujk9/as_requested_here_is_some_background_for_sway/)
 
+## TODO
+- [ ] Switch to `gitsigns` rather than `gitgutter`
+- [ ] Setup [`vimspector`](https://github.com/puremourning/vimspector) for debugging 
+- [ ] Setup [`choosewin`](https://github.com/t9md/vim-choosewin)
+- [ ] Setup [`lsp-progress`](https://github.com/arkav/lualine-lsp-progress)
+
+
 ## details
 
 ### my editor

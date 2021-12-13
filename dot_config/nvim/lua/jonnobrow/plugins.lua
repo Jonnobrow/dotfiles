@@ -53,12 +53,22 @@ return require('packer').startup(function()
   }
 
   use {
-    'vimwiki/vimwiki',
-    opt = true,
-    cmd = { 'VimwikiIndex' },
-    {'michal-h21/vim-zettel',
-    	cmd = {'ZettelNew', 'ZettelOpen'},
-	requires = 'vimwiki/vimwiki'}
+    'michal-h21/vim-zettel',
+    cmd = {'ZettelNew', 'ZettelOpen'},
+    config = function ()
+        require("jonnobrow.wiki").setup_zettel()
+    end,
+    requires = {
+        "junegunn/fzf",
+        "junegunn/fzf.vim",
+        {
+            "vimwiki/vimwiki",
+            cmd = { 'VimwikiIndex' },
+            config = function ()
+                require('jonnobrow.wiki').setup_vimwiki()
+            end
+        }
+    }
   }
 
   use {

@@ -48,8 +48,31 @@ M.init = function()
         },
         ["<leader>o"] = {
             name = "+Org-Mode",
-            a = {"<cmd>lua require('orgmode').action('agenda.prompt')<cr>", "Open Org Agenda"},
-            c = {"<cmd>lua require('orgmode').action('capture.prompt')<cr>", "Open Capture"},
+            -- Global Mappings
+            a = {"Open Org Agenda"},
+            c = {"Open Capture"},
+            -- Org Agenda Mappings
+            f = {"Next Agenda Span"},
+            b = {"Previous Agenda Span"},
+        },
+        ["<leader>z"] = {
+            name = "+zettel",
+            o = { "<cmd>ZettelOpen<cr>", "Open Zettel File" },
+            n = { ":ZettelNew<space>", "New Note" },
+            i = { "<cmd>ZettelInbox<cr>", "Insert Inbox"},
+        },
+        ['<leader>v'] = {
+            name = "+vimwiki",
+            w = {"<Plug>VimwikiIndex<cr>", "Vimwiki Index"},
+            t = {"<Plug>VimwikiTabIndex<cr>", "Vimwiki Tab Index"},
+            i = {"<Plug>VimwikiDiaryIndex<cr>", "Vimwiki Diary Index"},
+            s = {"<Plug>VimwikiUISelect<cr>", "List Available Wikis"},
+        },
+        ['<leader>vv'] = {
+            w = {"<Plug>VimwikiMakeDiaryNote<cr>", "Diary for today"},
+            t = {"<Plug>VimwikiTabMakeDiaryNote<cr>", "Diary for today (new tab)"},
+            y = {"<Plug>VimwikiMakeYesterdayDiaryNote<cr>", "Diary for yesterday"},
+            m = {"<Plug>VimwikiMakeTomorrowDiaryNote<cr>", "Diary for tomorrow"},
         }
 })
 end

@@ -33,6 +33,9 @@ source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/completion.zsh
 source ~/.config/zsh/fuzzy.zsh
 
+# nvm
+source ~/.config/zsh/nvm.zsh
+
 # pins
 alias pins="paru -Slq | fzf -m --preview 'bat --style=numbers --color=always --line-range :500 -l bash <(paru -Si {1}) <(paru -Fl {1} | awk \"{print \$2}\")' | xargs -ro paru -S"
 

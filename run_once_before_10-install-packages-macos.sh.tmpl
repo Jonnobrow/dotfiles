@@ -4,7 +4,6 @@
 brew bundle --no-lock --file=/dev/stdin <<EOF
 brew "bat"
 brew "chezmoi"
-brew "docker"
 brew "exa"
 brew "fd"
 brew "fzf"
@@ -33,9 +32,4 @@ $(brew --prefix)/opt/fzf/install
 
 brew tap homebrew/cask-fonts
 brew install --cask font-hack-nerd-font
-
-brew install hashicorp/tap/terraform-ls
-
-brew tap tigase/tigase
-brew install beagleim
 {{ end -}}
