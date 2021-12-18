@@ -19,6 +19,7 @@ brew "ripgrep"
 brew "tealdeer"
 brew "todoman"
 brew "vdirsyncer"
+brew "spotifyd"
 brew "yarn"
 cask "karabiner-elements"
 cask "keepassxc"
@@ -29,6 +30,8 @@ cask "spotify"
 EOF
 
 $(brew --prefix)/opt/fzf/install
+
+brew services start spotifyd
 
 brew tap homebrew/cask-fonts
 brew install --cask font-hack-nerd-font
