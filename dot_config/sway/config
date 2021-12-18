@@ -33,7 +33,7 @@ exec --no-startup-id /usr/bin/wlsunset -T 5700 -t 3600 -l 51.5 -L -0.1 -g 0.7
 exec /usr/bin/dino
 exec /usr/bin/keepassxc
 exec /usr/bin/nextcloud
-
+exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
 
 for_window [app_id="com.nextcloud.desktopclient.nextcloud"] floating enable
 for_window [title="foot-float"] floating enable

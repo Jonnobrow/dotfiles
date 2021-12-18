@@ -5,6 +5,10 @@
 [interactive]
   diffFilter = delta --color-only
 
+[commit]
+    signoff = yes
+    template = "~/.config/git/COMMITMSG"
+
 [delta]
   features = side-by-side line-numbers decorations
   whitespace-error-style = 22 reverse
@@ -16,8 +20,8 @@
 
 [user]
 	signingkey 		= {{ .gpg_keyid }}
-	email	     		= {{ .email }}
 	name	     		= {{ .name }}
+	email	     		= {{ .email }}
 
 [gpg]
 	program    		= gpg2
