@@ -1,3 +1,11 @@
+(( ${+commands[direnv]} )) && emulate zsh -c "$(direnv export zsh)"
+
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+(( ${+commands[direnv]} )) && emulate zsh -c "$(direnv hook zsh)"
+
 # history
 setopt EXTENDED_HISTORY
 setopt HIST_EXPIRE_DUPS_FIRST # expire duplicates first
@@ -57,14 +65,11 @@ if [ -f "$XDG_CONFIG_HOME/zsh/chezmoi.zsh" ]; then
     source "$XDG_CONFIG_HOME/zsh/chezmoi.zsh"
 fi
 
-# Starship (Prompt)
-eval "$(starship init zsh)"
-
 # newsboat
 news() {
     newsboat -c "${XDG_CACHE_HOME}"/newsboat/cache.db \
         -C "${XDG_CONFIG_HOME}"/newsboat/config \
-        -u "${XDG_CONFIG_HOME}"/newsboat/urls 
+        -u "${XDG_CONFIG_HOME}"/newsboat/urls
 }
 
 # nnn
@@ -96,12 +101,12 @@ n ()
     fi
 }
 
-dotedit () 
+dotedit ()
 {
     chezmoi edit $1 && chezmoi apply $1
 }
 
-tn() 
+tn()
 {
     todo new -l my-tasks "$@"
 }
@@ -125,7 +130,5 @@ alias gdi="git diff"
 
 
 # To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
+[[ ! -f ~/.local/share/zsh/powerlevel10k/powerlevel10k.zsh-theme ]] || source ~/.local/share/zsh/powerlevel10k/powerlevel10k.zsh-theme
 [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
-
-# direnv
-eval "$(direnv hook zsh)"
