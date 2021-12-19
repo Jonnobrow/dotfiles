@@ -1,28 +1,3 @@
-# history
-setopt EXTENDED_HISTORY
-setopt HIST_EXPIRE_DUPS_FIRST # expire duplicates first
-setopt HIST_IGNORE_DUPS       # do not store duplications
-setopt HIST_FIND_NO_DUPS      # ignore duplicates when searching
-setopt HIST_REDUCE_BLANKS     # removes blank lines from history
-setopt histignorespace        # if a command is prepended with SPC, don't log in HISTFILE
-
-# typing dir name will also cd
-setopt autocd
-
-# basic auto/tab complete
-autoload -Uz compinit
-# case insensitive path-completion
-zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*'
-zstyle ':completion:*' menu select
-zstyle ':completion:*' list-suffixes
-zstyle ':completion:*' expand prefix suffix
-zmodload zsh/complist
-compinit
-# vi mode
-bindkey -v
-export KEYTIMEOUT=1
-bindkey -v '^?' backward-delete-char
-
 # exa not ls
 alias ls="exa"
 alias lsd="exa -ls size"
@@ -51,14 +26,15 @@ alias grep='echo rg'
 source ~/.local/share/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.local/share/zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
 source ~/.local/share/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ~/.local/share/zsh/powerlevel10k/powerlevel10k.zsh-theme
+
+# p10k
+[ -f "$XDG_CONFIG_HOME/zsh/.p10k.zsh" ] && source "$XDG_CONFIG_HOME/zsh/.p10k.zsh"
 
 # Chezmoi Completion
 if [ -f "$XDG_CONFIG_HOME/zsh/chezmoi.zsh" ]; then
     source "$XDG_CONFIG_HOME/zsh/chezmoi.zsh"
 fi
-
-# Starship (Prompt)
-eval "$(starship init zsh)"
 
 # newsboat
 news() {

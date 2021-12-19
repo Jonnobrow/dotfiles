@@ -88,3 +88,7 @@ export PATH="$PATH:$HOME/.local/bin/platform-tools"
 
 # Add local bins
 export PATH="$HOME/.local/bin/:$PATH"
+
+# Krew 
+export KREW_ROOT="$XDG_DATA_HOME/krew"
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"

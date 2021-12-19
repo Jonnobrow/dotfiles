@@ -8,6 +8,14 @@ parser_config.org = {
   },
   filetype = 'org',
 }
+parser_config.gotmpl = {
+  install_info = {
+    url = "https://github.com/ngalaiko/tree-sitter-go-template",
+    files = {"src/parser.c"}
+  },
+  filetype = "gotmpl",
+  used_by = {"gohtmltmpl", "gotexttmpl", "gotmpl", "yaml"}
+}
 
 require('nvim-treesitter.configs').setup({
   ensure_installed = 'maintained',
