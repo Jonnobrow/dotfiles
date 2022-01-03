@@ -154,6 +154,14 @@ local function plugins(use)
 		wants = "nvim-web-devicons",
 	})
 
+	-- Octo -- Github integration
+	use({
+		"pwntester/octo.nvim",
+		config = function()
+			require("octo").setup()
+		end,
+	})
+
 	-- Markdown Preview in Neovim
 	use({ "npxbr/glow.nvim", cmd = "Glow" })
 
@@ -164,7 +172,7 @@ local function plugins(use)
 		wants = "nvim-web-devicons",
 		cmd = { "Trouble", "TroubleToggle" },
 		config = function()
-			require("trouble").setup({})
+			require("trouble").setup()
 		end,
 	})
 
@@ -219,6 +227,7 @@ local function plugins(use)
 		requires = {
 			"nvim-treesitter/nvim-treesitter-textobjects",
 			"RRethy/nvim-treesitter-textsubjects",
+			"nvim-treesitter/playground",
 		},
 		config = function()
 			require("jonnobrow.treesitter")
@@ -244,6 +253,7 @@ local function plugins(use)
 			"lua-dev.nvim",
 			"cmp-nvim-lsp",
 			"nvim-lsp-installer",
+			"lspsaga.nvim",
 		},
 		config = function()
 			require("jonnobrow.lsp")
@@ -253,6 +263,7 @@ local function plugins(use)
 			"folke/lua-dev.nvim",
 			"williamboman/nvim-lsp-installer",
 			"b0o/SchemaStore.nvim",
+			"glepnir/lspsaga.nvim",
 		},
 	})
 
@@ -277,7 +288,7 @@ local function plugins(use)
 		config = function()
 			require("jonnobrow.compe")
 		end,
-		wants = { "LuaSnip" },
+		wants = { "LuaSnip", "neorg" },
 		requires = {
 			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-buffer",
@@ -355,6 +366,26 @@ local function plugins(use)
 		config = function()
 			require("jonnobrow.neogit")
 		end,
+	})
+
+	-- mkdir
+	use({
+		"jghauser/mkdir.nvim",
+		config = function()
+			require("mkdir")
+		end,
+	})
+
+	-- Note taking and journalling
+	use({
+		"nvim-neorg/neorg",
+		config = function()
+			require("jonnobrow.neorg")
+		end,
+		requires = {
+			"nvim-lua/plenary.nvim",
+			"nvim-neorg/neorg-telescope",
+		},
 	})
 end
 

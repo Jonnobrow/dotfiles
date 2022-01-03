@@ -16,6 +16,7 @@ b43-fwcutter
 base
 bash-completion
 bat
+bazel
 biber
 bind
 binutils
@@ -59,6 +60,7 @@ doxygen
 e2fsprogs
 ecryptfs-utils
 efibootmgr
+element-desktop
 engrampa
 eslint_d
 exa
@@ -79,6 +81,7 @@ flake8
 flex
 flux-bin
 foot
+fractal
 fzf
 garcon
 gawk
@@ -96,6 +99,7 @@ gnome-keyring
 gnome-themes-extra
 go
 goimapnotify
+gotask-taskfile
 gparted
 grep
 grim
@@ -200,7 +204,6 @@ mpd
 mpv
 msmtp
 mtpfs
-mugshot
 neo4j-desktop
 neofetch
 neovim-nightly-bin
@@ -211,6 +214,7 @@ networkmanager-openconnect
 networkmanager-openvpn
 networkmanager-pptp
 networkmanager-vpnc
+neuron-zettelkasten-bin
 nextcloud-client
 nfs-utils
 nmap
