@@ -37,8 +37,7 @@ alias lsd="exa -ls size"
 alias tree="exa -T --git-ignore"
 
 # fzf
-source /usr/share/fzf/key-bindings.zsh
-source /usr/share/fzf/completion.zsh
+source ~/.config/zsh/.fzf.zsh
 source ~/.config/zsh/fuzzy.zsh
 
 # nvm

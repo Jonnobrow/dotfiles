@@ -13,6 +13,9 @@ tasks:
   bundle:npm:
     cmds:
     - yarn global list --parseable --depth=0 | rg info | awk -F"[\"\@]" '/info/{print $2}' > Npmfile
+  bundle:install:npm:
+    cmds:
+    - yarn install < Npmfile
   install:
     cmds:
     - ./install.sh
