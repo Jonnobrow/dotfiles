@@ -1,5 +1,5 @@
 {{ if (or (eq .chezmoi.os "linux") (eq .chezmoi.os "darwin")) -}}
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 set -euo pipefail
 
 xargs yarn global add < "$HOME/.local/share/chezmoi/Npmfile"
