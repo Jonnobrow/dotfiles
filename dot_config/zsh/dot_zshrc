@@ -6,7 +6,16 @@ fi
 
 (( ${+commands[direnv]} )) && emulate zsh -c "$(direnv hook zsh)"
 
-# history
+
+####################
+# helper functions #
+####################
+function alias_if_exists() { command -v $2 > /dev/null && alias $1=$2; }
+function source_if_exists() {[[ -s $1 ]] && source $1 }
+
+###########
+# history #
+###########
 setopt EXTENDED_HISTORY
 setopt HIST_EXPIRE_DUPS_FIRST # expire duplicates first
 setopt HIST_IGNORE_DUPS       # do not store duplications
@@ -32,102 +41,64 @@ export KEYTIMEOUT=1
 bindkey -v '^?' backward-delete-char
 
 # exa not ls
-alias ls="exa"
-alias lsd="exa -ls size"
-alias tree="exa -T --git-ignore"
+alias_if_exists "ls" "exa"
+alias_if_exists "tree" "exa -T --git-ignore"
 
 # fzf
-source ~/.config/zsh/.fzf.zsh
-source ~/.config/zsh/fuzzy.zsh
+source_if_exists ~/.config/zsh/.fzf.zsh
+source_if_exists ~/.config/zsh/fuzzy.zsh
 
 # nvm
-source ~/.config/zsh/nvm.zsh
+source_if_exists ~/.config/zsh/nvm.zsh
 
-# pins
-alias pins="paru -Slq | fzf -m --preview 'bat --style=numbers --color=always --line-range :500 -l bash <(paru -Si {1}) <(paru -Fl {1} | awk \"{print \$2}\")' | xargs -ro paru -S"
+#################
+# Arch Specific #
+#################
 
-# vim
-alias vi='nvim'
-alias vim='nvim'
-
-# Find and Grep
-alias find='echo fd'
-alias grep='echo rg'
-
-# ZSH Plugins
-source ~/.local/share/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source ~/.local/share/zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
-source ~/.local/share/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-
-# Chezmoi Completion
-if [ -f "$XDG_CONFIG_HOME/zsh/chezmoi.zsh" ]; then
-    source "$XDG_CONFIG_HOME/zsh/chezmoi.zsh"
+if [[ -f /etc/arch-release ]]; then
+    if command -v paru > /dev/null && command -v fzf > /dev/null; then
+        alias pins="paru -Slq | fzf -m --preview 'bat --style=numbers --color=always --line-range :500 -l bash <(paru -Si {1}) <(paru -Fl {1} | awk \"{print \$2}\")' | xargs -ro paru -S"
+    fi
 fi
 
-# newsboat
-news() {
-    newsboat -c "${XDG_CACHE_HOME}"/newsboat/cache.db \
-        -C "${XDG_CONFIG_HOME}"/newsboat/config \
-        -u "${XDG_CONFIG_HOME}"/newsboat/urls
-}
+#################
+# prefer neovim #
+#################
+if command -v nvim > /dev/null; then
+    alias vi='nvim'
+    alias vim='nvim'
+fi
 
-# nnn
-n ()
-{
-    # Block nesting of nnn in subshells
-    if [ -n $NNNLVL ] && [ "${NNNLVL:-0}" -ge 1 ]; then
-        echo "nnn is already running"
-        return
-    fi
+# Find and Grep
+alias_if_exists "find" "fd"
+alias_if_exists "grep" "rg"
 
-    # The default behaviour is to cd on quit (nnn checks if NNN_TMPFILE is set)
-    # To cd on quit only on ^G, remove the "export" as in:
-    #     NNN_TMPFILE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
-    # NOTE: NNN_TMPFILE is fixed, should not be modified
-    export NNN_TMPFILE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
+# Useful binds
+alias_if_exists "cat" "bat"
+alias_if_exists "open" "xdg-open"
+alias_if_exists "jq" "faq"
 
-    # Unmask ^Q (, ^V etc.) (if required, see `stty -a`) to Quit nnn
-    # stty start undef
-    # stty stop undef
-    # stty lwrap undef
-    # stty lnext undef
+# ZSH Plugins
+source_if_exists ~/.local/share/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source_if_exists ~/.local/share/zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
+source_if_exists ~/.local/share/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-    nnn "$@"
-
-    if [ -f "$NNN_TMPFILE" ]; then
-            . "$NNN_TMPFILE"
-            rm -f "$NNN_TMPFILE" > /dev/null
-    fi
-}
+# Chezmoi Completion
+source_if_exists "$XDG_CONFIG_HOME/zsh/chezmoi.zsh"
 
 dotedit ()
 {
     chezmoi edit $1 && chezmoi apply $1
 }
 
-tn()
-{
-    todo new -l my-tasks "$@"
-}
-
 # Mail and calendar
 alias cal="khal calendar"
 alias cali="ikhal"
-alias cpg="$(which advcp) -g"
-alias mvg="$(which advmv) -g"
 
 alias clear="echo ctrl+l"
 alias rm="echo trash"
 alias exit="echo ctrl+d"
 
-# Kubernetes
-alias kdbgbox="kubectl run -i --tty --rm debug --image=busybox --restart=Never -- sh"
-
-# Git
-alias gds="git diff --staged"
-alias gdi="git diff"
-
-
 # To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
-[[ ! -f ~/.local/share/zsh/powerlevel10k/powerlevel10k.zsh-theme ]] || source ~/.local/share/zsh/powerlevel10k/powerlevel10k.zsh-theme
-[[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
+source_if_exists ~/.local/share/zsh/powerlevel10k/powerlevel10k.zsh-theme
+source_if_exists ~/.config/zsh/.p10k.zsh

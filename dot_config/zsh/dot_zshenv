@@ -1,9 +1,6 @@
 export HISTSIZE=1000000
 export SAVEHIST=1000000
 
-# follow XDG Base Directory specification
-export TERMINAL=foot
-
 ## zsh
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 export HISTFILE="$XDG_DATA_HOME"/zsh/history
@@ -26,32 +23,27 @@ export PATH="$PATH:$GOPATH/bin"
 export AWS_SHARED_CREDENTIALS_FILE="$XDG_CONFIG_HOME"/aws/credentials
 export AWS_CONFIG_FILE="$XDG_CONFIG_HOME"/aws/config
 
-## Weechat
-export WEECHAT_HOME="$XDG_CONFIG_HOME"/weechat
-
-## Notmuch
-export NOTMUCH_CONFIG="$XDG_CONFIG_HOME"/notmuch/notmuchrc
-export NMBGIT="$XDG_DATA_HOME"/notmuch/nmbug
-
 ## Docker
 export DOCKER_CONFIG="$XDG_CONFIG_HOME"/docker
 
 ## NPM
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME"/npm/npmrc
 
-## Less - Heck Less, all my homies used bat
-export LESSHISTFILE=-
+# Bat (man)
+command -v bat > /dev/null && export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
-## X - Don't use it often but ready if I do
-export XAUTHORITY="$XDG_RUNTIME_DIR"/Xauthority
-export XINITRC="$XDG_CONFIG_HOME"/X11/xinitrc
-export XSERVERRC="$XDG_CONFIG_HOME"/X11/xserverrc
-
-# Editor
-export VISUAL=nvim
-export EDITOR=nvim
-export SUDO_EDITOR=nvim
-export GIT_EDITOR=nvim
+# Editor - prefer neovim
+if command -v nvim > /dev/null; then
+    export VISUAL=nvim
+    export EDITOR=nvim
+    export SUDO_EDITOR=nvim
+    export GIT_EDITOR=nvim
+else
+    export VISUAL=vi
+    export EDITOR=vi
+    export SUDO_EDITOR=vi
+    export GIT_EDITOR=vi
+fi
 
 # History
 export HISTORY_IGNORE="(ls|exit|[bf]g|jobs)"
@@ -64,31 +56,27 @@ export LC_TIME=$LANG
 # SSH
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 
-# NNN
-export NNN_PLUG="p:preview-tui"
-export NNN_TRASH=1
-export NNN_BMS="d:~/dirs/doc;p:~/dirs/doc/proj;D:~/dirs/dl"
-export NNN_OPTS="ex"
-export NNN_FIFO="/tmp/nnn.fifo"
-
-export QT_QPA_PLATFORMTHEME=gtk2
-export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
-export _JAVA_AWT_WM_NONREPARENTING=1
-export MOZ_ENABLE_WAYLAND=1
-export GDK_BACKEND=wayland
-export QT_QPA_PLATFORM=wayland-egl
-export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
-export SDL_VIDEODRIVER=wayland
-
-# MANPAGER
-export MANPAGER="sh -c 'col -bx | bat -l man -p'"
-
-# ADB and Fastboot
-export PATH="$PATH:$HOME/.local/bin/platform-tools"
+if [[ -f /etc/arch-release ]]; then
+    # Wayland
+    export QT_QPA_PLATFORMTHEME=gtk2
+    export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
+    export _JAVA_AWT_WM_NONREPARENTING=1
+    export MOZ_ENABLE_WAYLAND=1
+    export GDK_BACKEND=wayland
+    export QT_QPA_PLATFORM=wayland-egl
+    export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
+    export SDL_VIDEODRIVER=wayland
+    ## X - Don't use it often but ready if I do
+    export XAUTHORITY="$XDG_RUNTIME_DIR"/Xauthority
+    export XINITRC="$XDG_CONFIG_HOME"/X11/xinitrc
+    export XSERVERRC="$XDG_CONFIG_HOME"/X11/xserverrc
+fi
 
 # Add local bins
 export PATH="$HOME/.local/bin/:$PATH"
 
-# Krew 
-export KREW_ROOT="$XDG_DATA_HOME/krew"
-export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+# Krew
+if [[ -d $XDG_DATA_HOME/krew ]]; then
+    export KREW_ROOT="$XDG_DATA_HOME/krew"
+    export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+fi
