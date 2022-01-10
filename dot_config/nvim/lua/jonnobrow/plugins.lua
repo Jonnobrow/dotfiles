@@ -31,7 +31,11 @@ local function plugins(use)
 	use({ "wbthomason/packer.nvim", opt = true })
 
 	-- Faster Filetype Plugin
-	use({ "nathom/filetype.nvim" })
+	use({ "nathom/filetype.nvim", config=function()
+        literal = {
+            Jenkinsfile = "groovy"
+        }
+    end})
 
 	-- Improvements to basic ui components
 	use({ "stevearc/dressing.nvim", event = "BufReadPre" })

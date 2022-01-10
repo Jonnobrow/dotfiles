@@ -17,6 +17,7 @@ local servers = {
 	dockerls = {},
 	eslint = {},
 	gopls = {},
+    groovyls = {},
 	html = {},
 	jsonls = {},
 	pyright = {},

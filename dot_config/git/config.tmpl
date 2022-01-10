@@ -46,6 +46,7 @@
     amend = commit --amend --no-edit
 	ammend = amend
 	cherrypick = cherry-pick
+    gone = ! "git fetch -p && git for-each-ref --format '%(refname:short) %(upstream:track)' | awk '$2 == \"[gone]\" {print $1}' | xargs -r git branch -D"
 
 # define command which will be used when "nvim" is set as a merge tool
 [mergetool "nvim"]
@@ -81,5 +82,8 @@
 	submodulesummary = 1
 [submodule]
 	recurse = true
+
+[url "ssh://git@github.com"]
+    insteadOf = https://github.com
 
 # vim: ft=ini tabstop=2
