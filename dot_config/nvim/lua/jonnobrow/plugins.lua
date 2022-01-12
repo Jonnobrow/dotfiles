@@ -195,10 +195,9 @@ local function plugins(use)
 	use({
 		"folke/todo-comments.nvim",
 		requires = "nvim-lua/plenary.nvim",
-		cmd = { "TodoTrouble", "TodoTelescope" },
 		event = "BufReadPost",
 		config = function()
-			require("todo-comments").setup()
+			require("todo-comments").setup{}
 		end,
 	})
 

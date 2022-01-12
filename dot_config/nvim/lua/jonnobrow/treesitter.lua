@@ -30,7 +30,18 @@ ts_parsers.norg_table = {
 }
 local ts_configs = require("nvim-treesitter.configs")
 ts_configs.setup({
-	ensure_installed = "maintained",
+	ensure_installed = {
+        "go", "gotmpl",
+        "norg", "norg_meta", "norg_table",
+        "bash",
+        "html", "javascript", "css", "typescript",
+        "json", "json5",
+        "lua",
+        "markdown",
+        "python",
+        "rust", "toml",
+        "yaml"
+    },
 	highlight = { enable = true, use_languagetree = true },
 	indent = { enable = false },
 	context_commentstring = { enable = true, enable_autocmd = false },
