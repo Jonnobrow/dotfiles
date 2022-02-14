@@ -32,19 +32,6 @@ export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME"/npm/npmrc
 # Bat (man)
 command -v bat > /dev/null && export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
-# Editor - prefer neovim
-if command -v nvim > /dev/null; then
-    export VISUAL=nvim
-    export EDITOR=nvim
-    export SUDO_EDITOR=nvim
-    export GIT_EDITOR=nvim
-else
-    export VISUAL=vi
-    export EDITOR=vi
-    export SUDO_EDITOR=vi
-    export GIT_EDITOR=vi
-fi
-
 # History
 export HISTORY_IGNORE="(ls|exit|[bf]g|jobs)"
 

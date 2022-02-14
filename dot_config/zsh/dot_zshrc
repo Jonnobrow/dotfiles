@@ -49,7 +49,7 @@ source_if_exists ~/.config/zsh/.fzf.zsh
 source_if_exists ~/.config/zsh/fuzzy.zsh
 
 # nvm
-source_if_exists ~/.config/zsh/nvm.zsh
+# source_if_exists ~/.config/zsh/nvm.zsh
 
 #################
 # Arch Specific #
@@ -65,8 +65,15 @@ fi
 # prefer neovim #
 #################
 if command -v nvim > /dev/null; then
-    alias vi='nvim'
-    alias vim='nvim'
+    export EDITOR=nvim
+    export VISUAL=nvim
+    export SUDO_EDITOR=nvim
+    export GIT_EDITOR=nvim
+else
+    export EDITOR=vi
+    export VISUAL=vi
+    export SUDO_EDITOR=vi
+    export GIT_EDITOR=vi
 fi
 
 # Find and Grep
@@ -90,6 +97,19 @@ dotedit ()
 {
     chezmoi edit $1 && chezmoi apply $1
 }
+
+# Kubectl Completion
+source <(kubectl completion zsh)
+
+
+# Git
+function cg() {
+    is_in_git_repo && cd $(git rev-parse --show-toplevel)
+}
+function cgf() {
+    is_in_git_repo && rg --files $(git rev-parse --show-toplevel) | fzf
+}
+
 
 # Mail and calendar
 alias cal="khal calendar"

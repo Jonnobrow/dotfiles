@@ -6,4 +6,3 @@ export XDG_DATA_HOME="$HOME/.local/share"
 # ZSH Directory
 export ZDOTDIR=$XDG_CONFIG_HOME/zsh
 . $ZDOTDIR/.zshenv
-

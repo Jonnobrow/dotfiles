@@ -93,6 +93,15 @@ local function plugins(use)
 		end,
 	})
 
+    -- Annotations
+    use {
+        "danymat/neogen",
+        config = function()
+            require('neogen').setup {}
+        end,
+        requires = "nvim-treesitter/nvim-treesitter"
+    }
+
 	-- Core Dependencies
 	use({ "nvim-lua/plenary.nvim", module = "plenary" })
 	use({ "nvim-lua/popup.nvim", module = "popup" })
@@ -225,8 +234,6 @@ local function plugins(use)
 	use({
 		"nvim-treesitter/nvim-treesitter",
 		run = ":TSUpdate",
-		opt = true,
-		event = "BufRead",
 		requires = {
 			"nvim-treesitter/nvim-treesitter-textobjects",
 			"RRethy/nvim-treesitter-textsubjects",
