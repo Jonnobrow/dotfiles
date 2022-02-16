@@ -67,3 +67,6 @@ if [[ -d $XDG_DATA_HOME/krew ]]; then
     export KREW_ROOT="$XDG_DATA_HOME/krew"
     export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 fi
+
+# eyaml
+export EYAML_CONFIG="$HOME/.config/eyaml/config.yaml"
