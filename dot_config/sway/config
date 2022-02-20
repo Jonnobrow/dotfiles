@@ -2,8 +2,9 @@ include "$HOME/.config/sway/colours"
 include "$HOME/.config/sway/bindings"
 
 output * bg $wallpaper fill
-output DP-3 pos 1080 150 res 2560x1440
-output HDMI-A-1 pos 0 0 res 1920x1080 transform 270
+output 'Unknown Optix AG32CQ KA1H109520826' pos 0 150 res 2560x1440
+output 'Unknown HP E24 G4 CN41111K0S' pos 2560 0 res 1920x1080 transform 90
+output 'Unknown 0x06B4 0x00000000' pos 250 1440 res 1920x1080
 
 exec swayidle -w \
      timeout 300 swaylock \
@@ -69,7 +70,7 @@ gaps {
     bottom 30
     inner 20
 }
-     
+
 bar {
     swaybar_command waybar
     id 1

@@ -8,7 +8,6 @@ neorg.setup({
 			config = {
 				workspaces = {
 					notes = "~/dirs/neorg/notes",
-					gtd = "~/dirs/neorg/gtd",
 				},
 				autodetect = true,
 				autochdir = true,
@@ -26,12 +25,6 @@ neorg.setup({
 			},
 		},
 		["core.integrations.telescope"] = {},
-		["core.gtd.base"] = {
-			config = {
-				workspace = "gtd",
-				custom_tag_completion = true,
-			},
-		},
 		["core.norg.esupports"] = {},
 		["core.highlights"] = {},
 	},
@@ -42,7 +35,6 @@ local neorg_callbacks = require("neorg.callbacks")
 neorg_callbacks.on_event("core.keybinds.events.enable_keybinds", function(_, keybinds)
 	keybinds.map_event_to_mode("norg", {
 		n = {
-
 			-- TODOs
 			{ "gtd", "core.norg.qol.todo_items.todo.task_done" },
 			{ "gtu", "core.norg.qol.todo_items.todo.task_undone" },

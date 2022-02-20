@@ -45,7 +45,8 @@ alias_if_exists "ls" "exa"
 alias_if_exists "tree" "exa -T --git-ignore"
 
 # fzf
-source_if_exists ~/.config/zsh/.fzf.zsh
+source_if_exists /usr/share/fzf/completion.zsh
+source_if_exists /usr/share/fzf/key-bindings.zsh
 source_if_exists ~/.config/zsh/fuzzy.zsh
 
 # nvm

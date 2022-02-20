@@ -31,11 +31,16 @@ local function plugins(use)
 	use({ "wbthomason/packer.nvim", opt = true })
 
 	-- Faster Filetype Plugin
-	use({ "nathom/filetype.nvim", config=function()
-        literal = {
-            Jenkinsfile = "groovy"
-        }
-    end})
+	use({
+		"nathom/filetype.nvim",
+		config = function()
+			require("filetype").setup({
+				literal = {
+					Jenkinsfile = "groovy",
+				},
+			})
+		end,
+	})
 
 	-- Improvements to basic ui components
 	use({ "stevearc/dressing.nvim", event = "BufReadPre" })
@@ -204,9 +209,14 @@ local function plugins(use)
 	use({
 		"folke/todo-comments.nvim",
 		requires = "nvim-lua/plenary.nvim",
+		cmd = { "TodoTrouble", "TodoTelescope" },
+		wants = {
+			"telescope.nvim",
+			"trouble.nvim",
+		},
 		event = "BufReadPost",
 		config = function()
-			require("todo-comments").setup{}
+			require("todo-comments").setup({})
 		end,
 	})
 
