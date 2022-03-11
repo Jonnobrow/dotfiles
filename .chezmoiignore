@@ -40,7 +40,6 @@ install.sh
 .config/systemd
 .config/waybar
 .config/zathura
-.local/bin
 .local/share/mako
 run_once_after_80-install-global-configs.sh
 run_once_after_90-configure-archlinux.sh

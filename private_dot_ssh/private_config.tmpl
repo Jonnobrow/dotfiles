@@ -42,26 +42,31 @@ Host bbs
 
 {{ if (eq .chezmoi.os "darwin") }}
 ## GCP
-Host 10.232.192.* 10.232.193.* 10.232.194.* 10.232.195.* *.nlaz1.prd* *.nlaz2.prd*
+Host sdsjump
+    Hostname jumphost001.ctrl.ost.stg.ice.z0.bskyb.com
     User streamingadmin
-    Identityfile ~/.ssh/dvn_keys/dvn_streamingadmin_id_rsa
-    #ProxyCommand ssh streamingadmin@10.17.3.152 -W %h:%p
-    ProxyCommand ssh streamingadmin@10.47.3.152 -W %h:%p
-Host 10.232.196.* 10.232.197.* 10.232.198.* 10.232.199.* *.nlaz1.* *.nlaz2.*
+    Identityfile ~/.ssh/sds/ctrl_streaming_admin
+Host *ctrl.nlaz1.* *ctrl.nlaz2.*
     User streamingadmin
-    Identityfile ~/.ssh/dvn_keys/dvn_streamingadmin_id_rsa
-    #ProxyCommand ssh streamingadmin@10.17.193.152 -W %h:%p
-    ProxyCommand ssh streamingadmin@10.47.193.152 -W %h:%p
+    Identityfile ~/.ssh/sds/gcp_ctrl_streaming_admin
+    ProxyCommand ssh -q -W %h:%p sdsjump
+Host *.nlaz1.* *.nlaz2.*
+    User streamingadmin
+    Identityfile ~/.ssh/sds/gcp_streaming_admin
+    ProxyCommand ssh -q -W %h:%p sdsjump
+## ICE
+Host *ctrl.ost.prd* *ctrl.cwa.prd*
+    User streamingadmin
+    Identityfile ~/.ssh/sds/ctrl_streaming_admin_prod
+Host *sds.*
+    User streamingadmin
+    Identityfile ~/.ssh/sds/streaming_admin
+Host *ctrl.ost.* *ctrl.cwa.*
+    User streamingadmin
+    Identityfile ~/.ssh/sds/ctrl_streaming_admin
+## VDC
 Host networkmapper vm007207
     Hostname vm007207
     User {{ (keepassxc "vm007207").UserName }}
-    Identityfile ~/.ssh/id_ed25519_sds
-Host jumphoste upjmp0e0
-    Hostname upjmp0e0
-    User {{ (keepassxc "SDS Jump Hosts").UserName }}
-    Identityfile ~/.ssh/id_ed25519_sds
-Host jumphostf upjmp0f0
-    Hostname upjmp0f0
-    User {{ (keepassxc "SDS Jump Hosts").UserName }}
     Identityfile ~/.ssh/id_ed25519_sds
 {{ end }}
