@@ -5,6 +5,7 @@ Aurfile
 Npmfile
 scripts/
 other/
+xxh/
 run
 install.sh
 
