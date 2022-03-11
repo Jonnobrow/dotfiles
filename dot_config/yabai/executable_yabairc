@@ -63,7 +63,7 @@ for space in {1..6}; do
         yabai -m space --create
     fi
     # Label the space
-    yabai -m space $space --label ${Spaces[$(($space - 1))]} 
+    yabai -m space $space --label ${Spaces[$(($space - 1))]}
     # Focus the space and move to display
     yabai -m space --focus $space && yabai -m space --display ${displays[$(($space / 4 + 1))]}
 done
@@ -74,15 +74,11 @@ yabai -m space --focus 1
 
 # ===== Rules ==================================
 
-yabai -m rule --add app="Signal"                space=6
-yabai -m rule --add app="BeagleIM"              space=6
-yabai -m rule --add app="Microsoft Teams"       space=5
+yabai -m rule --add app="Signal"                space=4
+yabai -m rule --add app="Microsoft Teams"       space=7
 yabai -m rule --add app="Slack"                 space=5
 yabai -m rule --add app="Microsoft Outlook"     space=5
-yabai -m rule --add app="Webex"                 space=4
-yabai -m rule --add app="WhatsApp"              space=4
-yabai -m rule --add app="Code"                  space=1
-yabai -m rule --add app="Spotify"               space=3
+yabai -m rule --add app="Spotify"               space=6
 
 yabai -m rule --add label="Finder" app="^Finder$" title="(Co(py|nnect)|Move|Info|Pref)" manage=off
 yabai -m rule --add label="System Preferences" app="^System Preferences$" title=".*" manage=off
@@ -100,8 +96,8 @@ yabai -m rule --add title="Microsoft Teams Notification" manage=off
 yabai -m rule --add app="Cisco AnyConnect Secure Mobility Client" manage=off
 yabai -m rule --add app="Self Service" title="Jamf Self Service" manage=off
 yabai -m rule --add app="BeagleIM" title="Preferences" manage=off
-yabai -m rule --add app="Microsoft Teams" title="Loading Microsoft Teams" manage=off 
-yabai -m rule --add app="Jabra Direct" manage=off 
+yabai -m rule --add app="Microsoft Teams" title="Loading Microsoft Teams" manage=off
+yabai -m rule --add app="Jabra Direct" manage=off
 yabai -m rule --add app="Firefox" title="Library" manage=off
 yabai -m rule --add app="DEPNotify" manage=off
 yabai -m rule --add title="Preferences" manage=off

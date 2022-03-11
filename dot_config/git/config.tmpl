@@ -18,6 +18,9 @@
   file-style = bold yellow ul
   file-decoration-style = none
 
+[diff "sopsdiffer"]
+        textconv = "sops -d"
+
 [user]
 	signingkey 		= {{ .gpg_keyid }}
 	name	     		= {{ .name }}

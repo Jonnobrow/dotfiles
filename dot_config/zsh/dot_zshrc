@@ -123,3 +123,13 @@ alias exit="echo ctrl+d"
 # To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
 source_if_exists ~/.local/share/zsh/powerlevel10k/powerlevel10k.zsh-theme
 source_if_exists ~/.config/zsh/.p10k.zsh
+
+# eyaml
+if command -v eyaml > /dev/null; then
+    alias edf="eyaml decrypt -f"
+fi
+
+# kitty ssh
+if command -v kitty > /dev/null; then
+    alias ssh="kitty +kitten ssh"
+fi

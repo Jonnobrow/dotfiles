@@ -60,7 +60,7 @@ if [[ -f /etc/arch-release ]]; then
 fi
 
 # Add local bins
-export PATH="$HOME/.local/bin/:$PATH"
+export PATH="$PATH:$HOME/.local/bin/"
 
 # Krew
 if [[ -d $XDG_DATA_HOME/krew ]]; then
