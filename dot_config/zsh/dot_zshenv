@@ -1,72 +1,80 @@
-export HISTSIZE=1000000
-export SAVEHIST=1000000
-
-## zsh
-export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
-export HISTFILE="$XDG_DATA_HOME"/zsh/history
-
-## gpg
-export GNUPGHOME="$XDG_DATA_HOME/gnupg"
-
-## rust
-export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
-
-## cargo
-export CARGO_HOME="$XDG_DATA_HOME/cargo"
-export PATH="$XDG_DATA_HOME/cargo/bin:$PATH"
-
-## go
-export GOPATH="$XDG_DATA_HOME/go"
-export PATH="$PATH:$GOPATH/bin"
-
-## AWS
+#####################
+# XDG Specification #
+#####################
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_STATE_HOME="$HOME/.local/state"
+# ---
+export CARGO_HOME="$XDG_DATA_HOME"/cargo
+export DOCKER_CONFIG="$XDG_CONFIG_HOME"/docker
+export GNUPGHOME="$XDG_DATA_HOME"/gnupg
+export GOPATH="$XDG_DATA_HOME"/go
+export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
+export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
+export MINIKUBE_HOME="$XDG_DATA_HOME"/minikube
+export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
+export NVM_DIR="$XDG_DATA_HOME"/nvm
+export PYENV_ROOT=$XDG_DATA_HOME/pyenv
+export RBENV_ROOT=XDG_DATA_HOME/rbenv
+export RIPGREP_CONFIG_PATH=$XDG_CONFIG_HOME/ripgrep/config
+export GEM_HOME="$XDG_DATA_HOME"/gem
+export GEM_SPEC_CACHE="$XDG_CACHE_HOME"/gem
 export AWS_SHARED_CREDENTIALS_FILE="$XDG_CONFIG_HOME"/aws/credentials
 export AWS_CONFIG_FILE="$XDG_CONFIG_HOME"/aws/config
 
-## Docker
-export DOCKER_CONFIG="$XDG_CONFIG_HOME"/docker
+###########
+# History #
+###########
+export HISTFILE="$XDG_STATE_HOME"/zsh/history
+export HISTSIZE=100000
+export SAVEHIST=100000
+export HISTORY_IGNORE="ls|exit|[bf]g|jobs"
 
-## NPM
-export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME"/npm/npmrc
+##########
+# Editor #
+##########
+export EDITOR="nvim"
+export VISUAL="nvim"
+export GIT_EDITOR="nvim"
+export SUDO_EDITOR="nvim"
 
-# Bat (man)
-command -v bat > /dev/null && export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+########
+# Path #
+########
+export PATH="$PATH:$GOPATH/bin"
+export PATH="$PATH:$HOME/.local/bin"
+export PATH="$PATH:/opt/homebrew/bin"
+export PATH="$PATH:$HOME/Library/Python/3.8/bin"
+export PATH="$PATH:$GEM_HOME/bin"
+export PATH="$PATH:$CARGO_HOME/bin"
+export PATH="$PATH:/usr/local/go/bin"
 
-# History
-export HISTORY_IGNORE="(ls|exit|[bf]g|jobs)"
+#############
+# Man Pager #
+#############
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
-# Language
+############
+# Language #
+############
 export LANG=en_GB.UTF-8
 export LANGUAGE=en_GB:en
 export LC_TIME=$LANG
 
-# SSH
+#######
+# SSH #
+#######
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 
-if [[ -f /etc/arch-release ]]; then
-    # Wayland
-    export QT_QPA_PLATFORMTHEME=gtk2
-    export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
-    export _JAVA_AWT_WM_NONREPARENTING=1
-    export MOZ_ENABLE_WAYLAND=1
-    export GDK_BACKEND=wayland
-    export QT_QPA_PLATFORM=wayland-egl
-    export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
-    export SDL_VIDEODRIVER=wayland
-    ## X - Don't use it often but ready if I do
-    export XAUTHORITY="$XDG_RUNTIME_DIR"/Xauthority
-    export XINITRC="$XDG_CONFIG_HOME"/X11/xinitrc
-    export XSERVERRC="$XDG_CONFIG_HOME"/X11/xserverrc
-fi
+##############
+# Encryption #
+##############
+export GPG_TTY=$(tty)
+export EYAML_CONFIG=$XDG_CONFIG_HOME/eyaml/config.yaml
+export SOPS_AGE_KEY_FILE=$XDG_CONFIG_HOME/sops/age/keys.txt
 
-# Add local bins
-export PATH="$PATH:$HOME/.local/bin/"
-
-# Krew
-if [[ -d $XDG_DATA_HOME/krew ]]; then
-    export KREW_ROOT="$XDG_DATA_HOME/krew"
-    export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
-fi
-
-# eyaml
-export EYAML_CONFIG="$HOME/.config/eyaml/config.yaml"
+######
+# ZK #
+######
+export ZK_NOTEBOOK_DIR=$HOME/nextcloud/zk

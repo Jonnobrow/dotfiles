@@ -1,8 +1,0 @@
-{{ if (or (eq .chezmoi.os "linux") (eq .chezmoi.os "darwin")) -}}
-#!/usr/bin/env sh
-set -euo pipefail
-
-sudo -v
-
-sudo /usr/bin/python3 -m pip install pynvim 
-{{- end }}

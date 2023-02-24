@@ -1,7 +1,0 @@
-{{ if (or (eq .chezmoi.os "linux") (eq .chezmoi.os "darwin")) -}}
-#!/usr/bin/env sh
-set -euo pipefail
-
-# Install Go Task
-go install github.com/go-task/task/v3/cmd/task@latest
-{{- end }}

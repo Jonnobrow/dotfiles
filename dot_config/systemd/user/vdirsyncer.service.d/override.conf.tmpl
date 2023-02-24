@@ -1,7 +1,0 @@
-[Unit]
-Description=Synchronize calendars and contacts
-Documentation=https://vdirsyncer.readthedocs.org/
-
-[Service]
-ExecStart=/usr/bin/vdirsyncer -c /home/{{ .chezmoi.username }}/.config/vdirsyncer/config sync --max-workers=1
-Type=oneshot

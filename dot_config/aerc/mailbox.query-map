@@ -1,9 +1,0 @@
-inbox=path:mailbox/** and tag:inbox    
-unread=path:mailbox/** and tag:unread
-sent=path:mailbox/** and tag:sent     
-proj=path:mailbox/** and (tag:srht or tag:gitlab or tag:github or tag:proj)
-wild=path:mailbox/** and tag:wildcard
-bin=path:mailbox/** and tag:trash    
-all=path:mailbox/** and not tag:trash and not tag:spam
-archive=path:mailbox/** and tag:archive
-sky=path:mailbox/** and tag:sky
