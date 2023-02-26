@@ -26,10 +26,6 @@
     type = "archive"
     url = "https://github.com/romkatv/powerlevel10k/archive/v1.17.0.tar.gz"
     stripComponents = 1
-[".local/share/nvim/site/pack/packer/start/packer.nvim"]
-    type = "git-repo"
-    url = "https://github.com/wbthomason/packer.nvim"
-    clone.args = ["--depth=1"]
 [".local/share/nvim/lazy/lazy.nvim"]
     type = "git-repo"
     url = "https://github.com/folke/lazy.nvim.git"

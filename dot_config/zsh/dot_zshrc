@@ -55,9 +55,9 @@ else
   [[ $- == *i* ]] && source_if_exists "/usr/share/fzf/shell/completion.zsh" 2> /dev/null
   source_if_exists "/usr/share/fzf/key-bindings.zsh"
 fi
-export FZF_DEFAULT_COMMAND="fd --type f --hidden --follow"
+export FZF_DEFAULT_COMMAND="fd --type f --hidden --follow --ignore-file $XDG_CONFIG_HOME/fd/fd-ignore"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_ALT_C_COMMAND="fd --type d --hidden --follow"
+export FZF_ALT_C_COMMAND="fd --type d --hidden --follow --ignore-file $XDG_CONFIG_HOME/fd/fd-ignore"
 export FZF_COMPLETION_OPTS='--border --info=inline'
 _fzf_compgen_path() {
   fd --hidden --follow --exclude ".git" . "$1"
