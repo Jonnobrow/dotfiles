@@ -55,11 +55,11 @@ return {
     },
   },
 
-  -- null-ls handy things
+  -- none-ls handy things
   {
-    "jose-elias-alvarez/null-ls.nvim",
+    import = "lazyvim.plugins.extras.lsp.none-ls",
     opts = function()
-      local nls = require("null-ls")
+      local nls = require("none-ls")
       return {
         sources = {
           nls.builtins.diagnostics.shellcheck,
