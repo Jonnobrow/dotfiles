@@ -1,59 +1,18 @@
 return {
-  -- Include the json config from LazyVim
-  { import = "lazyvim.plugins.extras.lang.json" },
+	-- Include the json config from LazyVim
+	{ import = "lazyvim.plugins.extras.lang.json" },
 
-  -- Add LSP Config Servers to Install
-  {
-    "neovim/nvim-lspconfig",
-    opts = {
-      servers = {
-        ansiblels = {},
-        bashls = {},
-        cssls = {},
-        docker_compose_language_service = {},
-        dockerls = {},
-        gopls = {},
-        groovyls = {},
-        marksman = {},
-        pylsp = {
-          plugins = {
-            autopep8 = {
-              enabled = false,
-            },
-            pycodestyle = {
-              enabled = false,
-            },
-            mccabe = {
-              enabled = false,
-            },
-            pyflakes = {
-              enabled = false,
-            },
-          },
-        },
-        terraformls = {},
-        tflint = {},
-        yamlls = {},
-        zk = {},
-      },
-    },
-  },
+	-- DAP
+	{ import = "lazyvim.plugins.extras.dap.core" },
+	{
+		"jay-babu/mason-nvim-dap.nvim",
+		opts = {
+			ensure_installed = { "delve" },
+		},
+	},
 
-  -- Install tool with Mason
-  {
-    "williamboman/mason.nvim",
-    opts = {
-      ensure_installed = {
-        "stylua",
-        "shellcheck",
-        "shfmt",
-        "black",
-        "pylint",
-        "golines",
-        "golangci-lint",
-      },
-    },
-  },
+	-- Github Copilot
+	-- { import = "lazyvim.plugins.extras.coding.copilot" },
 
   -- none-ls handy things
   {
@@ -81,4 +40,85 @@ return {
       }
     end,
   },
+	-- Todo comments (for filtering)
+	{
+		"folke/todo-comments.nvim",
+		dependencies = { "nvim-lua/plenary.nvim" },
+		opts = {
+			search = {
+				command = "rg",
+				args = {
+					"--color=never",
+					"--no-heading",
+					"--with-filename",
+					"--line-number",
+					"--column",
+          "--iglob",
+          "'!vendor/'"
+				},
+				-- regex that will be used to match keywords.
+				-- don't replace the (KEYWORDS) placeholder
+				pattern = [[\b(KEYWORDS):]], -- ripgrep regex
+				-- pattern = [[\b(KEYWORDS)\b]], -- match without the extra colon. You'll likely get false positives
+			},
+		},
+	},
+
+	-- Puppet
+	"rodjek/vim-puppet",
+
+	-- Add LSP Config Servers to Install
+	{
+		"neovim/nvim-lspconfig",
+		opts = {
+			autoformat = false,
+			servers = {
+				ansiblels = {},
+				bashls = {},
+				cssls = {},
+				docker_compose_language_service = {},
+				dockerls = {},
+				gopls = {},
+				groovyls = {},
+				marksman = {},
+				pylsp = {
+					plugins = {
+						autopep8 = {
+							enabled = false,
+						},
+						pycodestyle = {
+							enabled = false,
+						},
+						mccabe = {
+							enabled = false,
+						},
+						pyflakes = {
+							enabled = false,
+						},
+					},
+				},
+				terraformls = {},
+				tflint = {},
+				yamlls = {},
+				zk = {},
+			},
+		},
+	},
+
+	-- Install tool with Mason
+	{
+		"williamboman/mason.nvim",
+		opts = {
+			ensure_installed = {
+				"stylua",
+				"shellcheck",
+				"shfmt",
+				"black",
+				"pylint",
+				"golines",
+				"golangci-lint",
+				"mypy",
+			},
+		},
+	},
 }

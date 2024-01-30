@@ -23,6 +23,11 @@ set -o hist_verify
 set -o hist_ignore_space
 set +o case_glob
 
+if type brew &>/dev/null
+then
+  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+fi
+
 zstyle ':completion:*' list-suffixeszstyle ':completion:*' expand prefix suffix
 zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*'
 autoload -Uz compinit && compinit
@@ -32,7 +37,6 @@ function source_if_exists() {[[ -s $1 ]] && source $1 }
 function alias_if_exists() { command -v $2 > /dev/null && alias $1=$2; }
 
 # Aliases
-alias ssh='kitty +kitten ssh'
 alias yarn='yarn --use-yarnrc "$XDG_CONFIG_HOME/yarn/config"'
 alias ls='exa'
 alias ll='exa -lagh'
@@ -70,8 +74,8 @@ _fzf_compgen_dir() {
 source "$HOME/.local/share/zsh/powerlevel10k/powerlevel10k.zsh-theme"
 
 # GCLOUD
-source_if_exists "$XDG_DATA_HOME/google-cloud-sdk/path.zsh.inc"
-source_if_exists "$XDG_DATA_HOME/google-cloud-sdk/completion.zsh.inc"
+source_if_exists "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
+source_if_exists "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
 
 # direnv
 if command -v direnv > /dev/null; then
@@ -96,3 +100,15 @@ if [ -f '/home/jb/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/home/jb/D
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/home/jb/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/jb/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+
+# Get list of gnubin directories
+export PATH="$(brew --prefix)/opt/coreutils/libexec/gnubin:$PATH"
+export PATH="$(brew --prefix)/opt/make/libexec/gnubin:$PATH"
+export PATH="$(brew --prefix)/opt/findutils/libexec/gnubin:$PATH"
+export PATH="$(brew --prefix)/opt/grep/libexec/gnubin:$PATH"
+
+# Aliases for samlaz
+alias samlazdev='samlaz -e skycloud-gtvd-res-sds-dev -r skycloud-az-residentAdmins-dev && export AWS_PROFILE="skycloud-gtvd-res-sds-dev:skycloud-az-residentAdmins-dev" && export AWS_SHARED_CREDENTIALS_FILE=~/.aws/credentials'
+alias samlazmgmt='samlaz -e skycloud-gtvd-res-sds-mgmt -r skycloud-az-residentAdmins-mgmt && export AWS_PROFILE="skycloud-gtvd-res-sds-mgmt:skycloud-az-residentAdmins-mgmt" && export AWS_SHARED_CREDENTIALS_FILE=~/.aws/credentials'
+alias samlaznonp='samlaz -e skycloud-sds-res-uk-nonp -r skycloud-az-residentAdmins-nonp && export AWS_PROFILE="skycloud-sds-res-uk-nonp:skycloud-az-residentAdmins-nonp" && export AWS_SHARED_CREDENTIALS_FILE=~/.aws/credentials'
+alias samlazprod='samlaz -e skycloud-sds-res-uk-prod -r skycloud-az-residentAdmins-prod && export AWS_PROFILE="skycloud-sds-res-uk-prod:skycloud-az-residentAdmins-prod" && export AWS_SHARED_CREDENTIALS_FILE=~/.aws/credentials'
