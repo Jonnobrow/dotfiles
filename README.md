@@ -4,5 +4,5 @@
 2. Run:
 
     ```bash
-    /bin/bash -c "$(curl https://raw.githubusercontent.com/Jonnobrow/dotfiles/main/bootstrap.sh)"
+    /bin/bash -c "$(curl https://raw.githubusercontent.com/Jonnobrow/dotfiles/main/.bootstrap.sh)"
     ```
