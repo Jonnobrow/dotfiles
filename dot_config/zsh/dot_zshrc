@@ -38,9 +38,9 @@ function alias_if_exists() { command -v $2 > /dev/null && alias $1=$2; }
 
 # Aliases
 alias yarn='yarn --use-yarnrc "$XDG_CONFIG_HOME/yarn/config"'
-alias ls='exa'
-alias ll='exa -lagh'
-alias tree='exa -T --git-ignore'
+alias ls='eza'
+alias ll='eza -lagh'
+alias tree='eza -T --git-ignore'
 alias cp='cp -iv'
 alias mv='mv -iv'
 alias rm='rm -i'
@@ -112,3 +112,8 @@ alias samlazdev='samlaz -e skycloud-gtvd-res-sds-dev -r skycloud-az-residentAdmi
 alias samlazmgmt='samlaz -e skycloud-gtvd-res-sds-mgmt -r skycloud-az-residentAdmins-mgmt && export AWS_PROFILE="skycloud-gtvd-res-sds-mgmt:skycloud-az-residentAdmins-mgmt" && export AWS_SHARED_CREDENTIALS_FILE=~/.aws/credentials'
 alias samlaznonp='samlaz -e skycloud-sds-res-uk-nonp -r skycloud-az-residentAdmins-nonp && export AWS_PROFILE="skycloud-sds-res-uk-nonp:skycloud-az-residentAdmins-nonp" && export AWS_SHARED_CREDENTIALS_FILE=~/.aws/credentials'
 alias samlazprod='samlaz -e skycloud-sds-res-uk-prod -r skycloud-az-residentAdmins-prod && export AWS_PROFILE="skycloud-sds-res-uk-prod:skycloud-az-residentAdmins-prod" && export AWS_SHARED_CREDENTIALS_FILE=~/.aws/credentials'
+
+# Load pyenv automatically
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"

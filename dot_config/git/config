@@ -18,8 +18,8 @@
   diffFilter = delta --color-only
 
 [user]
-  name  = Jonathan Bartlett
-  email = jonathan@jonnobrow.co.uk
+	name = Jonathan Bartlett
+	email = jonathan@jonnobrow.co.uk
 
 [gpg]
   program = gpg2
@@ -86,4 +86,15 @@
 [lfs "git@github.com/Jonnobrow/zk/info/lfs"]
   locksverify = true
 
+
+[includeIf "hasconfig:remote.*.url:git@github.com:sky-uk/**"]
+  path = ~/.config/git/config_sky
+
+[includeIf "hasconfig:remote.*.url:git@github.com:NBCUDTC/**"]
+  path = ~/.config/git/config_nbcu
+
+[includeIf "hasconfig:remote.*.url:git@github.com:NBCUniversal/**"]
+  path = ~/.config/git/config_nbcu
+
 # vim: ft=ini tabstop=2
+

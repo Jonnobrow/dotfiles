@@ -20,8 +20,6 @@ export RBENV_ROOT=XDG_DATA_HOME/rbenv
 export RIPGREP_CONFIG_PATH=$XDG_CONFIG_HOME/ripgrep/config
 export GEM_HOME="$XDG_DATA_HOME"/gem
 export GEM_SPEC_CACHE="$XDG_CACHE_HOME"/gem
-export AWS_SHARED_CREDENTIALS_FILE="$XDG_CONFIG_HOME"/aws/credentials
-export AWS_CONFIG_FILE="$XDG_CONFIG_HOME"/aws/config
 
 ###########
 # History #
@@ -45,10 +43,10 @@ export SUDO_EDITOR="nvim"
 export PATH="$PATH:$GOPATH/bin"
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:/opt/homebrew/bin"
-export PATH="$PATH:$HOME/Library/Python/3.8/bin"
 export PATH="$PATH:$GEM_HOME/bin"
 export PATH="$PATH:$CARGO_HOME/bin"
 export PATH="$PATH:/usr/local/go/bin"
+export PATH="$PATH:$HOME/.rd/bin"
 
 #############
 # Man Pager #
@@ -78,3 +76,8 @@ export SOPS_AGE_KEY_FILE=$XDG_CONFIG_HOME/sops/age/keys.txt
 # ZK #
 ######
 export ZK_NOTEBOOK_DIR=$HOME/nextcloud/zk
+
+########
+# BREW #
+########
+export HOMEBREW_NO_AUTO_UPDATE=true
