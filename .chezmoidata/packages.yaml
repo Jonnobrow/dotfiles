@@ -7,7 +7,6 @@ packages:
     - chart-testing
     - checkov
     - chezmoi
-    - colima
     - coreutils
     - direnv
     - dnsmasq
@@ -28,18 +27,13 @@ packages:
     - git-delta
     - git-lfs
     - gitlint
-    - glide
-    - glow
     - gnu-sed
     - gnu-tar
     - go-task/tap/go-task
     - go@1.21
     - golangci-lint
-    - graphviz
-    - guile
     - helm
     - imagemagick
-    - ipcalc
     - jq
     - k2tf
     - kind
@@ -66,7 +60,6 @@ packages:
     - prometheus
     - pssh
     - pyenv
-    - python@3.10
     - rbenv
     - ripgrep
     - rpm
@@ -99,7 +92,6 @@ packages:
     - zk
     - zsh-completions
     casks:
-    - 'google-chrome'
     - espanso
     - fig
     - firefox
@@ -107,14 +99,11 @@ packages:
     - font-hack-nerd-font
     - font-mononoki-nerd-font
     - gimp
-    - google-cloud-sdk
     - hiddenbar
-    - joplin
     - karabiner-elements
     - keepassxc
     - kitty
     - nextcloud
-    - sentinel
     - signal
     - slack
     - spotify
