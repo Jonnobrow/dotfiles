@@ -1,0 +1,25 @@
+Host mocha
+    Hostname 192.168.4.3
+    User ubuntu
+    IdentityFile ~/.ssh/id_ed25519
+
+Host espresso
+    Hostname 192.168.4.1
+    User root
+    IdentityFile ~/.ssh/id_ed25519
+
+Host cappuccino
+    Hostname 192.168.4.4
+    User ubuntu
+    IdentityFile ~/.ssh/id_ed25519
+
+Host cortado
+    Hostname 192.168.4.53
+    User root
+    IdentityFile ~/.ssh/id_ed25519
+
+Host bbs
+    Hostname u275247.your-storagebox.de
+    User u275247
+    Port 23
+    IdentityFile ~/.ssh/id_rsa_hetzner

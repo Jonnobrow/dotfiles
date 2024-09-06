@@ -1,0 +1,11 @@
+Host github
+  Hostname github.com
+  IdentityFile ~/.ssh/id_ed25519_github
+
+Host gitlab
+  Hostname gitlab.com
+  IdentityFile ~/.ssh/id_ed25519_gitlab
+
+Host srht
+  Hostname git.sr.ht
+  IdentityFile ~/.ssh/id_ed25519_srht
