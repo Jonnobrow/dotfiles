@@ -2,6 +2,7 @@ return {
   -- Include some extra config from LazyVim
 
   -- -- Languages
+  { import = "lazyvim.plugins.extras.lang.typescript" },
   { import = "lazyvim.plugins.extras.lang.json" },
   { import = "lazyvim.plugins.extras.lang.terraform" },
   { import = "lazyvim.plugins.extras.lang.tex" },
@@ -12,6 +13,7 @@ return {
   { import = "lazyvim.plugins.extras.lang.git" },
   { import = "lazyvim.plugins.extras.lang.ansible" },
   { import = "lazyvim.plugins.extras.lang.yaml" },
+  { import = "lazyvim.plugins.extras.lang.ruby" },
 
   -- -- Chezmoi
   { import = "lazyvim.plugins.extras.util.chezmoi" },
