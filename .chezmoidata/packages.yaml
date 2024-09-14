@@ -104,6 +104,7 @@ packages:
     - keepassxc
     - kitty
     - nextcloud
+    - obsidian
     - rectangle-pro
     - signal
     - slack
