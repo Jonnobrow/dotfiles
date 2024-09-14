@@ -1,0 +1,82 @@
+osx_defaults:
+  kill_to_apply:
+    - Finder
+    - Dock
+  defaults:
+    # Key Repeat Settings
+    - domain: NSGlobalDomain
+      element: InitialKeyRepeat
+      type: int
+      value: 10
+    - domain: NSGlobalDomain
+      element: KeyRepeat
+      type: int
+      value: 10
+    - domain: NSGlobalDomain
+      element: ApplePressAndHoldEnabled
+      type: bool
+      value: "FALSE"
+    
+    # Dock Configuration
+    - domain: com.apple.dock
+      element: orientation
+      type: string
+      value: "left"
+    - domain: com.apple.dock
+      element: tilesize
+      type: int
+      value: 36
+    - domain: com.apple.dock
+      element: show-recents
+      type: bool
+      value: "FALSE"
+    - domain: com.apple.dock
+      element: autohide
+      type: bool
+      value: "TRUE"
+    - domain: com.apple.dock
+      element: autohide-time-modifier
+      type: float
+      value: 0
+    - domain: com.apple.dock
+      element: autohide-delay
+      type: float
+      value: 0
+    - domain: com.apple.dock
+      element: minimize-to-application
+      type: bool
+      value: "TRUE"
+    - domain: com.apple.dock
+      element: persistent-apps
+      type: array-add
+      value: ""
+    - domain: com.apple.dock
+      element: static-only
+      type: bool
+      value: "TRUE"
+    - domain: com.apple.dock
+      element: mru-spaces
+      type: bool
+      value: "FALSE"
+    
+    # Screenshot Location
+    - domain: com.apple.screencapture
+      element: location
+      type: string
+      value: ~/dirs/p/screenshots
+    
+    # Finder
+    - domain: com.apple.finder
+      element: AppleShowAllFiles
+      type: bool
+      value: "TRUE"
+    - domain: com.apple.finder
+      element: ShowPathBar
+      type: bool
+      value: "TRUE"
+    - domain: com.apple.finder
+      element: _FXSortFoldersFirst
+      type: bool
+      value: "TRUE"
+
+    

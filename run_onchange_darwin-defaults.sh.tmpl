@@ -1,10 +1,13 @@
 {{ if eq .chezmoi.os "darwin" -}}
 #!/bin/bash
 
-{{ range $domain, $elements := .osx_defaults -}}
-{{ range $element, $value := $elements -}}
-defaults write {{ $domain }} {{ $element }} {{ $value }}
+set +x
+{{ range $default := .osx_defaults.defaults -}}
+defaults write {{ $default.domain }} {{ $default.element }} -{{ $default.type }} {{ $default.value }}
 {{ end -}}
+
+{{ range $app := .osx_defaults.kill_to_apply -}}
+killall {{ $app }}
 {{ end -}}
 
 {{ end -}}
