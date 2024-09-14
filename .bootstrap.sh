@@ -24,6 +24,7 @@ if ! [ -d ~/.local/share/chezmoi/ ]; then
   chezmoi init --apply https://github.com/Jonnobrow/dotfiles.git
   chezmoi git remote set-url origin git@github.com:Jonnobrow/dotfiles.git
 else
+  echo "Chezmoi directory exists, attempt to pull and re-init"
   chezmoi git pull
-  chezmoi apply
+  chezmoi init --apply
 fi
