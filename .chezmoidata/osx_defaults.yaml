@@ -11,7 +11,7 @@ osx_defaults:
     - domain: NSGlobalDomain
       element: KeyRepeat
       type: int
-      value: 10
+      value: 2
     - domain: NSGlobalDomain
       element: ApplePressAndHoldEnabled
       type: bool
