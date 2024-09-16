@@ -79,4 +79,12 @@ osx_defaults:
       type: bool
       value: "TRUE"
 
-    
+    # Start on login
+    - domain: com.knollsoft.Rectangle
+      element: launchOnLogin
+      type: int
+      value: 1
+    - domain: com.displaylink.DisplayLinkUserAgent
+      element: AppAutostart
+      type: int
+      value: 1
