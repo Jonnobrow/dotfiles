@@ -1,5 +1,11 @@
 packages:
   darwin:
+    ruby_version: 3.3.5
+    python_version: 3.12.6
+    pips:
+    - pynvim
+    npms:
+    - neovim
     brews:
     - age
     - awscli
@@ -105,7 +111,7 @@ packages:
     - kitty
     - nextcloud
     - obsidian
-    - rectangle-pro
+    - rectangle
     - signal
     - slack
     - spotify

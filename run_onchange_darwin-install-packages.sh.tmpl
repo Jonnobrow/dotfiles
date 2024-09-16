@@ -10,4 +10,18 @@ cask {{ . | quote }}
 {{ end -}}
 EOF
 
+pyenv install {{ .packages.darwin.python_version }} && pyenv global {{ .packages.darwin.python_version }}
+rbenv install {{ .packages.darwin.ruby_version }} && rbenv global {{ .packages.darwin.ruby_version }}
+nvm install --lts && nvm use --lts
+
+pip3 install -r /dev/stdin <<EOF
+{{ range .packages.darwin.pips -}}
+{{ . }}
+{{ end -}}
+EOF
+
+{{ range .packages.darwin.npms -}}
+npm install -g {{ . }}
+{{ end -}}
+
 {{ end -}}
