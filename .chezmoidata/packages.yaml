@@ -16,7 +16,7 @@ packages:
     - coreutils
     - direnv
     - dnsmasq
-    - docker
+    - docker-buildx
     - docker-compose
     - docutils
     - ed
@@ -98,6 +98,7 @@ packages:
     - zk
     - zsh-completions
     casks:
+    - docker
     - espanso
     - fig
     - firefox
