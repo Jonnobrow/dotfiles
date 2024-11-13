@@ -1,0 +1,32 @@
+{{ if eq .chezmoi.os "linux" -}}
+#!/bin/sh
+
+sudo apt install -y \
+  {{ delimit .packages.linux.apts "\\\n" }}
+
+curl https://pyenv.run | bash
+pyenv install {{ .packages.linux.python_version }} && pyenv global {{ .packages.linux.python_version }}
+
+if command rbenv >/dev/null; then
+  rbenv install {{ .packages.linux.ruby_version }} && rbenv global {{ .packages.linux.ruby_version }}
+fi
+
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/{{ .packages.linux.nvm_version }}/install.sh | bash
+nvm install --lts && nvm use --lts
+
+pip3 install -r /dev/stdin <<EOF
+{{ range .packages.linux.pips -}}
+{{ . }}
+{{ end -}}
+EOF
+
+{{ range .packages.linux.npms -}}
+npm install -g {{ . }}
+{{ end -}}
+
+# SOPS
+curl -LO https://github.com/getsops/sops/releases/download/v3.9.1/sops-v3.9.1.linux.amd64 -o /tmp/sops-v3.9.1.linux.amd64
+sudo mv /tmp/sops-v3.9.1.linux.amd64 /usr/local/bin/sops
+sudo chmod +x /usr/local/bin/sops
+
+{{ end -}}

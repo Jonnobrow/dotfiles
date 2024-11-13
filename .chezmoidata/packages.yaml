@@ -1,7 +1,31 @@
 packages:
+  linux:
+    ruby_version: 3.3.5
+    python_version: 3.13.0
+    pips:
+    - pynvim
+    npms:
+    - neovim
+    nvm_version: v0.40.1
+    apts:
+    - age
+    - bat
+    - build-essential
+    - eza
+    - fd-find
+    - git
+    - git-delta
+    - golang
+    - jq
+    - neovim
+    - nodejs
+    - npm
+    - rbenv
+    snaps:
+    - task
   darwin:
     ruby_version: 3.3.5
-    python_version: 3.12.6
+    python_version: 3.13.0
     pips:
     - pynvim
     npms:
