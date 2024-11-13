@@ -127,7 +127,7 @@ export NVM_DIR="$HOME/.nvm"
 eval "$(rbenv init - zsh)"
 
 # SP AWS Aliases
+alias sp-dev-admin='export AWS_PROFILE="sp-dev-admin" && aws sso login && aws sso login --profile=sp-mgmt-admin'
+alias sp-stage-read='export AWS_PROFILE="sp-stage-read" && aws sso login && aws sso login --profile=sp-mgmt-admin'
+alias sp-prod-read='export AWS_PROFILE="sp-prod-read" && aws sso login && aws sso login --profile=sp-mgmt-admin'
 alias sp-mgmt-admin='export AWS_PROFILE="sp-mgmt-admin" && aws sso login'
-alias sp-dev-admin='export AWS_PROFILE="sp-dev-admin" && aws sso login'
-alias sp-stage-admin='export AWS_PROFILE="sp-stage-admin" && aws sso login'
-alias sp-prod-read='export AWS_PROFILE="sp-prod-read" && aws sso login'
