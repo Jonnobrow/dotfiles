@@ -1,8 +1,12 @@
-# my dotfiles
+# Dotfiles
 
-1. Download KeePassXC Database to ~/dirs/doc/keepass/keepass.kdbx
-2. Run:
+## Usage
 
-    ```bash
-    /bin/bash -c "$(curl https://raw.githubusercontent.com/Jonnobrow/dotfiles/main/.bootstrap.sh)"
-    ```
+```bash
+DOTFILES=$HOME/.config/.dotfiles
+git clone --bare git@github.com:Jonnobrow/dotfiles.git $DOTFILES
+alias gitdf='git --git-dir=$DOTFILES --work-tree=$HOME'
+gitdf config --local status.showUntrackedFiles no
+gitdf checkout
+gitdf submodule update --init --recursive
+```
