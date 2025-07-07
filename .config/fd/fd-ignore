@@ -1,0 +1,17 @@
+.cache
+.cisco
+.docker
+.git
+.local
+.npm
+.nvm
+.pyenv
+.rubies
+.terraform*
+.venv
+.vscode*
+.zsh_sessions
+Applications
+cache
+Library
+node_modules
