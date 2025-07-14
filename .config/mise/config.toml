@@ -3,11 +3,15 @@ bun = "latest"
 delta = "latest"
 go = "1.24"
 node = "lts"
+"npm:markdownlint-cli2" = "latest"
 "npm:prettier" = "latest"
+"npm:pyright" = "latest"
+"npm:yaml-language-server" = "latest"
 python = ["3.12", "3.13"]
 ruby = ["3.2", "3.3", "3.4"]
 terraform = "latest"
 usage = "latest"
+"npm:markdown-toc" = "latest"
 
 [settings]
 idiomatic_version_file_enable_tools = ["ruby", "python", "terraform"]
