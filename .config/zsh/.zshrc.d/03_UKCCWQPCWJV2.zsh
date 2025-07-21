@@ -23,7 +23,8 @@ if [[ "$(hostname)" == "UKCCWQPCWJV2" ]]; then
   }
   
   codeartifact_login() {
-    sp-mgmt-admin
+    export AWS_PROFILE=sp-mgmt-admin
+    aws_login
     export CODEARTIFACT_AUTH_TOKEN=$(aws codeartifact \
       get-authorization-token \
       --domain sky-protect \
