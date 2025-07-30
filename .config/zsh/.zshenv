@@ -58,7 +58,7 @@ export LC_TIME=$LANG
 #######
 # SSH #
 #######
-export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
+[ -n "$XDG_RUNTIME_DIR" ] && export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 
 ##############
 # Encryption #
