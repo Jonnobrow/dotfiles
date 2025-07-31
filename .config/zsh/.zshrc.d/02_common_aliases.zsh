@@ -13,3 +13,8 @@ fi
 alias cp='cp -iv'
 alias mv='mv -iv'
 alias rm='rm -i'
+
+# Use kitten SSH
+if (( $+commands[kitten] )); then
+  alias ssh='kitten ssh'
+fi
