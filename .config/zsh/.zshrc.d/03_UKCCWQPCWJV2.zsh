@@ -38,4 +38,11 @@ if [[ "$(hostname)" == "UKCCWQPCWJV2" ]]; then
     aws codeartifact login --tool pip --repository pips --domain sky-protect --domain-owner 872609768854 --region eu-west-1
   }
 
+  ecr_login() {
+    export AWS_PROFILE=sp-mgmt-admin
+    aws_login
+    aws ecr get-login-password --region eu-west-1 | \
+      docker login --username AWS --password-stdin 872609768854.dkr.ecr.eu-west-1.amazonaws.com
+  }
+
 fi

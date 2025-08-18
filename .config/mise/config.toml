@@ -16,6 +16,7 @@ fzf = "latest"
 fd = "latest"
 ripgrep = "latest"
 bat = "latest"
+shellcheck = "latest"
 
 [settings]
 idiomatic_version_file_enable_tools = ["ruby", "python", "terraform"]
