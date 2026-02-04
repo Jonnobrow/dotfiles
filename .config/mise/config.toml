@@ -21,6 +21,8 @@ taplo = "latest"
 git-cliff = "latest"
 fly = "7.12.1"
 uv = "latest"
+"npm:dockerfile-language-server-nodejs" = "latest"
+"npm:tree-sitter-cli" = "latest"
 
 [settings]
 idiomatic_version_file_enable_tools = ["ruby", "python", "terraform"]

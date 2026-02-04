@@ -1,21 +1,19 @@
-[delta]
-  navigate                      = true
-  features                      = line-numbers decorations
-  whitespace-error-style        = 22 reverse
-  side-by-side                  = true
-  theme                         = "gruvbox-dark"
-
-[delta "decorations"]
-  commit-decoration-style = bold yellow box ul
-  file-style              = bold yellow ul
-  file-decoration-style   = none
+#[delta]
+#  navigate                      = true
+#  features                      = line-numbers decorations
+#  whitespace-error-style        = 22 reverse
+#  side-by-side                  = true
+#  theme                         = "gruvbox-dark"
+#
+#[delta "decorations"]
+#  commit-decoration-style = bold yellow box ul
+#  file-style              = bold yellow ul
+#  file-decoration-style   = none
 
 [core]
   pager        = delta
   excludesFile = "~/.config/git/ignore"
-
-[interactive]
-  diffFilter = delta --color-only
+  hooksPath  = "~/.config/git/hooks"
 
 [user]
 	name = Jonathan Bartlett
@@ -53,9 +51,10 @@
   tags       = for-each-ref --format '%(refname) %09 %(taggerdate) %(subject) %(taggeremail)' refs/tags  --sort=taggerdate
 
 [diff]
-  compactionHeuristic = true
-  mnemonicprefix      = true
-  colorMoved          = default
+  external = difft
+  #compactionHeuristic = true
+  #mnemonicprefix      = true
+  #colorMoved          = default
 
 # set "nvim" as tool for merging
 [merge]
