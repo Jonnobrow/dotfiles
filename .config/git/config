@@ -95,3 +95,9 @@
   path = ~/.config/git/config_nbcu
 
 # vim: ft=ini tabstop=2
+[credential "https://github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential

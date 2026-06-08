@@ -8,6 +8,7 @@ if [[ "$(hostname)" == "UKCCWQPCWJV2" ]]; then
   alias sp-test-admin='export AWS_PROFILE="sp-test-admin" && aws_login'
   alias sp-regression-admin='export AWS_PROFILE="sp-regression-admin" && aws_login'
   alias sp-mgmt-admin='export AWS_PROFILE="sp-mgmt-admin" && aws_login'
+  alias sp-nonp-admin='export AWS_PROFILE="sp-nonp-admin" && aws_login'
   
   # Random String
   randstr() {

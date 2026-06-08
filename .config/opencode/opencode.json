@@ -9,6 +9,28 @@
       "headers": {
         "Authorization": "Bearer {file:~/.config/opencode/.secrets/github-pat}"
       }
+    },
+    "atlassian": {
+      "type": "remote",
+      "url": "https://mcp.atlassian.com/v1/mcp",
+      "oauth": {}
     }
   },
+  "provider": {
+    "amazon-bedrock": {
+      "options": {
+        "region": "eu-west-1",
+        "profile": "sp-nonp-admin"
+      }
+    },
+    "ollama": {
+      "npm": "@ai-sdk/openai-compatible",
+      "options": {
+        "baseURL": "http://localhost:11434/v1"
+      },
+      "models": {
+        "gemma4:latest": {},
+      }
+    }
+  }
 }
