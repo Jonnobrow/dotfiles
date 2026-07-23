@@ -1,162 +1,317 @@
-tap "anomalyco/tap"
-tap "fluxcd/tap"
-tap "go-task/tap"
-tap "grafana/grafana"
-tap "hashicorp/tap"
+tap "anomalyco/tap", trusted: true
+tap "fluxcd/tap", trusted: true
+tap "go-task/tap", trusted: true
+tap "grafana/grafana", trusted: true
+tap "hashicorp/tap", trusted: true
 tap "homebrew/bundle"
-tap "krzko/tap"
-tap "minamijoyo/tfupdate"
-tap "siderolabs/tap"
-tap "thecasualcoder/stable"
+tap "krzko/tap", trusted: true
+tap "minamijoyo/tfupdate", trusted: true
+tap "siderolabs/tap", trusted: true
+tap "thecasualcoder/stable", trusted: true
+# Simple, modern, secure file encryption
 brew "age"
-brew "xz"
+# Record and share terminal sessions
+brew "asciinema"
+# Tool for generating GNU Standards-compliant Makefiles
 brew "automake"
+# Cryptography and SSL/TLS Toolkit
 brew "openssl@3"
+# Cryptographic recipes and primitives for Python
 brew "cryptography"
+# YAML Parser
 brew "libyaml"
+# Library for command-line editing
 brew "readline"
+# General-purpose data compression with high compression ratio
+brew "xz"
+# CLI tool to build, test, debug, and deploy Serverless applications using AWS SAM
 brew "aws-sam-cli"
+# Official Amazon AWS command-line interface
 brew "awscli"
+# C library of Git core methods that is re-entrant and linkable
 brew "libgit2"
+# Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
+# Parser generator
 brew "bison"
+# Perl compatible regular expressions library with a new API
 brew "pcre2"
+# Core application library for C
 brew "glib"
+# GNU multiple precision arithmetic library
 brew "gmp"
+# Prevent cloud misconfigurations during build-time for IaC tools
 brew "checkov"
+# Manage your dotfiles across multiple diverse machines, securely
 brew "chezmoi"
+# Conventional Commits toolbox
 brew "cocogitto"
-brew "colima", restart_service: :changed
+# Container runtimes on MacOS (and Linux) with minimal setup
+brew "colima"
+# GNU File, Shell, and Text utilities
 brew "coreutils"
+# Diff that understands syntax
 brew "difftastic"
+# Load/unload environment variables based on $PWD
 brew "direnv"
+# Lightweight DNS forwarder and DHCP server
 brew "dnsmasq"
+# Pack, ship and run any application as a lightweight container
 brew "docker"
+# Docker CLI plugin for extended build capabilities with BuildKit
+brew "docker-buildx"
+# Isolated development environments using Docker
 brew "docker-compose"
+# Platform keystore credential helper for Docker
 brew "docker-credential-helper"
+# Text processing system for reStructuredText
 brew "docutils"
+# Classic UNIX line editor
 brew "ed"
+# Simple command-line tool for creating clusters on Amazon EKS
 brew "eksctl"
+# Modern, maintained replacement for ls
 brew "eza"
+# Simple, fast and user-friendly alternative to find
 brew "fd"
-brew "harfbuzz"
-brew "tesseract"
+# Play, record, convert, and stream select audio and video codecs
 brew "ffmpeg"
+# Collection of GNU find, xargs, and locate
 brew "findutils"
+# Command-line fuzzy finder written in Go
 brew "fzf"
+# GNU awk utility
 brew "gawk"
+# TIFF library and utilities
+brew "libtiff"
+# GitHub command-line tool
 brew "gh"
+# Distributed revision control system
 brew "git"
+# Highly customizable changelog generator
 brew "git-cliff"
+# Syntax-highlighting pager for git and diff output
 brew "git-delta"
+# Git extension for versioning large files
 brew "git-lfs"
-brew "python@3.12"
+# Linting for your git commit messages
 brew "gitlint"
+# Render markdown on the CLI
 brew "glow"
+# GNU implementation of the famous stream editor
 brew "gnu-sed"
+# GNU version of the tar archiving utility
 brew "gnu-tar"
+# Fast linters runner for Go
 brew "golangci-lint"
+# OpenType text shaping engine
+brew "harfbuzz"
+# Graph visualization software from AT&T and Bell Labs
+brew "graphviz"
+# Smarter Dockerfile linter to validate best practices
 brew "hadolint"
+# Convert HCL2 to JSON
 brew "hcl2json"
+# Post-modern modal text editor
 brew "helix"
+# Kubernetes package manager
 brew "helm"
+# Tools and libraries to manipulate images in select formats
 brew "imagemagick"
+# JQ clone focussed on correctness, speed, and simplicity
 brew "jaq"
+# Lightweight and flexible command-line JSON processor
 brew "jq"
+# Kubernetes YAML to Terraform HCL converter
 brew "k2tf"
+# Modern load testing tool, using Go and JavaScript
 brew "k6"
+# Run local Kubernetes cluster in Docker
 brew "kind"
+# Tool that can switch between kubectl contexts easily and create aliases
 brew "kubectx"
+# Terminal file manager
 brew "lf"
+# Access DVDs as block devices without the decryption
 brew "libdvdcss"
+# Portable Foreign Function Interface library
 brew "libffi"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.12"
+# Postgres C API library
 brew "libpq"
+# Package manager for the Lua programming language
 brew "luarocks"
+# Utility for directing compilation
 brew "make"
+# Open-source, cross-platform JavaScript runtime environment
 brew "node"
+# Fast, flexible, config-based cli for linting Markdown/CommonMark files
 brew "markdownlint-cli2"
+# Language Server Protocol for Markdown
 brew "marksman"
+# Mac App Store command-line interface
 brew "mas"
+# Development kit for the Java programming language
 brew "openjdk"
+# Java-based project management
 brew "maven"
+# Run a Kubernetes cluster locally
 brew "minikube"
+# Polyglot runtime manager (asdf rust clone)
 brew "mise"
+# Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
+# Port scanning utility for large networks
 brew "nmap"
+# Manage multiple Node.js versions
 brew "nvm"
+# Generate clients, server & docs from an OpenAPI spec (v2, v3)
 brew "openapi-generator"
+# Shell command parallelization utility
 brew "parallel"
+# Pinentry for GPG on Mac
 brew "pinentry-mac"
+# Python dependency management tool
 brew "pipenv"
+# Fast, disk space efficient package manager
 brew "pnpm"
+# Framework for managing multi-language pre-commit hooks
 brew "pre-commit"
+# Print the IP addresses in a given range
 brew "prips"
+# Service monitoring system and time series database
 brew "prometheus"
+# Parallel versions of OpenSSH and related tools
 brew "pssh"
+# Python version management
 brew "pyenv"
+# Sampling profiler for Ruby
+brew "rbspy"
+# Persistent key-value database, with built-in net interface
+brew "redis"
+# Fast, efficient and secure backup program
 brew "restic"
+# Command-line toolbox for fancy output in the terminal
 brew "rich-cli"
+# Search tool like grep and The Silver Searcher
 brew "ripgrep"
+# Standard unix software packaging tool
 brew "rpm"
+# Install Ruby, JRuby, Rubinius, TruffleRuby, or mruby
 brew "ruby-install"
+# Extremely fast Python linter, written in Rust
 brew "ruff"
+# Safe, concurrent, practical language
 brew "rust"
+# Autoformat shell script source code
 brew "shfmt"
+# Work with remote images registries
 brew "skopeo"
+# Editor of encrypted files
 brew "sops"
+# Soak up standard input and write to a file
 brew "sponge"
+# Compressed read-only file system for Linux
 brew "squashfs"
+# Non-interactive SSH password auth
 brew "sshpass"
+# Opinionated Lua code formatter
 brew "stylua"
+# Open source continuous file synchronization application
 brew "syncthing", restart_service: :changed
+# Very fast implementation of tldr in Rust
 brew "tealdeer"
+# OpenTofu / Terraform / Terragrunt / Terramate / Atmos version manager
 brew "tenv"
+# Tool to generate documentation from Terraform modules
 brew "terraform-docs"
-brew "tfenv", link: false
+# OCR (Optical Character Recognition) engine
+brew "tesseract"
+# Linter for Terraform files
 brew "tflint"
+# Static analysis security scanner for your terraform code
 brew "tfsec"
+# Granddaddy of HTML tools, with support for modern standards
 brew "tidy-html5"
+# Markup-based typesetting system
 brew "typst"
+# Extremely fast Python package installer and resolver, written in Rust
 brew "uv"
+# Tool for creating isolated virtual python environments
 brew "virtualenv"
+# Sends magic packets to wake up network-devices
 brew "wakeonlan"
+# Executes a program periodically, showing output fullscreen
 brew "watch"
+# Internet file retriever
 brew "wget"
+# Linter for YAML files
 brew "yamllint"
+# JavaScript package manager
 brew "yarn"
+# Blazing fast terminal file manager written in Rust, based on async I/O
 brew "yazi"
+# Tool for managing your YubiKey configuration
 brew "ykman"
+# YubiKey personalization library and tool
 brew "ykpers"
+# Process YAML, JSON, XML, CSV and properties documents from the CLI
 brew "yq"
+# Plain text note-taking assistant
 brew "zk"
+# Additional completion definitions for zsh
 brew "zsh-completions"
-brew "anomalyco/tap/opencode"
+# Flux CLI
 brew "fluxcd/tap/flux"
+# A fast, cross-platform build tool inspired by Make, designed for modern workflows.
 brew "go-task/tap/go-task"
+# Packer
 brew "hashicorp/tap/packer"
+# Terraform Language Server
 brew "hashicorp/tap/terraform-ls"
+# Vault
 brew "hashicorp/tap/vault"
+# A tool to generate synthetic OpenTelemetry logs, metrics and traces telemetry data.
 brew "krzko/tap/otelgen"
+# Update version constraints in your Terraform / OpenTofu configurations
 brew "minamijoyo/tfupdate/tfupdate"
+# CLI for out-of-band management of Kubernetes nodes created by Talos
 brew "siderolabs/tap/talosctl"
+# A command-line utility to print the summary of the terraform plan
 brew "thecasualcoder/stable/tf-summarize"
+# Desktop password and login vault
 cask "bitwarden"
-cask "espanso"
+# Reimagine your terminal
 cask "fig"
+# Web browser
 cask "firefox"
 cask "font-caskaydia-cove-nerd-font"
 cask "font-hack-nerd-font"
 cask "font-mononoki-nerd-font"
+# Free and open-source image editor
 cask "gimp"
+# Utility to hide menu bar items
 cask "hiddenbar"
+# Keyboard customiser
 cask "karabiner-elements"
+# Password manager app
 cask "keepassxc"
+# GPU-based terminal emulator
 cask "kitty"
+# Desktop sync client for Nextcloud software products
 cask "nextcloud"
+# Knowledge base that works on top of a local folder of plain text Markdown files
 cask "obsidian"
+# Collaboration platform for API development
 cask "postman"
+# Move and resize windows using keyboard shortcuts or snap areas
 cask "rectangle"
+# Plugin for AWS CLI to start and end sessions that connect to managed instances
 cask "session-manager-plugin"
+# Instant messaging application focusing on security
 cask "signal"
+# Music streaming service
 cask "spotify"
+# Multimedia player
 cask "vlc"

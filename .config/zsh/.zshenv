@@ -58,7 +58,7 @@ export LC_TIME=$LANG
 #######
 # SSH #
 #######
-[ -n "$XDG_RUNTIME_DIR" ] && export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
+export SSH_AUTH_SOCK="$HOME/.bitwarden-ssh-agent.sock"
 
 ##############
 # Encryption #
