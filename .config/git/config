@@ -27,7 +27,7 @@
 
 [push]
   autoSetupRemote = true
-  default         = upstream
+	default = current
   followTags      = true
 
 [pull]

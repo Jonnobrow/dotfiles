@@ -30,3 +30,6 @@ idiomatic_version_file_enable_tools = ["ruby", "python", "terraform"]
 
 [settings.npm]
 bun = true
+
+[settings.ruby]
+compile = false
